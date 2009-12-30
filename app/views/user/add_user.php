@@ -22,7 +22,7 @@
 	<label for='points'>Points:</label>
 	<input type="text" id='points' name='points' />
 	<br />
-	<label for=descricao'>Descricao:</label>
+	<label for='descricao'>Descricao:</label>
 		<textarea cols=20 rows=5 id='descricao' name='descricao' /></textarea>
 	<br />
 	<input type='submit' value='Salvar' />
