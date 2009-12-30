@@ -7,6 +7,7 @@
 	$urls = array (
 		'profile'	=> 'user/profile.php',
 		'help'		=> 'static/help.php',
+		'user-add'	=> 'user/add_user.php',
 	);
 	
 	

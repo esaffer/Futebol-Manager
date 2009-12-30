@@ -11,6 +11,7 @@ class User extends Model {
 	private $points;
 	
 	private $base;
+	private $db;
 	private $table_name;
 	
 	
@@ -22,6 +23,7 @@ class User extends Model {
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
 		$this->table_name = DB_PREFIX . 'data_user';
+		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
 	
@@ -32,8 +34,8 @@ class User extends Model {
 	 * Procura um usuário.
 	 *************************************************************************/
 	public function getUser ($fid) {
-		$sql = "SELECT * from " . $this->table_name . " WHERE fid = " . $fid;
-		$sql = $this->db->query($sql);
+		$this->sql = "SELECT * from " . $this->table_name . " WHERE fid = " . $fid;
+		$this->sql = $this->db->query($sql);
 		
 		if ($sql) {
 			$this->fid		= $sql['fid'];

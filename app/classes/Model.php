@@ -5,7 +5,7 @@
  **/
 
 class Model {
-	public $db;
+	private $db;
 
 	
 	private $user = DB_USER;
