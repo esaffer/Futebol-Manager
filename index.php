@@ -6,13 +6,18 @@
  *****************************************************************************/
  
  // Includes necessários ------------------------------------------------------
- include('app/config.php');
- include('app/lib/Utilities.php');
- include('app/lib/Facebook/facebook.php');
- include('app/classes/Database.php');
- include('app/classes/Model.php');
- include('app/classes/User.php')
- //include('app/classes/Team.php');
+	include('app/config.php');
+	include('app/lib/Utilities.php');
+	include('app/lib/Facebook/facebook.php');
+	include('app/classes/Database.php');
+	include('app/classes/Model.php');
+	include('app/classes/User.php')
+	//include('app/classes/Team.php');
+ 
+ // Inicializa o Facebook -----------------------------------------------------
+	$facebook = new Facebook(FACEBOOK_KEY, FACEBOOK_SECRET);
+	$facebook->require_frame();
+	$iduser = $facebook->require_login();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
