@@ -7,7 +7,7 @@
 class User extends Model {
 	private $facebook;
 	private $name;
-	private $position;
+	private $status;
 	private $points;
 	
 	private $base;
@@ -147,8 +147,9 @@ class User extends Model {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
 					id			mediumint(9) NOT NULL AUTO_INCREMENT,
 					fid			varchar(64),
+					name		varchar(90),
 					points		mediumint(9),
-					position	mediumint(9),
+					status		mediumint(9),
 					
 					UNIQUE KEY id (id));";
 		
@@ -170,7 +171,7 @@ class User extends Model {
 	 * Setters
 	 * Seta o conteúdo de uma variável.
 	 *************************************************************************/
-	public function setPosition	($value) { $this->position	= $value; }
+	public function setStatus	($value) { $this->status	= $value; }
 	public function setName		($value) { $this->name		= $value; }
 	public function setFacebook	($value) { $this->facebook	= $value; }
 	public function setPoints	($value) { $this->points	= $value; }
@@ -184,7 +185,7 @@ class User extends Model {
 	 *************************************************************************/
 	 public function getFacebook	() { return $this->facebook; }
 	 public function getName		() { return $this->name; }
-	 public function getPosition	() { return $this->position; }
+	 public function getStatus		() { return $this->status; }
 	 public function getPoints		() { return $this->points; }
 }
 ?>

@@ -1,10 +1,12 @@
 <h1>Adicionar Usuário</h1>
 <?
 	if ($_GET['do'] == 'add') {
-		echo "Nome: " . $_POST['name'];
-		echo "<br/>Facebook: " . $_POST['fid'];
-		echo "<br />Points: " . $_POST['points'];
-		echo  "<br />Status: " . $_POST['status'];
+		$user = new User;
+		$user->setName($_POST['name']);
+		$user->setFacebook($_POST['fid']);
+		$user->setStatus($_POST['status']);
+		$user->setPoints($_POST['points']);
+		$user->Add();
 	}
 	else {
 ?>
