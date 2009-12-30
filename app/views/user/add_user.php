@@ -2,30 +2,28 @@
 <?
 	if ($_GET['do'] == 'add') {
 		$user = new User;
-		$user->setName($_POST['apelido']);
-		$user->setFacebook($_POST['fid']);
-		$user->setStatus($_POST['status']);
+		$user->setID($_POST['id']);
+		$user->setApelido($_POST['apelido']);		
 		$user->setPoints($_POST['points']);
+		$user->setDescricao($_POST['descricao']);
+		$user->setDataCadastro();
 		$user->Add();
 	}
 	else {
 ?>
 
 <form action="?act=user-add&do=add" method="POST">
-	<label for='name'>Apelido:</label>
-	<input type="text" id='apelido' name='name' />
+	<label for='id'>Facebook ID:</label>
+	<input type="text" id='id' name='id' />
 	<br />
-	<label for='fid'>Facebook ID:</label>
-	<input type="text" id='id' name='fid' />
+	<label for='apelido'>Apelido:</label>
+	<input type="text" id='apelido' name='apelido' />
 	<br />
-	<label for='fid'>Points:</label>
+	<label for='points'>Points:</label>
 	<input type="text" id='points' name='points' />
 	<br />
-	<label for='fid'>Status:</label>
-	<select name='status' id='status'>
-		<option value='1'>Ativo</option>
-		<option value='0'>Desativado</option>
-	</select>
+	<label for=descricao'>Descricao:</label>
+		<textarea cols=20 rows=5 id='descricao' name='descricao' /></textarea>
 	<br />
 	<input type='submit' value='Salvar' />
 </form>
