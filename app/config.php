@@ -19,8 +19,8 @@
 	define('APP_VERSION', '0.1');
 	define('APP_BASE', '');
 
-	define('FACEBOOK_SECRET', '');
-	define('FACEBOOK_KEY', '');
+	define('FACEBOOK_SECRET', 'beedd0119d65a99b69411bee442c89aa');
+	define('FACEBOOK_KEY', '50f3cf7661b8f5611eb7b782d845ae8d');
 
 
 /****************************************************************************
@@ -30,6 +30,7 @@
 	define('DB_PASS', '');
 	define('DB_HOST', 'localhost');
 	define('DB_NAME', 'tiago');
+	define('DB_PREFIX', 'futebol_');
 
 
 /****************************************************************************

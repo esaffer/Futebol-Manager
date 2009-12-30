@@ -39,3 +39,4 @@ Modo de Usar
 ------------
 
 A idéia é encapsular as ações em classes. A princípio não consigo ver no projeto mais classes além de 'User' e 'Team'. 
+

@@ -11,6 +11,7 @@
  * Data:	21 de Dezembro de 2009
  *****************************************************************************/
  
+<<<<<<< HEAD:app/classes/Team.php
 class Team extends Model {	
 	private $id;
 	private $nome;	
@@ -19,11 +20,19 @@ class Team extends Model {
 	private $regras;
 	private $local;
 	private $privado;
+=======
+class Team extends Model {
+	private $name;
+	private $team;
+	
+	private $base;
+>>>>>>> b634407682560dd14f5b04f651a80a3b67b14e40:app/classes/Team.php
 	
 	private $base;
 	private $db;
 	private $table_name;
 	
+<<<<<<< HEAD:app/classes/Team.php
 	
 	
 	/************************************************************************
@@ -33,6 +42,10 @@ class Team extends Model {
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
 		$this->table_name = 'grupo';
+=======
+	public function __construct {
+		$this->table_name = DB_PREFIX . 'team';
+>>>>>>> b634407682560dd14f5b04f651a80a3b67b14e40:app/classes/Team.php
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
