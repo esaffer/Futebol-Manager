@@ -62,13 +62,12 @@ class User extends Model {
 	 *************************************************************************/
 	private function setAll ()
 	{
-		$data = date("o-m-d");
 		$this->base = array (
 			'id' 		=> $this->id,
 			'apelido'	=> $this->apelido,
 			'points'	=> $this->points,
 			'descricao' 	=> $this->descricao,
-			'datacadastro' 	=> $data
+			'datacadastro' 	=> $this->dataCadastro
 		);
 	}
 	
@@ -191,7 +190,7 @@ class User extends Model {
 	public function setID		($value) { $this->id		= $value; }
 	public function setPoints	($value) { $this->points	= $value; }
 	public function setDescricao	($value) { $this->descricao	= $value; }
-	public function setDataCadastro	($value) { $this->dataCadastro	= $value; }
+	public function setDataCadastro	() { $this->dataCadastro	= date("o-m-d"); }
 	
 	
 	
