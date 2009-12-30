@@ -1,5 +1,6 @@
 <?
 	$profile = new User;
-	echo "Nome = " $profile->createDatabase();
+	$profile->getUser(5);
+	echo "Apelido == " . $profile->getApelido();
 ?>
 

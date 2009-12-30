@@ -5,10 +5,11 @@
  ******************************************************************************/
 
 class User extends Model {
-	private $facebook;
-	private $name;
-	private $status;
+	private $id;
+	private $apelido;
 	private $points;
+	private $descricao;
+	private $dataCadastro;
 	
 	private $base;
 	private $db;
@@ -22,7 +23,7 @@ class User extends Model {
 	 ************************************************************************/
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
-		$this->table_name = DB_PREFIX . 'data_user';
+		$this->table_name = 'user';
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
@@ -33,16 +34,16 @@ class User extends Model {
 	 * getUser
 	 * Procura um usuário.
 	 *************************************************************************/
-	public function getUser ($fid) {
-		$this->sql = "SELECT * from " . $this->table_name . " WHERE fid = " . $fid;
-		$this->sql = $this->db->query($sql);
+	public function getUser ($id) {
 		
+		$sql = "SELECT * from " . $this->table_name . " WHERE id = " . $id;
+		$sql = $this->db->query($sql);
 		if ($sql) {
-			$this->fid		= $sql['fid'];
-			$this->name		= $sql['name'];
-			$this->status	= $sql['status'];
-			$this->points	= $sql['points'];
-			
+			$this->id 		= $id;
+			$this->apelido		= $sql['apelido'];
+			$this->points		= $sql['points'];
+			$this->descricao 	= $sql['descricao'];
+			$this->dataCadastro 	= $sql['datacadastro'];
 			return True;
 		}
 		else {
@@ -60,10 +61,11 @@ class User extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'fid' 		=> $this->facebook,
-			'name'		=> $this->name,
-			'status'	=> $this->status,
+			'id' 		=> $this->id,
+			'apelido'	=> $this->apelido,
 			'points'	=> $this->points,
+			'descricao' 	=> $this->descricao,
+			'datacadastro' 	=> date("o-m-d")
 		);
 	}
 	
@@ -81,7 +83,7 @@ class User extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O usuário <b>" . $this->name . "</b> foi adicionado com sucesso!");
+			$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi adicionado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");
 	}
@@ -105,7 +107,7 @@ class User extends Model {
 		$sql = $this->createUpdateQuery($this->table_name, $this->article_base, $id);
 		
 		if ($this->db->query($sql))
-		$this->messageOk("O usuário <b>" . $this->name . "</b> foi editado com sucesso!");
+		$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi editado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao editar o usuário.");
 	}
@@ -181,10 +183,11 @@ class User extends Model {
 	 * Setters
 	 * Seta o conteúdo de uma variável.
 	 *************************************************************************/
-	public function setStatus	($value) { $this->status	= $value; }
-	public function setName		($value) { $this->name		= $value; }
-	public function setFacebook	($value) { $this->facebook	= $value; }
+	public function setApelido	($value) { $this->apelido	= $value; }
+	public function setID		($value) { $this->id		= $value; }
 	public function setPoints	($value) { $this->points	= $value; }
+	public function setDescricao	($value) { $this->descricao	= $value; }
+	public function setDataCadastro	($value) { $this->dataCadastro	= $value; }
 	
 	
 	
@@ -193,9 +196,10 @@ class User extends Model {
 	 * Getters
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
-	 public function getFacebook	() { return $this->facebook; }
-	 public function getName		() { return $this->name; }
-	 public function getStatus		() { return $this->status; }
+	 public function getID			() { return $this->id; }
+	 public function getApelido		() { return $this->apelido; }
 	 public function getPoints		() { return $this->points; }
+	 public function getDescricao		() { return $this->descricao; }
+	 public function getDataCadastro	() { return $this->dataCadastro; }
 }
 ?>

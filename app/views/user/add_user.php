@@ -2,7 +2,7 @@
 <?
 	if ($_GET['do'] == 'add') {
 		$user = new User;
-		$user->setName($_POST['name']);
+		$user->setName($_POST['apelido']);
 		$user->setFacebook($_POST['fid']);
 		$user->setStatus($_POST['status']);
 		$user->setPoints($_POST['points']);
@@ -12,11 +12,11 @@
 ?>
 
 <form action="?act=user-add&do=add" method="POST">
-	<label for='name'>Nome:</label>
-	<input type="text" id='name' name='name' />
+	<label for='name'>Apelido:</label>
+	<input type="text" id='apelido' name='name' />
 	<br />
 	<label for='fid'>Facebook ID:</label>
-	<input type="text" id='fid' name='fid' />
+	<input type="text" id='id' name='fid' />
 	<br />
 	<label for='fid'>Points:</label>
 	<input type="text" id='points' name='points' />
