@@ -1,5 +1,5 @@
 <?
 	$profile = new User;
-	$profile->createDatabase();
+	echo "Nome = " $profile->createDatabase();
 ?>
 
