@@ -6,7 +6,7 @@
  *
  * Autor:	Bruno Martins Rodrigues <bruno@thearmpit.net>
  *			Eduardo Saffer Medvedovsk <emedevas@gmail.com>
- *			Thiago Trojahn <troid16@gmail.com>
+ *			Tiago Trojahn <troid16@gmail.com>
  *
  * Data:	21 de Dezembro de 2009
  ****************************************************************************/
@@ -26,10 +26,10 @@
 /****************************************************************************
  * Banco de Dados
  ****************************************************************************/
-	define('DB_USER', '');
+	define('DB_USER', 'tiago');
 	define('DB_PASS', '');
-	define('DB_HOST', '');
-	define('DB_NAME', '');
+	define('DB_HOST', 'localhost');
+	define('DB_NAME', 'tiago');
 
 
 /****************************************************************************
