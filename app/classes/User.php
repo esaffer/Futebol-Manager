@@ -171,7 +171,7 @@ class User extends Model {
 	public function getImage()
 	{
 		return "<img src=http://knuth.ufpel.edu.br/tiago/aux/noImage.jpg>"; //Provisório
-		//return "<fb:profile-pic uid=". $this->facebook."linked="true" />";
+		//return "<fb:profile-pic uid=". $this->facebook." linked="true" />";
 	}
 	
 	
