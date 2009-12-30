@@ -6,7 +6,7 @@
  *
  * Autor:	Bruno Martins Rodrigues <bruno@thearmpit.net>
  *			Eduardo Saffer Medvedovsk <emedevas@gmail.com>
- *			Thiago Trojahn <troid16@gmail.com>
+ *			Tiago Trojahn <troid16@gmail.com>
  *
  * Data:	21 de Dezembro de 2009
  ****************************************************************************/
