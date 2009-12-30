@@ -5,10 +5,12 @@
 	 *************************************************************************/
 	
 	$urls = array (
-		'profile'	=> 'user/profile.php',
-		'help'		=> 'static/help.php',
-		'user-add'	=> 'user/add_user.php',
-		'sql'		=> 'user/sql.php',
+		'profile'		=> 'user/profile.php',
+		'help'			=> 'static/help.php',
+		'create-user-profile'	=> 'user/add_user.php',
+		'sql'			=> 'user/sql.php',
+		'create-grupo'		=> 'grupo/add_grupo.php',
+		'view-grupo' 		=> 'grupo/grupo.php',
 	);
 	
 	

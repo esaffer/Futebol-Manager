@@ -6,12 +6,12 @@
  *
  * Autor:	Bruno Martins Rodrigues <bruno@thearmpit.net>
  *			Eduardo Saffer Medvedovsk <emedevas@gmail.com>
- *			Tiago Trojahn <troid16@gmail.com>
+ *			Tiago Henrique Trojahn <troid16@gmail.com>
  *
  * Data:	21 de Dezembro de 2009
  *****************************************************************************/
  
-<<<<<<< HEAD:app/classes/Team.php
+
 class Team extends Model {	
 	private $id;
 	private $nome;	
@@ -20,19 +20,11 @@ class Team extends Model {
 	private $regras;
 	private $local;
 	private $privado;
-=======
-class Team extends Model {
-	private $name;
-	private $team;
-	
-	private $base;
->>>>>>> b634407682560dd14f5b04f651a80a3b67b14e40:app/classes/Team.php
+	private $idOwner;
 	
 	private $base;
 	private $db;
 	private $table_name;
-	
-<<<<<<< HEAD:app/classes/Team.php
 	
 	
 	/************************************************************************
@@ -42,10 +34,6 @@ class Team extends Model {
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
 		$this->table_name = 'grupo';
-=======
-	public function __construct {
-		$this->table_name = DB_PREFIX . 'team';
->>>>>>> b634407682560dd14f5b04f651a80a3b67b14e40:app/classes/Team.php
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
@@ -58,6 +46,7 @@ class Team extends Model {
 		if ($sql->id != NULL) {
 		
 			$this->id 		= $sql->id;
+			$this->idOwner 		= $sql->idOwner;
 			$this->nome		= $sql->nome;
 			$this->regras		= $sql->regras;
 			$this->descricao 	= $sql->descricao;
@@ -80,7 +69,8 @@ class Team extends Model {
 			'descricao' 	=> $this->descricao,
 			'datacadastro' 	=> $this->dataCadastro,
 			'privado' 	=> $this->privado,
-			'regras' 	=> $this->regras
+			'regras' 	=> $this->regras,
+			'idOwner'	=> $this->idOwner
 		);
 	}	
 	
@@ -115,7 +105,8 @@ class Team extends Model {
 	public function setDescricao 	($valor){$this->descricao 	= $valor; }
 	public function setPrivado 	($valor){$this->privado 	= $valor; }
 	public function setLocal 	($valor){$this->local 		= $valor; }
-	public function setDataCadastro	() 	{$this->dataCasdatro 	= date("o-m-d");}
+	public function setIDOwner 	($valor){$this->idOwner		= $valor; }
+	public function setDataCadastro	() 	{$this->dataCadastro 	= date("o-m-d");}
 	
 	
 	/*************************************************************************
@@ -129,5 +120,6 @@ class Team extends Model {
 	 public function getDataCadastro	() { return $this->dataCadastro; }
 	 public function getLocal		() { return $this->local; }
 	 public function getPrivado		() { return $this->privado; }
+	 public function getIDOwner		() { return $this->idOwner; }
 }
 ?>

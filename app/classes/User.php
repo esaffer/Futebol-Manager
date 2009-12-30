@@ -175,8 +175,10 @@ class User extends Model {
 	 *************************************************************************/	
 	public function getImage()
 	{
-		return "<img src=http://knuth.ufpel.edu.br/tiago/aux/noImage.jpg>"; //Provisório
-		//return "<fb:profile-pic uid=". $this->facebook." linked="true" />";
+		
+		return "<img src=http://knuth.ufpel.edu.br/tiago/images/noImage.jpg>"; //Provisório
+	//	return "<fb:profile-pic uid=" . $idUserFacebook . " linked="true" />";
+	//Tornar o $idUserFacebook visível aqui!
 	}
 	
 	

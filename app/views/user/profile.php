@@ -1,6 +1,6 @@
 <?
 	$profile = new User;
-	$profile->getUser(5);
+	$profile->getUser($idUserFacebook);
 	echo "Apelido == " . $profile->getApelido();
 	echo "<br> Data Cadastro == " . $profile->getDataCadastro();
 	echo "<br> Descricao == " . $profile->getDescricao();
