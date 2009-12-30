@@ -17,7 +17,7 @@
  ****************************************************************************/
 	define('APP_NAME', 'Futebol Manager');
 	define('APP_VERSION', '0.1');
-	define('APP_BASE', 'http://localhost/futebol/');
+	define('APP_BASE', '');
 
 	define('FACEBOOK_SECRET', '');
 	define('FACEBOOK_KEY', '');
@@ -26,10 +26,10 @@
 /****************************************************************************
  * Banco de Dados
  ****************************************************************************/
-	define('DB_USER', 'root');
-	define('DB_PASS', 'asterix');
-	define('DB_HOST', 'localhost');
-	define('DB_NAME', 'futebol');
+	define('DB_USER', '');
+	define('DB_PASS', '');
+	define('DB_HOST', '');
+	define('DB_NAME', '');
 
 
 /****************************************************************************
