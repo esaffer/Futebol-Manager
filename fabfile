@@ -1,0 +1,29 @@
+import fabric
+import os
+
+config.fab_hosts = ['localhost']
+reset_upload = False
+
+class Command():
+	def __init__ (self):
+		self.base_path = ""
+
+	def local (self, cmd):
+		os.system(cmd)
+
+	def run (self, command):
+		fabric.run("cd %s; %s" % (self.base_path, command))
+
+	def current_dir (self, current_dir):
+		self.base_path = current_dir
+
+command = Command()
+
+
+def local ():
+	command.local("rm -rf /var/www/futebol")
+	command.local("mkdir /var/www/futebol")
+	command.local("cd ~/Projects/UFPel/futebol-manager/; cp -rf * /var/www/futebol")
+	command.local("cd ~/Projects/UFPel/futebol-manager; cp .htaccess /var/www/futebol")
+	command.local("cd /var/www/futebol; rm fabfile")
+	command.local("cd /var/www; chmod -R 777 futebol")

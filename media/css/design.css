@@ -1,0 +1,48 @@
+/*****************************************************************************
+ * File			: design.css
+ * Description	: Arquivo com a folha de estilos do site.
+ *****************************************************************************/
+
+body {
+	background: #F6F6F6;
+	text-align: center;
+	margin: 10px;
+}
+
+#site {
+	width: 680px;
+	background: #555;
+	margin: 0 auto 0 auto;
+}
+
+#header {
+	font-family: Verdana;
+	font-size: 24pt;
+	font-weight: bold;
+	color: #FF1133;
+}
+
+#menu {
+	background: #111;
+	color: #FFF;
+	display: block;
+	width: 100%;
+}
+
+#menu a, a:hover {
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+	float: left;
+	margin: 5px;
+}
+
+#menu a:hover {
+	font-weight: bold;
+}
+
+#content {
+	clear: both;
+	text-align: left;
+	padding: 4px;
+}
