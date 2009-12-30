@@ -12,12 +12,15 @@
  *****************************************************************************/
  
 class Team extends Model {
-	private $name = null;	
-	private $team = array ();
+	private $name;
+	private $team;
+	
+	private $base;
 	
 	
 	public function __construct {
-		
+		$this->table_name = DB_PREFIX . 'team';
+		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
 	

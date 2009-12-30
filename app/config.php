@@ -30,6 +30,7 @@
 	define('DB_PASS', '');
 	define('DB_HOST', 'localhost');
 	define('DB_NAME', 'tiago');
+	define('DB_PREFIX', 'futebol_');
 
 
 /****************************************************************************

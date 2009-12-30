@@ -1,1 +1,1 @@
-<h1><?= print_r($route) ?></h1>
+<h1>Página Inicial</h1>
