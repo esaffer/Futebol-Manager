@@ -37,13 +37,15 @@ class User extends Model {
 	public function getUser ($id) {
 		
 		$sql = "SELECT * from " . $this->table_name . " WHERE id = " . $id;
-		$sql = $this->db->query($sql);
-		if ($sql) {
-			$this->id 		= $id;
-			$this->apelido		= $sql['apelido'];
-			$this->points		= $sql['points'];
-			$this->descricao 	= $sql['descricao'];
-			$this->dataCadastro 	= $sql['datacadastro'];
+		$sql = $this->db->get_row($sql);		
+		
+		if ($sql->id != NULL) {
+		
+			$this->id 		= $sql->id;
+			$this->apelido		= $sql->apelido;
+			$this->points		= $sql->points;
+			$this->descricao 	= $sql->descricao;
+			$this->dataCadastro 	= $sql->datacadastro;
 			return True;
 		}
 		else {
@@ -60,12 +62,13 @@ class User extends Model {
 	 *************************************************************************/
 	private function setAll ()
 	{
+		$data = date("o-m-d");
 		$this->base = array (
 			'id' 		=> $this->id,
 			'apelido'	=> $this->apelido,
 			'points'	=> $this->points,
 			'descricao' 	=> $this->descricao,
-			'datacadastro' 	=> date("o-m-d")
+			'datacadastro' 	=> $data
 		);
 	}
 	
@@ -144,6 +147,7 @@ class User extends Model {
 	 * createDatabase
 	 * Verifica se existe e depois cria o banco de dados, caso necessário.
 	 *************************************************************************/
+	 /*
 	public function createDatabase () {
 		// Código SQL da tabela ----------------------------------------------
 		$sql	= "CREATE TABLE " . $this->table_name . " (
@@ -165,7 +169,7 @@ class User extends Model {
 		}
 		
 	}
-	
+	*/
 	/*************************************************************************
 	 * getImage
 	 * Retorna a imagem do perfil do usuário
