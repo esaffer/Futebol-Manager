@@ -32,10 +32,14 @@
 		Facebook não aceita <base> e nem <body>....
 	-->
 
-	<link rel="stylesheet" type="text/css" href="media/css/reset.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="media/css/design.css" media="all" />
+	<style type="text/css">
+		<? include('media/css/reset.css'); ?>
+		<? include('media/css/design.css'); ?>
+	</style>
 
-	<script type="text/javascript" src="media/js/jquery.js"></script>
+	<script type="text/javascript">
+		<? include('media/js/jquery.js'); ?>
+	</script>
 </head>
 
 	<div id="site">
