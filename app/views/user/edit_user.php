@@ -2,14 +2,12 @@
 <?
 	if ($_GET['do'] == 'edit') {
 		$user = new User;
-		$user->delete($idUserFacebook);
-		
 		$user->setID($idUserFacebook);
 		$user->setApelido($_POST['apelido']);		
-		$user->setPoints(0);
+		$user->setPoints($_POST['pontos']);
 		$user->setDescricao($_POST['descricao']);
 		$user->setDataCadastro($_POST['datacadastro']);
-		$user->Add();
+		$user->Edit($idUserFacebook);
 	}
 	else {
 		$profile = new User;
