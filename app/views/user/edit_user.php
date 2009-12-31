@@ -2,6 +2,7 @@
 <?
 	if ($_GET['do'] == 'edit') {
 		$user = new User;
+		$user->getUser($idUserFacebook);
 		$user->setID($idUserFacebook);
 		$user->setApelido($_POST['apelido']);		
 		$user->setPoints($_POST['pontos']);
