@@ -69,6 +69,7 @@ class User extends Model {
 			'descricao' 	=> $this->descricao,
 			'datacadastro' 	=> $this->dataCadastro
 		);
+		print_r($this->base);
 	}
 	
 	
