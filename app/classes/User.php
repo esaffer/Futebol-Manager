@@ -106,7 +106,7 @@ class User extends Model {
 		}
 		
 		$this->setAll();
-		$sql = $this->createUpdateQuery($this->table_name, $this->article_base, $id);
+		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
 		$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi editado com sucesso!");
