@@ -5,7 +5,7 @@
  **/
 
 class Model {
-	private $db;
+	public $db;
 
 	
 	private $user = DB_USER;
@@ -45,7 +45,7 @@ class Model {
 	 *
 	 * @result			boolean
 	 **/	 
-	private function checkId ($table, $id) {
+	public function checkId ($table, $id) {
 		$check = $this->db->get_row("SELECT id FROM " . $table . " WHERE id = " . $id);
 		
 		if (is_null($check->id))

@@ -8,6 +8,7 @@
 		'profile'		=> 'user/profile.php',
 		'help'			=> 'static/help.php',
 		'create-user-profile'	=> 'user/add_user.php',
+		'edit-user-profile'	=> 'user/edit_user.php',
 		'sql'			=> 'user/sql.php',
 		'create-grupo'		=> 'grupo/add_grupo.php',
 		'view-grupo' 		=> 'grupo/grupo.php',

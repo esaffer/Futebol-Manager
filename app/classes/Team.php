@@ -23,7 +23,7 @@ class Team extends Model {
 	private $idOwner;
 	
 	private $base;
-	private $db;
+	public $db;
 	private $table_name;
 	
 	
@@ -58,6 +58,36 @@ class Team extends Model {
 		else {
 			return False;
 		}
+	}
+	
+	public function getGrupoOwner ($idOwner) {
+		
+		$sql = "SELECT * from " . $this->table_name . " WHERE idowner = " . $idOwner;
+		$sql = $this->db->get_row($sql);		
+		
+		if ($sql->id != NULL) {
+		
+			$this->id 		= $sql->id;
+			$this->idOwner 		= $sql->idOwner;
+			$this->nome		= $sql->nome;
+			$this->regras		= $sql->regras;
+			$this->descricao 	= $sql->descricao;
+			$this->dataCadastro 	= $sql->datacadastro;
+			$this->local	 	= $sql->local;
+			$this->privado	 	= $sql->privado;
+			return True;
+		}
+		else {
+			return False;
+		}
+	}
+	
+	//Falta testar...
+	public function getListaGrupoOwner($idOwner)
+	{
+		$groups = array ();
+		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idowner = " . $idOwner );
+		return $this->db-get_results();
 	}
 	
 	

@@ -12,7 +12,7 @@ class User extends Model {
 	private $dataCadastro;
 	
 	private $base;
-	private $db;
+	public $db;
 	private $table_name;
 	
 	
@@ -192,8 +192,14 @@ class User extends Model {
 	public function setID		($value) { $this->id		= $value; }
 	public function setPoints	($value) { $this->points	= $value; }
 	public function setDescricao	($value) { $this->descricao	= $value; }
-	public function setDataCadastro	() { $this->dataCadastro	= date("o-m-d"); }
 	
+	public function setDataCadastro	($value = NULL) 
+	{ 
+		if($value == NULL)
+			$this->dataCadastro	= date("o-m-d");
+		else
+			$this->dataCadastro	= $value;
+	}
 	
 	
 	
