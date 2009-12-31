@@ -12,6 +12,7 @@
 		'sql'			=> 'user/sql.php',
 		'create-grupo'		=> 'grupo/add_grupo.php',
 		'view-grupo' 		=> 'grupo/grupo.php',
+		'edit-grupo'		=> 'grupo/edit_grupo.php',
 	);
 	
 	

@@ -93,14 +93,14 @@ class Team extends Model {
 	
 	private function setAll ()
 	{
-		$this->base = array (
+		$this->base = array (			
 			'nome'		=> $this->nome,
 			'local'		=> $this->local,
-			'descricao' 	=> $this->descricao,
-			'datacadastro' 	=> $this->dataCadastro,
 			'privado' 	=> $this->privado,
-			'regras' 	=> $this->regras,
-			'idOwner'	=> $this->idOwner
+			'descricao' 	=> $this->descricao,
+			'datacadastro' 	=> $this->dataCadastro,			
+			'regras' 	=> $this->regras,			
+			'idOwner'	=> $this->idOwner,
 		);
 	}	
 	
@@ -122,8 +122,32 @@ class Team extends Model {
 	
 	public function getImage()
 	{
-		return "<img src=http://knuth.ufpel.edu.br/tiago/trunk/aux/noImage.jpg>"; //Provisório
+		return "<img src=http://knuth.ufpel.edu.br/tiago/images/noImage.jpg>"; //Provisório
 	}
+	
+	
+	/**************************************************************************
+	 * Edit
+	 * Edita os dados de um grupo.
+	 **************************************************************************/
+	public function Edit ($id = Null)
+	{
+		if (is_null($id))
+		{
+			$this->messageFail('É necessário informar um ID.');
+			return False;
+		}
+		
+		$this->setAll();
+		print_r($this->base);
+		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
+		
+		if ($this->db->query($sql))
+			$this->messageOk("O grupo <b>" . $this->apelido . "</b> foi editado com sucesso!");
+		else
+			$this->messageFail("Ocorreu um erro ao editar o usuário.");
+	}
+	
 	
 	
 	/***************************************************************
@@ -136,7 +160,14 @@ class Team extends Model {
 	public function setPrivado 	($valor){$this->privado 	= $valor; }
 	public function setLocal 	($valor){$this->local 		= $valor; }
 	public function setIDOwner 	($valor){$this->idOwner		= $valor; }
-	public function setDataCadastro	() 	{$this->dataCadastro 	= date("o-m-d");}
+	
+	public function setDataCadastro	($valor = NULL) 
+	{	
+		if($valor == NULL)
+			$this->dataCadastro = date("o-m-d");
+		else
+			$this->dataCadastro = $valor;
+	}
 	
 	
 	/*************************************************************************
