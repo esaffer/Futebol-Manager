@@ -17,7 +17,7 @@
 	else {
 ?>
 
-<form action="?act=create-grupo&do=add" method="POST">
+<form action="?act=team-add&do=add" method="POST">
 	<label for='nome'>Nome:</label>
 	<input type="text" id='nome' name='nome' />
 	<br />

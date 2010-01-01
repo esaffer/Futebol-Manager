@@ -12,7 +12,7 @@
 	else {
 ?>
 
-<form action="?act=create-user-profile&do=add" method="POST">
+<form action="?act=user-add&do=add" method="POST">
 	<br />
 	<label for='apelido'>Apelido:</label>
 	<input type="text" id='apelido' name='apelido' />

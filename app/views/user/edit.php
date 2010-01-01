@@ -13,7 +13,7 @@
 		$profile = new User;
 		$profile->getUser($idUserFacebook);
 ?>
-		<form action='?act=edit-user-profile&do=edit' method='POST'>
+		<form action='?act=user-edit&do=edit' method='POST'>
 		<br />
 		<label for='apelido'>Apelido:</label>
 		<input type='text' id='apelido' name='apelido' value='<?= $profile->getApelido() ?>' />
