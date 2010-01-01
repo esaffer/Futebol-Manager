@@ -44,11 +44,11 @@
 
 	<div id="site">
 		<div id="header">
-			<? include('app/views/header.php'); ?>
+			<? include('app/views/static/header.php'); ?>
 		</div>
 		
 		<div id="menu">
-			<? include('app/views/menu.php'); ?>
+			<? include('app/views/static/menu.php'); ?>
 		</div>
 		
 		<div id="content">
@@ -56,11 +56,11 @@
 		</div>
 		
 		<div id="ads">
-			<? include('app/views/ads.php'); ?>
+			<? include('app/views/static/ads.php'); ?>
 		</div>
 		
 		<div id="footer">
-			<? include('app/views/footer.php'); ?>
+			<? include('app/views/static/footer.php'); ?>
 		</div>
 	</div>
 </html>

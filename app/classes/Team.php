@@ -105,7 +105,6 @@ class Team extends Model {
 
 
 
-
 	/**************************************************************************
 	 * Add
 	 * Adiciona um grupo no banco de dados.

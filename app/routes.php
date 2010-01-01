@@ -5,14 +5,18 @@
 	 *************************************************************************/
 	
 	$urls = array (
-		'profile'		=> 'user/profile.php',
-		'help'			=> 'static/help.php',
-		'create-user-profile'	=> 'user/add_user.php',
-		'edit-user-profile'	=> 'user/edit_user.php',
-		'sql'			=> 'user/sql.php',
-		'create-grupo'		=> 'grupo/add_grupo.php',
-		'view-grupo' 		=> 'grupo/grupo.php',
-		'edit-grupo'		=> 'grupo/edit_grupo.php',
+		// STATIC PAGES --------------------------------
+		'help'					=> 'static/help.php',
+
+		// USER ----------------------------------------
+		'user-profile'				=> 'user/profile.php',
+		'user-add'	=> 'user/add.php',
+		'user-edit'		=> 'user/edit.php',
+
+		// TEAM -----------------------------------------
+		'team-create'			=> 'team/add.php',
+		'team-view' 			=> 'team/index.php',
+		'team-edit'				=> 'team/edit.php',
 	);
 	
 	
@@ -24,7 +28,7 @@
 	if (array_key_exists($_GET['act'], $urls))
 		$link = $urls[$_GET['act']];
 	else
-		$link = 'home.php';
+		$link = 'static/home.php';
 		
 	include("app/views/" . $link);
 ?>
