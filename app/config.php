@@ -48,4 +48,11 @@
 	define('IMG_MAXSIZE', '');
 	define('IMG_WIDTH', '');
 	define('IMG_HEIGHT', '');
+
+
+/****************************************************************************
+ * Tabela das classes
+ ****************************************************************************/
+	define('DB_TABLE_USERS', DB_PREFIX . 'users');
+	define('DB_TABLE_TEAM', DB_PREFIX . 'team');
 ?>
