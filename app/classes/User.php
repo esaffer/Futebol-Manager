@@ -143,32 +143,26 @@ class User extends Model {
 	
 	
 	/*************************************************************************
-	 * createDatabase
-	 * Verifica se existe e depois cria o banco de dados, caso necessário.
+	 * SQL
+	 * Código SQL referente a tabela da classe.
 	 *************************************************************************/
-	 /*
-	public function createDatabase () {
-		// Código SQL da tabela ----------------------------------------------
+	public function SQL () {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
-					id			mediumint(9) NOT NULL AUTO_INCREMENT,
-					fid			varchar(64),
-					name		varchar(90),
-					points		mediumint(9),
-					status		mediumint(9),
+					id				mediumint(9) NOT NULL AUTO_INCREMENT,
+					fid				varchar(64),
+					name			varchar(90),
+					points			mediumint(9),
+					status			mediumint(9),
+					descripion		text,
+					date_created	datetime,
 					
 					UNIQUE KEY id (id));";
 		
-		// Checa se existe, senão, cria a tabela -----------------------------
-		if ($this->db->get_var("show tables like '" . $this->table_name . "'") == $this->table_name) {
-			$this->messageFail('A tabela já existe.');
-		}
-		else {
-			$this->db->query($sql);
-			$this->messageOk('A tabela de <b>Usuários</b> foi criada com sucesso!');
-		}
-		
+		return $sql;
 	}
-	*/
+
+
+
 	/*************************************************************************
 	 * getImage
 	 * Retorna a imagem do perfil do usuário
