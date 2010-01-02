@@ -1,7 +1,7 @@
 <?
 	/*************************************************************************
 	 * isEmpty
-	 * Usada para programação funcional, retorna True se o valor for Null
+	 * Usada para programação funcional, retornta True se o valor for Null
 	 *************************************************************************/
 	function isEmpty ($value)
 	{
@@ -62,7 +62,7 @@
 	 * naturalTime
 	 * Hora em português e mais 'humana'.
 	 *************************************************************************/
-	function time2str($ts)
+	function naturalTime ($ts)
 	{
 		if(!ctype_digit($ts))
 			$ts = strtotime($ts);
@@ -75,16 +75,16 @@
 			$day_diff = floor($diff / 86400);
 			if($day_diff == 0)
 			{
-				if($diff < 60) return 'just now';
-				if($diff < 120) return '1 minute ago';
-				if($diff < 3600) return floor($diff / 60) . ' minutes ago';
-				if($diff < 7200) return '1 hour ago';
-				if($diff < 86400) return floor($diff / 3600) . ' hours ago';
+				if($diff < 60) return 'agora';
+				if($diff < 120) return '1 minuto atrás';
+				if($diff < 3600) return floor($diff / 60) . ' minutos atrás';
+				if($diff < 7200) return '1 hora atrás';
+				if($diff < 86400) return floor($diff / 3600) . ' horas atrás';
 			}
-			if($day_diff == 1) return 'Yesterday';
-			if($day_diff < 7) return $day_diff . ' days ago';
-			if($day_diff < 31) return ceil($day_diff / 7) . ' weeks ago';
-			if($day_diff < 60) return 'last month';
+			if($day_diff == 1) return 'Ontem';
+			if($day_diff < 7) return $day_diff . ' dias atrás';
+			if($day_diff < 31) return ceil($day_diff / 7) . ' semanas atrás';
+			if($day_diff < 60) return 'mês passado';
 			return date('F Y', $ts);
 		}
 		else
@@ -93,16 +93,16 @@
 			$day_diff = floor($diff / 86400);
 			if($day_diff == 0)
 			{
-				if($diff < 120) return 'in a minute';
-				if($diff < 3600) return 'in ' . floor($diff / 60) . ' minutes';
-				if($diff < 7200) return 'in an hour';
-				if($diff < 86400) return 'in ' . floor($diff / 3600) . ' hours';
+				if($diff < 120) return 'em um minuto';
+				if($diff < 3600) return 'em ' . floor($diff / 60) . ' minutos';
+				if($diff < 7200) return 'em uma hora';
+				if($diff < 86400) return 'em ' . floor($diff / 3600) . ' horas';
 			}
-			if($day_diff == 1) return 'Tomorrow';
+			if($day_diff == 1) return 'Amanhã';
 			if($day_diff < 4) return date('l', $ts);
-			if($day_diff < 7 + (7 - date('w'))) return 'next week';
-			if(ceil($day_diff / 7) < 4) return 'in ' . ceil($day_diff / 7) . ' weeks';
-			if(date('n', $ts) == date('n') + 1) return 'next month';
+			if($day_diff < 7 + (7 - date('w'))) return 'semana que vem';
+			if(ceil($day_diff / 7) < 4) return 'em ' . ceil($day_diff / 7) . ' semanas';
+			if(date('n', $ts) == date('n') + 1) return 'mês que vem';
 			
 			return date('F Y', $ts);
 		}
