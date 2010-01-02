@@ -63,13 +63,10 @@ class Team extends Model {
 	 ************************************************************************/
 	public function getTeamOwner ($idOwner)
 	{
-		$sql = "SELECT * from " . DB_TABLE_USERS . " WHERE id = " . $idOwner;
-		$sql = $this->db->get_row($sql);
+		$user = new User();
+		$user->getUser($idOwner);
 		
-		if ($sql->id != NULL)
-			return $sql;
-		else
-			return False;
+		return $user;
 	}
 
 
