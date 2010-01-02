@@ -54,5 +54,5 @@
  * Tabela das classes
  ****************************************************************************/
 	define('DB_TABLE_USERS', DB_PREFIX . 'users');
-	define('DB_TABLE_TEAM', DB_PREFIX . 'team');
+	define('DB_TABLE_TEAM', DB_PREFIX . 'teams');
 ?>
