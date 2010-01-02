@@ -6,17 +6,18 @@
 	
 	$urls = array (
 		// STATIC PAGES --------------------------------
-		'help'					=> 'static/help.php',
+		'help'			=> 'static/help.php',
 
 		// USER ----------------------------------------
-		'user-profile'				=> 'user/profile.php',
-		'user-add'	=> 'user/add.php',
+		'user-profile'	=> 'user/profile.php',
+		'user-add'		=> 'user/add.php',
 		'user-edit'		=> 'user/edit.php',
 
 		// TEAM -----------------------------------------
-		'team-add'			=> 'team/add.php',
-		'team-view' 			=> 'team/index.php',
-		'team-edit'				=> 'team/edit.php',
+		'team-add'		=> 'team/add.php',
+		'team-all'		=> 'team/all.php',
+		'team-view' 	=> 'team/index.php',
+		'team-edit'		=> 'team/edit.php',
 	);
 	
 	

@@ -14,13 +14,13 @@
 
 class Team extends Model {
 	private $id;
-	private $nome;
-	private $descricao;
-	private $dataCadastro;
-	private $regras;
-	private $local;
-	private $privado;
-	private $idOwner;
+	private $name;
+	private $description;
+	private $date_created;
+	private $rules;
+	private $place;
+	private $privative;
+	private $id_owner;
 
 	public	$db;
 	private $base;
@@ -33,7 +33,6 @@ class Team extends Model {
 	 * Construtor da classe.
 	 ************************************************************************/
 	public function __construct () {
-		// Seta o nome da tabela no banco de dados
 		$this->table_name = DB_TABLE_TEAM;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
@@ -64,7 +63,7 @@ class Team extends Model {
 	 ************************************************************************/
 	public function getAll ()
 	{
-		$sql = "SELECT * from " . $this->table_name . " ORDER BY nome";
+		$sql = "SELECT * from " . $this->table_name . " ORDER BY name";
 		$this->db->query($sql);
 		return $this->db->get_results();
 	}
@@ -92,7 +91,7 @@ class Team extends Model {
 	 ************************************************************************/
 	public function getListTeamOwner($idOwner)
 	{
-		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idowner = " . $idOwner );
+		$this->db->query("SELECT * from " .  $this->table_name . " WHERE id_owner = " . $idOwner );
 		return $this->db->get_results();
 	}
 
@@ -105,13 +104,13 @@ class Team extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'nome'			=> $this->nome,
-			'local'			=> $this->local,
-			'privado' 		=> $this->privado,
-			'descricao' 	=> $this->descricao,
-			'datacadastro' 	=> $this->dataCadastro,
-			'regras' 		=> $this->regras,
-			'idOwner'		=> $this->idOwner,
+			'name'			=> $this->name,
+			'place'			=> $this->place,
+			'privative'		=> $this->privative,
+			'description'	=> $this->description,
+			'date_created'	=> $this->date_created,
+			'rules'			=> $this->rules,
+			'id_owner'		=> $this->id_owner,
 		);
 	}
 
@@ -128,9 +127,9 @@ class Team extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O grupo <b>" . $this->apelido . "</b> foi adicionado com sucesso!");
+			$this->messageOk("A equipe <b>" . $this->name . "</b> foi adicionada com sucesso!");
 		else
-			$this->messageFail("Ocorreu um erro ao adicionar o grupo.");
+			$this->messageFail("Ocorreu um erro ao adicionar a equipe.");
 	}
 
 
@@ -164,31 +163,46 @@ class Team extends Model {
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("A equipe <b>" . $this->nome . "</b> foi editado com sucesso!");
+			$this->messageOk("A equipe <b>" . $this->name . "</b> foi editada com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao editar a equipe...");
 	}
 
 
 
+	/*************************************************************************
+	 * SQL
+	 * Código SQL referente a tabela da Classe.
+	 *************************************************************************/
+	public function SQL () {
+		$sql = "CREATE TABLE " . $this->table_name . " (
+					id				mediumint(9),
+					id_owner		mediumint(9),
+					name			varchar(100),
+					description		text,
+					rules			text,
+					date_created	datetime,
+					place			mediumint(9),
+					privative		bool,
+					
+					UNIQUE KEY id (id));";
+		
+		return $sql;
+	}
+
+
+
 	/***************************************************************
 	 * setters
-	 * 
+	 * Seta o valor de uma variável.
 	 ***************************************************************/
-	public function setNome 		($valor){$this->nome 		= $valor; }
-	public function setRegras 		($valor){$this->regras		= $valor; }
-	public function setDescricao 	($valor){$this->descricao 	= $valor; }
-	public function setPrivado 		($valor){$this->privado 	= $valor; }
-	public function setLocal 		($valor){$this->local 		= $valor; }
-	public function setIDOwner 		($valor){$this->idOwner		= $valor; }
-	
-	public function setDataCadastro	($valor = NULL) 
-	{	
-		if($valor == NULL)
-			$this->dataCadastro = date("o-m-d");
-		else
-			$this->dataCadastro = $valor;
-	}
+	public function setName			($value) { $this->name 		= $value; }
+	public function setRules		($value) { $this->rules		= $value; }
+	public function setDescription 	($value) { $this->description 	= $value; }
+	public function setPrivative 	($value) { $this->privative 	= $value; }
+	public function setPlace 		($value) { $this->place		= $value; }
+	public function setIDOwner 		($value) { $this->id_owner	= $value; }
+	public function setDateCreated	($value) { $this->date_created = $value; }
 	
 	
 	/*************************************************************************
@@ -196,12 +210,12 @@ class Team extends Model {
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
 	 public function getID				() { return $this->id; }
-	 public function getNome			() { return $this->nome; }
-	 public function getRegras			() { return $this->regras; }
-	 public function getDescricao		() { return $this->descricao; }
-	 public function getDataCadastro	() { return $this->dataCadastro; }
-	 public function getLocal			() { return $this->local; }
-	 public function getPrivado			() { return $this->privado; }
-	 public function getIDOwner			() { return $this->idOwner; }
+	 public function getName			() { return $this->name; }
+	 public function getRules			() { return $this->rules; }
+	 public function getDescription		() { return $this->description; }
+	 public function getDateCreated		() { return $this->date_created; }
+	 public function getPlace			() { return $this->placel; }
+	 public function getPrivative		() { return $this->privative; }
+	 public function getIDOwner			() { return $this->id_owner; }
 }
 ?>
