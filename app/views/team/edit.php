@@ -26,7 +26,7 @@
 	}
 	else {
 		$grupo = new Team;
-		$grupo->getGrupo(30);
+		$grupo->getTeam(30);
 		
 		if($grupo->getPrivado() == TRUE)
 		{ ?>
@@ -54,7 +54,7 @@
 		<? }
 		else {
 		?>
-			<form action='?act=edit-grupo&do=edit' method='POST'>
+			<form action='?act=team-edit&do=edit' method='POST'>
 			<br />
 			<label for='nome'>Nome:</label>
 			<input type='text' id='nome' name='nome' value='<?= $grupo->getNome() ?>' />
@@ -77,4 +77,3 @@
 			</form>
 		<?}
 }?>
-		

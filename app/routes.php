@@ -14,7 +14,7 @@
 		'user-edit'		=> 'user/edit.php',
 
 		// TEAM -----------------------------------------
-		'team-create'			=> 'team/add.php',
+		'team-add'			=> 'team/add.php',
 		'team-view' 			=> 'team/index.php',
 		'team-edit'				=> 'team/edit.php',
 	);

@@ -34,7 +34,7 @@ class Team extends Model {
 	 ************************************************************************/
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
-		$this->table_name = 'grupo';
+		$this->table_name = DB_TABLE_TEAM;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 

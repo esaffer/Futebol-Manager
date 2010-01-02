@@ -23,7 +23,7 @@ class User extends Model {
 	 ************************************************************************/
 	public function __construct () {
 		// Seta o nome da tabela no banco de dados
-		$this->table_name = 'user';
+		$this->table_name = DB_TABLE_USERS;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 	
@@ -108,8 +108,8 @@ class User extends Model {
 		$this->setAll();
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
-		if ($this->db->query($sql))
-		$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi editado com sucesso!");
+		if ($this->db->query($sql) == False)
+			$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi editado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao editar o usuário.");
 	}
