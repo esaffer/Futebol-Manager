@@ -1,7 +1,7 @@
 <?
 	/*************************************************************************
 	 * isEmpty
-	 * Usada para programação funcional, retornta True se o valor for Null
+	 * Usada para programação funcional, retorna True se o valor for Null
 	 *************************************************************************/
 	function isEmpty ($value)
 	{

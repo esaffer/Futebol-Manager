@@ -57,6 +57,21 @@ class Team extends Model {
 
 
 
+
+	/************************************************************************
+	 * getAll
+	 * Retorna a lista com todas as equipes.
+	 ************************************************************************/
+	public function getAll ()
+	{
+		$sql = "SELECT * from " . $this->table_name . " ORDER BY nome";
+		$this->db->query($sql);
+		return $this->db->get_results();
+	}
+
+
+
+
 	/************************************************************************
 	 * getTeamOwner
 	 * Pega o dono do grupo.
