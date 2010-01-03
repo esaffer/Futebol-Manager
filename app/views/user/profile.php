@@ -5,7 +5,7 @@
 
 <h1>Perfil</h1>
 
-<?= $profile->getImage(); ?>
+<?= $profile->getImage($idUserFacebook); ?>
 <br />
 Apelido: <?= $profile->getNick() ?>
 <br/>

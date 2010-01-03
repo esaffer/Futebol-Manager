@@ -144,8 +144,8 @@ class User extends Model {
 					id				bigint(20) NOT NULL,
 					nick			varchar(25),
 					points			mediumint(9),
-					descripion		text,
-					date_created	datetime,
+					description		text,
+					date_created	timestamp,
 					UNIQUE KEY id (id));";
 		
 		return $sql;
@@ -173,7 +173,13 @@ class User extends Model {
 	public function setID			($value) { $this->id		= $value; }
 	public function setPoints		($value) { $this->points	= $value; }
 	public function setDescription	($value) { $this->description	= $value; }
-	public function setDateCreated	($value) { $this->date_created	= $value; }
+	public function setDateCreated	($value = NULL)
+	{ 
+		if ($value == NULL)
+			$this->date_created = time();
+		else
+			$this->date_created = $value;
+	}
 
 
 

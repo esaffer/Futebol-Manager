@@ -26,7 +26,7 @@
 	}
 	
 	else {
-		$team->getTeam($_GET['id']));
+		$team->getTeam($_GET['id']);
 ?>
 			<form action='?act=team-edit&do=edit' method='POST'>
 			<br />

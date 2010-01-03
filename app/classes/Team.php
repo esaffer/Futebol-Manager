@@ -181,7 +181,7 @@ class Team extends Model {
 					name			varchar(100),
 					description		text,
 					rules			text,
-					date_created	datetime,
+					date_created	timestamp,
 					place			mediumint(9),
 					privative		bool,
 					
@@ -202,7 +202,13 @@ class Team extends Model {
 	public function setPrivative 	($value) { $this->privative 	= $value; }
 	public function setPlace 		($value) { $this->place		= $value; }
 	public function setIDOwner 		($value) { $this->id_owner	= $value; }
-	public function setDateCreated	($value) { $this->date_created = $value; }
+	public function setDateCreated	($value = NULL)
+	{
+		if ($value == NULL)
+			$this->date_created = time();
+		else
+			$this->date_created = $value;
+	}
 	
 	
 	/*************************************************************************

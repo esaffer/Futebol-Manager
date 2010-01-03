@@ -15,15 +15,15 @@
 		$profile->getUser($idUserFacebook);
 ?>
 		<form action='?act=user-edit&do=edit' method='POST'>
-		<br />
-		<label for='nick'>Apelido:</label>
-		<input type='text' id='nick' name='nick' value='<?= $profile->getNick() ?>' />
-		<br />
-		<label for='description'>Descrição:</label>
-		<textarea cols=20 rows=5 id='description' name='description' ><?= $profile->getDescription() ?></textarea>
-		<br />
-		<input type='hidden' id='date_created' name='date_created' value='<?= $profile->getDateCreated() ?>' />
-		<input type='hidden' id='points' name='points' value='<?= $profile->getPoints() ?>' />
-		<input type='submit' value='Salvar' />
+			<br />
+			<label for='nick'>Apelido:</label>
+			<input type='text' id='nick' name='nick' value='<?= $profile->getNick() ?>' />
+			<br />
+			<label for='description'>Descrição:</label>
+			<textarea cols=20 rows=5 id='description' name='description' ><?= $profile->getDescription() ?></textarea>
+			<br />
+			<input type='hidden' id='date_created' name='date_created' value='<?= $profile->getDateCreated() ?>' />
+			<input type='hidden' id='points' name='points' value='<?= $profile->getPoints() ?>' />
+			<input type='submit' value='Salvar' />
 		</form>
 <? } ?>
