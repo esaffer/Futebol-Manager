@@ -160,7 +160,7 @@ class User extends Model {
 	public function getImage ($id)
 	{
 		
-		return "<fb:profile-pic uid=" . $id. " linked="true" />";
+		return "<fb:profile-pic uid=" . $id . " linked='true' />";
 	}
 
 
@@ -174,7 +174,6 @@ class User extends Model {
 	public function setPoints		($value) { $this->points	= $value; }
 	public function setDescription	($value) { $this->description	= $value; }
 	public function setDateCreated	($value) { $this->date_created	= $value; }
-	}
 
 
 
