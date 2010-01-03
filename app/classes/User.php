@@ -6,10 +6,10 @@
 
 class User extends Model {
 	private $id;
-	private $apelido;
+	private $nick;
 	private $points;
-	private $descricao;
-	private $dataCadastro;
+	private $description;
+	private $date_created;
 	
 	private $base;
 	public $db;
@@ -42,10 +42,10 @@ class User extends Model {
 		if ($sql->id != NULL) {
 		
 			$this->id 		= $sql->id;
-			$this->apelido		= $sql->apelido;
+			$this->nick		= $sql->nick;
 			$this->points		= $sql->points;
-			$this->descricao 	= $sql->descricao;
-			$this->dataCadastro 	= $sql->datacadastro;
+			$this->description 	= $sql->description;
+			$this->date_created 	= $sql->date_created;
 			return True;
 		}
 		else {
@@ -64,10 +64,10 @@ class User extends Model {
 	{
 		$this->base = array (
 			'id' 		=> $this->id,
-			'apelido'	=> $this->apelido,
+			'nick'		=> $this->nick,
 			'points'	=> $this->points,
-			'descricao' 	=> $this->descricao,
-			'datacadastro' 	=> $this->dataCadastro
+			'description' 	=> $this->description,
+			'date_created' 	=> $this->date_created,
 		);
 	}
 	
@@ -148,14 +148,11 @@ class User extends Model {
 	 *************************************************************************/
 	public function SQL () {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
-					id				mediumint(9) NOT NULL AUTO_INCREMENT,
-					fid				varchar(64),
-					name			varchar(90),
+					id			bigint(20) NOT NULL,
+					nick			varchar(25),
 					points			mediumint(9),
-					status			mediumint(9),
 					descripion		text,
-					date_created	datetime,
-					
+					date_created		datetime, 					
 					UNIQUE KEY id (id));";
 		
 		return $sql;
@@ -167,11 +164,11 @@ class User extends Model {
 	 * getImage
 	 * Retorna a imagem do perfil do usuário
 	 *************************************************************************/	
-	public function getImage()
+	public function getImage($id)
 	{
 		
-		return "<img src=http://knuth.ufpel.edu.br/tiago/images/noImage.jpg>"; //Provisório
-	//	return "<fb:profile-pic uid=" . $idUserFacebook . " linked="true" />";
+	//	return "<img src=http://knuth.ufpel.edu.br/tiago/images/noImage.jpg>"; //Provisório
+		return "<fb:profile-pic uid=" . $id. " linked="true" />";
 	//Tornar o $idUserFacebook visível aqui!
 	}
 	
@@ -182,17 +179,11 @@ class User extends Model {
 	 * Setters
 	 * Seta o conteúdo de uma variável.
 	 *************************************************************************/
-	public function setApelido	($value) { $this->apelido	= $value; }
+	public function setNick		($value) { $this->nick		= $value; }
 	public function setID		($value) { $this->id		= $value; }
 	public function setPoints	($value) { $this->points	= $value; }
-	public function setDescricao	($value) { $this->descricao	= $value; }
-	
-	public function setDataCadastro	($value = NULL) 
-	{ 
-		if($value == NULL)
-			$this->dataCadastro	= date("o-m-d");
-		else
-			$this->dataCadastro	= $value;
+	public function setDescription	($value) { $this->description	= $value; }
+	public function setDateCreated	($value) { $this->date_created	= $value; }
 	}
 	
 	
@@ -202,9 +193,9 @@ class User extends Model {
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
 	 public function getID			() { return $this->id; }
-	 public function getApelido		() { return $this->apelido; }
+	 public function getNick		() { return $this->nick; }
 	 public function getPoints		() { return $this->points; }
-	 public function getDescricao		() { return $this->descricao; }
-	 public function getDataCadastro	() { return $this->dataCadastro; }
+	 public function getDescription		() { return $this->description; }
+	 public function getDateCreated		() { return $this->date_created; }
 }
 ?>
