@@ -27,6 +27,26 @@ class UserTeam extends Model {
 	}
 
 
+	
+	public function getUsetTeam($idUser, $idTeam)
+	{				
+		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND idTeam = $idTeam";
+		$sql = $this->db->get_row($sql);		
+		
+		if ($sql->idUser != NULL && $sql->idTeam != NULL ) {
+		
+			$this->idUser			= $sql->idUser;
+			$this->idTeam			= $sql->idTeam;
+			$this->points			= $sql->points;
+			$this->locked 			= $sql->locked;
+			$this->date_joined		= $sql->date_joined;
+			return True;
+		}
+		else {
+			return False;
+		}
+	}
+
 
 	/*************************************************************************
 	 * getListTeam
@@ -74,25 +94,6 @@ class UserTeam extends Model {
 			'locked'		=> $this->locked,
 			'date_joined'		=> $this->date_joined,
 		);
-	}
-	
-	public function getData($idUser, $idTeam)
-	{				
-		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND idTeam = $idTeam";
-		$sql = $this->db->get_row($sql);		
-		
-		if ($sql->idUser != NULL && $sql->idTeam != NULL ) {
-		
-			$this->idUser			= $sql->idUser;
-			$this->idTeam			= $sql->idTeam;
-			$this->points			= $sql->points;
-			$this->locked 			= $sql->locked;
-			$this->date_joined		= $sql->date_joined;
-			return True;
-		}
-		else {
-			return False;
-		}
 	}
 	
 	/*************************************************************************

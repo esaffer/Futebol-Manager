@@ -12,17 +12,16 @@
  *****************************************************************************/
 
 
-class Team extends Model {
+class Game extends Model {
 	private $id;
-	private $name;
+	private $idTeam;
+	private $idCreator; //ID do user que criou o jogo...
 	private $description;
-	private $date_created;
-	private $rules;
-	private $place;
-	private $privative;
-	private $id_owner;
-	private $image;
-
+	private $date;
+	private $numMinPlayers;
+	private $numMaxPlayers;
+	private $cost;
+	
 	public	$db;
 	private $base;
 	private $table_name;
@@ -34,7 +33,7 @@ class Team extends Model {
 	 * Construtor da classe.
 	 ************************************************************************/
 	public function __construct () {
-		$this->table_name = DB_TABLE_TEAM;
+		$this->table_name = DB_TABLE_GAME;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 
@@ -44,58 +43,67 @@ class Team extends Model {
 	 * getTeam
 	 * Pega todos os usuários de uma determinada equipe.
 	 ************************************************************************/
-	public function getTeam ($id)
+	public function getGame ($id)
 	{
 		$sql = "SELECT * from " . $this->table_name . " WHERE id = " . $id;
-		$sql = $this->db->get_row($sql);		
+		$sql = $this->db->get_row($sql);
+				
+		if ($sql->id != NULL) {
 		
-		if ($sql->id != NULL)
-			return $sql;
-		else
+			$this->id 			= $sql->id;
+			$this->idCreator		= $sql->idCreator;
+			$this->idTeam			= $sql->idTeam;
+			$this->description 		= $sql->description;
+			$this->numMinPlayers		= $sql->numminplayers;
+			$this->numMaxPlayers 		= $sql->nummaxplayers;
+			$this->cost 			= $sql->cost;			
+			return True;
+		}
+		else {
 			return False;
+		}
 	}
 
-
-
+	/************************************************************************
+	 * getListUser
+	 * Retorna a lista de jogos que determinado usuário criou para este grupo.
+	 ************************************************************************/
+	public function getListUser ($idCreator, $idTeam)
+	{
+		$sql = "SELECT * from $this->table_name WHERE idCreator = $idCreator AND idTeam = $idTeam";
+		$this->db->query($sql);		
+		return $this->db->get_results();
+	}		
 
 	/************************************************************************
-	 * getAll
-	 * Retorna a lista com todas as equipes.
+	 * getListTeam
+	 * Retorna a lista de jogos de determinado team
 	 ************************************************************************/
-	public function getAll ()
+	public function getListTeam($idTeam)
 	{
-		$sql = "SELECT * from " . $this->table_name . " ORDER BY name";
-		$this->db->query($sql);
+		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
-
-
-
-
+	
 	/************************************************************************
-	 * getTeamOwner
-	 * Pega o dono do grupo.
+	 * getNumUser
+	 * Retorna o número de jogos que determinado usuário criou para este grupo.
 	 ************************************************************************/
-	public function getTeamOwner ($idOwner)
+	public function getNumUser ($idCreator, $idTeam)
 	{
-		$user = new User();
-		$user->getUser($idOwner);
-		
-		return $user;
+		$sql = "SELECT COUNT(idCreator) from $this->table_name WHERE idCreator = $idCreator AND idTeam = $idTeam";	
+		return $this->db->get_var($sql);;
 	}
-
-
-
+	
 	/************************************************************************
-	 * getListTeamOwner
-	 * Retorna os grupos que o membro é dono.
+	 * getNumTeam
+	 * Retorna o número de jogos que determinado usuário criou para este grupo.
 	 ************************************************************************/
-	public function getListTeamOwner($idOwner)
+	public function getNumTeam ($idTeam)
 	{
-		$this->db->query("SELECT * from " .  $this->table_name . " WHERE id_owner = " . $idOwner );
-		return $this->db->get_results();
+		$sql = "SELECT COUNT(idTeam) from $this->table_name WHERE idTeam = $idTeam";	
+		return $this->db->get_var($sql);;
 	}
-
 
 
 	/************************************************************************
@@ -105,14 +113,14 @@ class Team extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'name'			=> $this->name,
-			'place'			=> $this->place,
-			'privative'		=> $this->privative,
-			'description'	=> $this->description,
-			'date_created'	=> $this->date_created,
-			'rules'			=> $this->rules,
-			'id_owner'		=> $this->id_owner,
-			'image'			=> $this->image,
+			'id'			=> $this->id,
+			'idCreator'		=> $this->idCreator,
+			'idTeam'		=> $this->idTeam,
+			'description'		=> $this->description,
+			'date'			=> $this->date,
+			'numminplayers'		=> $this->numMinPlayers,
+			'nummaxplayers'		=> $this->numMaxPlayers,
+			'cost'			=> $this->cost,
 		);
 	}
 
@@ -135,29 +143,9 @@ class Team extends Model {
 	}
 
 
-
-	/*************************************************************************
-	 * getImage
-	 * Retorna a imagem que representa a equipe
-	 *************************************************************************/
-	public function getImage ()
-	{
-		if($this->image != NULL)
-			return "<img src=".$this->image. " />";
-		else
-			return "<img src='http://knuth.ufpel.edu.br/tiago/images/noImage.jpg' alt='No Image' />";
-	}
-	
-	public function getImageSrc()
-	{
-		return $this->image;
-	}
-
-
-
 	/**************************************************************************
 	 * Edit
-	 * Edita os dados de um grupo.
+	 * Edita os dados de um jogo.
 	 **************************************************************************/
 	public function Edit ($id = Null)
 	{
@@ -185,17 +173,16 @@ class Team extends Model {
 	 *************************************************************************/
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
-					id				int(11),
-					id_owner		bigint(11),
-					name			varchar(100),
+					id			int(11) NOT NULL AUTO_INCREMENT,
+					idTeam			int(11) NOT NULL,
+					idCreator		bigint(11) NOT NULL,
 					description		text,
-					rules			text,
-					date_created	timestamp,
-					place			mediumint(9),
-					privative		bool,
-					image			varchar(255),
+					date			timestamp NOT NULL,					
+					numminplayers		int(11),
+					nummaxplayers		int(11),
+					cost			float,
 					
-					UNIQUE KEY id (id));";
+					PRIMARY KEY (id));";
 		
 		return $sql;
 	}
@@ -206,19 +193,38 @@ class Team extends Model {
 	 * setters
 	 * Seta o valor de uma variável.
 	 ***************************************************************/
-	public function setName			($value) { $this->name 		= $value; }
-	public function setRules		($value) { $this->rules		= $value; }
-	public function setDescription 	($value) { $this->description 	= $value; }
-	public function setPrivative 	($value) { $this->privative 	= $value; }
-	public function setPlace 		($value) { $this->place		= $value; }
-	public function setIDOwner 		($value) { $this->id_owner	= $value; }
-	public function setImage		($value) { $this->image 	= $value; }
-	public function setDateCreated	($value = NULL)
+	public function setID			($value) { $this->id 		= $value; }
+	public function setIDCreator		($value) { $this->idCreator	= $value; }
+	public function setDescription 		($value) { $this->description 	= $value; }
+	public function setIDTeam 		($value) { $this->idTeam 	= $value; }
+	public function setDate	($value = NULL)
 	{
 		if ($value == NULL)
-			$this->date_created = time();
+			$this->date = time();
 		else
-			$this->date_created = $value;
+			$this->date = $value;
+	}
+	public function setCost 		($value) 
+	{
+		if($value < 0)
+			$this->cost = 0;
+		else
+			$this->cost = $value;
+	}
+	public function setNumMinPlayers 	($value)
+	{
+		if($value < 0)
+			$this->numMinPlayer = 0;
+		else
+			$this->numMinPlayer = $value;
+	}
+	
+	public function setNumMaxPlayers 	($value)
+	{ 
+		if($value < 0 || $value < $this->numMinPlayer )
+			$this->numMaxPlayer = $this->numMinPlayer;
+		else
+			$this->numMinPlayer = $value;
 	}
 	
 	
@@ -227,12 +233,12 @@ class Team extends Model {
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
 	 public function getID				() { return $this->id; }
-	 public function getName			() { return $this->name; }
-	 public function getRules			() { return $this->rules; }
-	 public function getDescription		() { return $this->description; }
-	 public function getDateCreated		() { return $this->date_created; }
-	 public function getPlace			() { return $this->place; }
-	 public function getPrivative		() { return $this->privative; }
-	 public function getIDOwner			() { return $this->id_owner; }
+	 public function getIDCreator			() { return $this->idCreator; }
+	 public function getIDTeam			() { return $this->idTeam; }
+	 public function getDescription			() { return $this->description; }
+	 public function getDate			() { return $this->date; }
+	 public function getNumMinPlayers		() { return $this->numMinPlayers; }
+	 public function getNumMaxPlayers		() { return $this->numMaxPlayers; }
+	 public function getCost			() { return $this->cost; }
 }
 ?>
