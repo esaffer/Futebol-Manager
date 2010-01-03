@@ -2,6 +2,7 @@
 	$db		= new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	$user	= new User ();
 	$team	= new Team ();
+	$userteam = new UserTeam ();
 ?>
 
 <h1>Criando Tabelas</h1>
@@ -10,11 +11,17 @@
 <ul>
 	<li>
 		<? $db->query($user->SQL()); ?>
-		Tabela Users: Criada com sucesso!
+		Tabela User: Criada com sucesso!
 	</li>
 	
 	<li>
 		<? $db->query($team->SQL()); ?>
-		Tabela Teams: Criada com sucesso!
+		Tabela Team: Criada com sucesso!
 	</li>
+	
+	<li>
+		<? $db->query($userteam->SQL()); ?>
+		Tabela UserTeam: Criada com sucesso!
+	</li>
+	
 </ul>

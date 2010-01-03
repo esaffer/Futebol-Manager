@@ -55,4 +55,5 @@
  ****************************************************************************/
 	define('DB_TABLE_USERS', DB_PREFIX . 'users');
 	define('DB_TABLE_TEAM', DB_PREFIX . 'teams');
+	define('DB_TABLE_USERTEAM', DB_PREFIX . 'usersteams');
 ?>

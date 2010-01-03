@@ -2,7 +2,7 @@
 
 <?
 	$team = new Team;
-	
+
 	if (is_null($_GET['id'])) {
 		$team->messageFail('É necessário informar o ID de uma equipe para editar!');
 	}

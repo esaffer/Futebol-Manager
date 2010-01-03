@@ -13,6 +13,7 @@
 	include('app/classes/Model.php');
 	include('app/classes/User.php');
 	include('app/classes/Team.php');
+	include('app/classes/UserTeam.php');
  
  // Inicializa o Facebook -----------------------------------------------------
 	$facebook = new Facebook(FACEBOOK_KEY, FACEBOOK_SECRET);
