@@ -1,7 +1,6 @@
 <?
 	$team = new Team ();
 	$teams = $team->getAll();
-	printr($teams);
 ?>
 
 <h1>Equipes</h1>

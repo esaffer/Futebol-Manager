@@ -1,37 +1,39 @@
-<h1>Adicionar Grupo</h1>
+<h1>Adicionar Equipe</h1>
+
 <?
 	if ($_GET['do'] == 'add') {
-		$grupo = new Team;
-		$grupo->setNome($_POST['nome']);		
-		$grupo->setLocal($_POST['local']);
-		$grupo->setRegras($_POST['regras']);
-		if($_POST['priv'] == 'privado')
-			$grupo->setPrivado(TRUE);
+		$team = new Team;
+		$team->setName($_POST['name']);		
+		$team->setPlace($_POST['place']);
+		$team->setRules($_POST['rules']);
+		
+		if ($_POST['privative'] == 'true')
+			$team->setPrivative(TRUE);
 		else
-			$grupo->setPrivado(FALSE);
-		$grupo->setDescricao($_POST['descricao']);
-		$grupo->setDataCadastro();
-		$grupo->setIDOwner($idUserFacebook);
-		$grupo->Add();
+			$team->setPrivative(FALSE);
+		$team->setDescription($_POST['description']);
+		$team->setDateCreated();
+		$team->setIDOwner($idUserFacebook);
+		$team->Add();
 	}
 	else {
 ?>
 
 <form action="?act=team-add&do=add" method="POST">
-	<label for='nome'>Nome:</label>
-	<input type="text" id='nome' name='nome' />
+	<label for='name'>Nome:</label>
+		<input type="text" id='name' name='name' />
 	<br />
-	<label for='local'>Local:</label>
-	<input type="text" id='local' name='local' />
+	<label for='place'>Local:</label>
+		<input type="text" id='place' name='place' />
 	<br />
-	<label for='descricao'>Descricao:</label>
-		<textarea cols=20 rows=5 id='descricao' name='descricao' /></textarea>
+	<label for='description'>Descricao:</label>
+		<textarea cols=20 rows=5 id='description' name='description' /></textarea>
 	<br />
-	<label for='regras'>Regras:</label>
-		<textarea cols=20 rows=5 id='regras' name='regras' /></textarea>
+	<label for='rules'>Regras:</label>
+		<textarea id='rules' name='rules' /></textarea>
 	<br />
-		<input type='radio' name='priv' value='publico' checked>Publico</br>
-		<input type='radio' name='priv' value='privado'>Privado</br>		
+		<input type='radio' name='privative' value='true' checked>Publico</br>
+		<input type='radio' name='privative' value='false'>Privado</br>
 	<br />
 	<input type='submit' value='Salvar' />
 </form>

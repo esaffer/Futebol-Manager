@@ -1,7 +1,2 @@
-<?
-	//Retorna o Time baseado no ID do Owner, corrigir para mostrar TODOS!
-	$grupo = new Team;
-	$grupo->getTeamOwner($idUserFacebook);
-	echo "<br> Nome == " . 	$grupo->getNome();
-	echo "<br> Local == " .	$grupo->getLocal();
-?>
+<h1>Equipes</h1>
+Mostrar aqui todas as equipes em que o usuário é dono.
