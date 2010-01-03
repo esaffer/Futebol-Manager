@@ -10,6 +10,7 @@ class User extends Model {
 	private $points;
 	private $description;
 	private $date_created;
+	private $image;
 	
 	private $base;
 	public $db;
@@ -44,6 +45,7 @@ class User extends Model {
 			$this->points		= $sql->points;
 			$this->description 	= $sql->description;
 			$this->date_created	= $sql->date_created;
+			$this->image 		= $sql->image;
 			return True;
 		}
 		else {
@@ -63,8 +65,9 @@ class User extends Model {
 			'id' 			=> $this->id,
 			'nick'			=> $this->nick,
 			'points'		=> $this->points,
-			'description'	=> $this->description,
-			'date_created'	=> $this->date_created,
+			'description'		=> $this->description,
+			'date_created'		=> $this->date_created,
+			'image'			=> $this->image,
 		);
 	}
 
@@ -142,6 +145,7 @@ class User extends Model {
 	public function SQL () {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
 					id				bigint(20) NOT NULL,
+					image			varchar(50),
 					nick			varchar(25),
 					points			mediumint(9),
 					description		text,
@@ -159,8 +163,15 @@ class User extends Model {
 	 *************************************************************************/	
 	public function getImage ($id)
 	{
-		
-		return "<fb:profile-pic uid=" . $id . " linked='true' />";
+		if($this->image != NULL)
+			return "<img src=".$this->image. " />";
+		else
+			return "<fb:profile-pic uid=" . $id . " linked='true' />";
+	}
+	
+	public function getImageSrc()
+	{
+		return $this->image;
 	}
 
 
@@ -172,13 +183,18 @@ class User extends Model {
 	public function setNick			($value) { $this->nick		= $value; }
 	public function setID			($value) { $this->id		= $value; }
 	public function setPoints		($value) { $this->points	= $value; }
-	public function setDescription	($value) { $this->description	= $value; }
-	public function setDateCreated	($value = NULL)
+	public function setDescription		($value) { $this->description	= $value; }
+	public function setImage		($value) { $this->image		= $value; }
+	public function setDateCreated		($value = NULL)
 	{ 
 		if ($value == NULL)
+		{
 			$this->date_created = time();
-		else
+		}
+		else 
+		{
 			$this->date_created = $value;
+		}
 	}
 
 

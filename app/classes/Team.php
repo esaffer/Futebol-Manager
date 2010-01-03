@@ -21,6 +21,7 @@ class Team extends Model {
 	private $place;
 	private $privative;
 	private $id_owner;
+	private $image;
 
 	public	$db;
 	private $base;
@@ -111,6 +112,7 @@ class Team extends Model {
 			'date_created'	=> $this->date_created,
 			'rules'			=> $this->rules,
 			'id_owner'		=> $this->id_owner,
+			'image'			=> $this->image,
 		);
 	}
 
@@ -137,11 +139,18 @@ class Team extends Model {
 	/*************************************************************************
 	 * getImage
 	 * Retorna a imagem que representa a equipe
-	 * TODO: Remover o link temporário da imagem.
 	 *************************************************************************/
-	public function getImage()
+	public function getImage ()
 	{
-		return "<img src='http://knuth.ufpel.edu.br/tiago/images/noImage.jpg' alt='No Image' />";
+		if($this->image != NULL)
+			return "<img src=".$this->image. " />";
+		else
+			return "<img src='http://knuth.ufpel.edu.br/tiago/images/noImage.jpg' alt='No Image' />";
+	}
+	
+	public function getImageSrc()
+	{
+		return $this->image;
 	}
 
 
@@ -176,14 +185,15 @@ class Team extends Model {
 	 *************************************************************************/
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
-					id				mediumint(9),
-					id_owner		mediumint(9),
+					id				int(11),
+					id_owner		bigint(11),
 					name			varchar(100),
 					description		text,
 					rules			text,
 					date_created	timestamp,
 					place			mediumint(9),
 					privative		bool,
+					image			varchar(255),
 					
 					UNIQUE KEY id (id));";
 		
@@ -202,6 +212,7 @@ class Team extends Model {
 	public function setPrivative 	($value) { $this->privative 	= $value; }
 	public function setPlace 		($value) { $this->place		= $value; }
 	public function setIDOwner 		($value) { $this->id_owner	= $value; }
+	public function setImage		($value) { $this->image 	= $value; }
 	public function setDateCreated	($value = NULL)
 	{
 		if ($value == NULL)

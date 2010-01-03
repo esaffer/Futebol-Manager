@@ -20,10 +20,17 @@
 	</li>
 
 	<li>Equipe
-		<ul><li><a href="?act=team-add">Criar novo grupo</a></li>
-			<li><a href="?act=team-edit">Editar um grupo</a></li>
-			<li><a href="?act=team-view">Ver grupos que participo</a></li>
-		</ul></li>
+		<ul>
+		<?
+			if($user->getUser($idUserFacebook)) {
+				echo "<li><a href='?act=team-add'>Criar novo grupo</a></li>";
+				echo "<li><a href='?act=team-edit'>Editar um grupo</a></li>";			
+				echo "<li><a href='?act=team-view'>Ver grupos que participo</a></li>";
+			}
+		?>			
+			<li><a href='?act=team-all'>Listar grupos</a></li>
+		</ul>
+	</li>
 
 	<li><a href="?act=past-games">Jogos Passados</a></li>
 	<li><a href="?act=create-game">Criar Jogo</a></li>
