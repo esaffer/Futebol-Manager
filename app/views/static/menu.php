@@ -1,10 +1,23 @@
+<?php 
+	$user = new User;
+?>
+
 <ul>
 	<li><a href="?act=home">Home</a></li>
 	<li>Usuário
-		<ul><li><a href="?act=user-add">Criar Perfil</a></li>
-			<li><a href="?act=user-profile">Ver Perfil</a></li>
-			<li><a href="?act=user-edit">Editar Perfil</a></li>
-		</ul></li>
+		<ul>
+		<?
+			if($user->getUser($idUserFacebook)) {
+				echo "<li><a href='?act=user-profile'>Ver Perfil</a></li>";
+				echo "<li><a href='?act=user-edit'>Editar Perfil</a></li>";			
+			}
+			else {
+				echo "<li><a href='?act=user-add'>Criar Perfil</a></li>";
+			}
+		?>
+			
+		</ul>
+	</li>
 
 	<li>Equipe
 		<ul><li><a href="?act=team-add">Criar novo grupo</a></li>
