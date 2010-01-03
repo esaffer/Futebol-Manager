@@ -1,5 +1,5 @@
 <?
-	$db		= new Database ();
+	$db		= new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	$user	= new User ();
 	$team	= new Team ();
 ?>

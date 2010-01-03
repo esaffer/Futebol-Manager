@@ -1,12 +1,13 @@
 <h1>Editar perfil</h1>
+
 <?
 	if ($_GET['do'] == 'edit') {
 		$user = new User;
 		$user->setID($idUserFacebook);
-		$user->setApelido($_POST['apelido']);		
-		$user->setPoints($_POST['pontos']);
-		$user->setDescricao($_POST['descricao']);
-		$user->setDataCadastro($_POST['datacadastro']);
+		$user->setNick($_POST['nick']);		
+		$user->setPoints($_POST['points']);
+		$user->setDescription($_POST['description']);
+		$user->setDateCreated($_POST['date_created']);
 		$user->Edit($idUserFacebook);
 	}
 	else {
@@ -15,14 +16,14 @@
 ?>
 		<form action='?act=user-edit&do=edit' method='POST'>
 		<br />
-		<label for='apelido'>Apelido:</label>
-		<input type='text' id='apelido' name='apelido' value='<?= $profile->getApelido() ?>' />
+		<label for='nick'>Apelido:</label>
+		<input type='text' id='nick' name='nick' value='<?= $profile->getNick() ?>' />
 		<br />
-		<label for='descricao'>Descrição:</label>
-		<textarea cols=20 rows=5 id='descricao' name='descricao' ><?= $profile->getDescricao() ?></textarea>
+		<label for='description'>Descrição:</label>
+		<textarea cols=20 rows=5 id='description' name='description' ><?= $profile->getDescription() ?></textarea>
 		<br />
-		<input type='hidden' id='datacadastro' name='datacadastro' value='<?= $profile->getDataCadastro() ?>' />
-		<input type='hidden' id='pontos' name='pontos' value='<?= $profile->getPoints() ?>' />
+		<input type='hidden' id='date_created' name='date_created' value='<?= $profile->getDateCreated() ?>' />
+		<input type='hidden' id='points' name='points' value='<?= $profile->getPoints() ?>' />
 		<input type='submit' value='Salvar' />
 		</form>
 <? } ?>

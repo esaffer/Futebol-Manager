@@ -14,22 +14,20 @@ class User extends Model {
 	private $base;
 	public $db;
 	private $table_name;
-	
-	
-	
+
+
+
 	/************************************************************************
 	 * __construct
 	 * Construtor da classe.
 	 ************************************************************************/
 	public function __construct () {
-		// Seta o nome da tabela no banco de dados
 		$this->table_name = DB_TABLE_USERS;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
-	
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * getUser
 	 * Procura um usuário.
@@ -41,21 +39,20 @@ class User extends Model {
 		
 		if ($sql->id != NULL) {
 		
-			$this->id 		= $sql->id;
-			$this->nick		= $sql->nick;
+			$this->id 			= $sql->id;
+			$this->nick			= $sql->nick;
 			$this->points		= $sql->points;
 			$this->description 	= $sql->description;
-			$this->date_created 	= $sql->date_created;
+			$this->date_created	= $sql->date_created;
 			return True;
 		}
 		else {
 			return False;
 		}
 	}
-	
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * setAll
 	 * Seta os atributos do usuário para um array que salvará os dados no BD.
@@ -63,17 +60,16 @@ class User extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'id' 		=> $this->id,
-			'nick'		=> $this->nick,
-			'points'	=> $this->points,
-			'description' 	=> $this->description,
-			'date_created' 	=> $this->date_created,
+			'id' 			=> $this->id,
+			'nick'			=> $this->nick,
+			'points'		=> $this->points,
+			'description'	=> $this->description,
+			'date_created'	=> $this->date_created,
 		);
 	}
-	
-	
-	
-	
+
+
+
 	/**************************************************************************
 	 * Add
 	 * Adiciona um usuário no banco.
@@ -85,14 +81,13 @@ class User extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi adicionado com sucesso!");
+			$this->messageOk("O usuário <b>" . $this->nick . "</b> foi adicionado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");
 	}
-	
-	
-	
-	
+
+
+
 	/**************************************************************************
 	 * Edit
 	 * Edita os dados de um usuário.
@@ -109,14 +104,13 @@ class User extends Model {
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql) == False)
-			$this->messageOk("O usuário <b>" . $this->apelido . "</b> foi editado com sucesso!");
+			$this->messageOk("O usuário <b>" . $this->nick . "</b> foi editado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao editar o usuário.");
 	}
-	
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * Delete
 	 * Exclui um usuário do banco de dados
@@ -138,21 +132,20 @@ class User extends Model {
 			return True;
 		}
 	}
-	
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * SQL
 	 * Código SQL referente a tabela da classe.
 	 *************************************************************************/
 	public function SQL () {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
-					id			bigint(20) NOT NULL,
+					id				bigint(20) NOT NULL,
 					nick			varchar(25),
 					points			mediumint(9),
 					descripion		text,
-					date_created		datetime, 					
+					date_created	datetime,
 					UNIQUE KEY id (id));";
 		
 		return $sql;
@@ -164,37 +157,34 @@ class User extends Model {
 	 * getImage
 	 * Retorna a imagem do perfil do usuário
 	 *************************************************************************/	
-	public function getImage($id)
+	public function getImage ($id)
 	{
 		
-	//	return "<img src=http://knuth.ufpel.edu.br/tiago/images/noImage.jpg>"; //Provisório
 		return "<fb:profile-pic uid=" . $id. " linked="true" />";
-	//Tornar o $idUserFacebook visível aqui!
 	}
-	
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * Setters
 	 * Seta o conteúdo de uma variável.
 	 *************************************************************************/
-	public function setNick		($value) { $this->nick		= $value; }
-	public function setID		($value) { $this->id		= $value; }
-	public function setPoints	($value) { $this->points	= $value; }
+	public function setNick			($value) { $this->nick		= $value; }
+	public function setID			($value) { $this->id		= $value; }
+	public function setPoints		($value) { $this->points	= $value; }
 	public function setDescription	($value) { $this->description	= $value; }
 	public function setDateCreated	($value) { $this->date_created	= $value; }
 	}
-	
-	
-	
+
+
+
 	/*************************************************************************
 	 * Getters
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
-	 public function getID			() { return $this->id; }
-	 public function getNick		() { return $this->nick; }
-	 public function getPoints		() { return $this->points; }
+	 public function getID				() { return $this->id; }
+	 public function getNick			() { return $this->nick; }
+	 public function getPoints			() { return $this->points; }
 	 public function getDescription		() { return $this->description; }
 	 public function getDateCreated		() { return $this->date_created; }
 }

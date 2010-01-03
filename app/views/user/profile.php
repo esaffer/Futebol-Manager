@@ -1,9 +1,15 @@
 <?
 	$profile = new User;
 	$profile->getUser($idUserFacebook);
-	echo "Apelido == " . $profile->getApelido();
-	echo "<br> Data Cadastro == " . $profile->getDataCadastro();
-	echo "<br> Descricao == " . $profile->getDescricao();
-	echo $profile->getImage();
 ?>
+
+<h1>Perfil</h1>
+
+<?= $profile->getImage(); ?>
+<br />
+Apelido: <?= $profile->getNick() ?>
+<br/>
+Data de Cadastro: <?= $profile->getDateCreated() ?>
+<br />
+Descrição: <?= $profile->getDescription() ?>
 

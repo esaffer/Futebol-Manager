@@ -7,6 +7,7 @@
 	$urls = array (
 		// STATIC PAGES --------------------------------
 		'help'			=> 'static/help.php',
+		'create-tables'	=> 'create_tables.php',
 
 		// USER ----------------------------------------
 		'user-profile'	=> 'user/profile.php',
