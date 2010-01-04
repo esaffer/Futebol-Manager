@@ -30,8 +30,9 @@ class UserTeam extends Model {
 	
 	public function getUserTeam($idUser, $idTeam)
 	{				
-		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND idTeam = $idTeam";
-		$sql = $this->db->get_row($sql);		
+		$sql = "SELECT * from ". $this->table_name ." WHERE idUser = ".$idUser." AND idTeam = ". $idTeam;
+		$sql = $this->db->get_row($sql);	
+			
 		
 		if ($sql->idUser != NULL && $sql->idTeam != NULL ) {
 		

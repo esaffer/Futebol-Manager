@@ -15,7 +15,6 @@
 	else {
 		$userteam = new UserTeam;
 		$userteam->getUserTeam($idUserFacebook,$_POST['idTeam']); //Como estará dentro do grupo, dever-se-á estar disponível o ID do team...
-		
 		$team = new Team;
 		$team->getTeam($_POST['idTeam']);
 		
@@ -25,7 +24,7 @@
 			return;
 		}
 		else
-		{
+		{ 
 ?>
 
 <form action="?act=create-game&do=add" method="POST">

@@ -23,8 +23,34 @@
 <br />
 	Jogos Marcados: (Fazer!)
 <br />	
-	<form action="?act=create-game" method="POST">
-		<input type="hidden" id='idTeam' name='idTeam' value="<?= $team->getID() ?>" />
-		<input type='submit' value="Criar novo jogo" />
-	</form>
-
+<?php
+	//Executa ações restrita a membros. Implementar tudo logo após
+	
+	$userTeam = new UserTeam;
+	$userTeam->getUserTeam($idUserFacebook,$idTeam);
+	
+	if( $team->getIDOwner() == $idUserFacebook)
+	{
+	?>
+		
+		<form action='?act=create-game' method='POST'>
+			<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
+			<input type='submit' value="Criar novo jogo" />
+		</form>
+	<?
+	}
+	else
+	{
+		if($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE) 
+		{
+		?>
+		Entrou aqui caraio!
+		<form action='?act=create-game' method='POST'>
+			<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
+			<input type='submit' value="Criar novo jogo" />
+		</form>
+		<?
+		}
+	}
+	
+?>
