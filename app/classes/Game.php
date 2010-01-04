@@ -214,17 +214,17 @@ class Game extends Model {
 	public function setNumMinPlayers 	($value)
 	{
 		if($value < 0)
-			$this->numMinPlayer = 0;
+			$this->numMinPlayers = 0;
 		else
-			$this->numMinPlayer = $value;
+			$this->numMinPlayers = $value;
 	}
 	
 	public function setNumMaxPlayers 	($value)
 	{ 
 		if($value < 0 || $value < $this->numMinPlayer )
-			$this->numMaxPlayer = $this->numMinPlayer;
+			$this->numMaxPlayers = $this->numMinPlayer;
 		else
-			$this->numMinPlayer = $value;
+			$this->numMaxPlayers = $value;
 	}
 	
 	

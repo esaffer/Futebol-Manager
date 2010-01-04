@@ -17,7 +17,7 @@
 		// TEAM -----------------------------------------
 		'team-add'		=> 'team/add.php',
 		'team-all'		=> 'team/all.php',
-		'team-view' 	=> 'team/index.php',
+		'team-view-profile'	=> 'team/view-profile.php',
 		'team-edit'		=> 'team/edit.php',
 		
 		//GAME
@@ -27,7 +27,6 @@
 		'invite-friends-app'	=> 'invite/add_app.php',
 	
 	);
-	
 	
 	/*****************************************************
 	 * Verifica se o endereço está no array, senão,

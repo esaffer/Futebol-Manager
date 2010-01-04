@@ -50,7 +50,21 @@ class Team extends Model {
 		$sql = $this->db->get_row($sql);		
 		
 		if ($sql->id != NULL)
-			return $sql;
+		{
+			$this->id 			= $sql->id;
+			$this->name			= $sql->name;
+			$this->rules			= $sql->rules;
+			$this->description 		= $sql->description;
+			$this->date_created		= $sql->date_created;
+			$this->image 			= $sql->image;
+			$this->id_owner			= $sql->id_owner;
+			$this->privative		= $sql->privative;
+			$this->place 			= $sql->place;
+			return True;
+		
+		
+			return True;
+		}			
 		else
 			return False;
 	}
@@ -76,12 +90,34 @@ class Team extends Model {
 	 * getTeamOwner
 	 * Pega o dono do grupo.
 	 ************************************************************************/
-	public function getTeamOwner ($idOwner)
+	public function getTeamOwner ()
 	{
-		$user = new User();
-		$user->getUser($idOwner);
+		if($this->id_owner != NULL)
+		{
+			$user = new User();
+			$user->getUser($this->id_owner);
 		
-		return $user;
+			return $user;
+		}
+		else
+			return False;
+	}
+	
+	
+	/************************************************************************
+	 * getTeamOwnerName
+	 * Retorna o nome do Owner do time.
+	 ************************************************************************/
+	public function getTeamOwnerName ()
+	{
+		if($this->id_owner != NULL)
+		{
+			$user = new User();
+			$user->getUser($this->id_owner);		
+			return $user->getNick();
+		}
+		else
+			return False;
 	}
 
 
@@ -142,7 +178,7 @@ class Team extends Model {
 	 *************************************************************************/
 	public function getImage ()
 	{
-		if($this->image != NULL)
+		if($this->image != "")
 			return "<img src=".$this->image. " />";
 		else
 			return "<img src='http://knuth.ufpel.edu.br/tiago/images/noImage.jpg' alt='No Image' />";
@@ -229,10 +265,10 @@ class Team extends Model {
 	 public function getID				() { return $this->id; }
 	 public function getName			() { return $this->name; }
 	 public function getRules			() { return $this->rules; }
-	 public function getDescription		() { return $this->description; }
-	 public function getDateCreated		() { return $this->date_created; }
+	 public function getDescription			() { return $this->description; }
+	 public function getDateCreated			() { return $this->date_created; }
 	 public function getPlace			() { return $this->place; }
-	 public function getPrivative		() { return $this->privative; }
+	 public function getPrivative			() { return $this->privative; }
 	 public function getIDOwner			() { return $this->id_owner; }
 }
 ?>

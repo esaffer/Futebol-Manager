@@ -3,11 +3,11 @@
 <?
 	$team = new Team;
 
-	if (is_null($_GET['id'])) {
+	if (is_null($_POST['id'])) {
 		$team->messageFail('É necessário informar o ID de uma equipe para editar!');
 	}
 	else {
-	if ($_GET['do'] == 'edit') {
+		if ($_GET['do'] == 'edit') {
 		
 
 		$team->setName($_POST['name']);
@@ -24,10 +24,10 @@
 		$team->setIDOwner($idUserFacebook);
 		$team->setImage($_POST['image']);
 		$team->Edit($_POST['id']);
-	}
+		}
 	
-	else {
-		$team->getTeam($_GET['id']);
+		else {
+			$team->getTeam($_GET['id']);
 ?>
 			<form action='?act=team-edit&do=edit' method='POST'>
 			<br />
@@ -51,6 +51,6 @@
 			<br />
 		     	<input type='hidden' id='date_created' name='data_created' value='<?=$team->getDateCreated()?>' />
 			<input type='hidden' id='id' name='id' value='<?= $team->getID() ?>' />
-			<input type='submit' value='Salvar Modificações' />
+			<input type='submit' value="Salvar Modificações" />
 			</form>
 	<? }} ?>

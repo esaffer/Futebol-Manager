@@ -14,9 +14,12 @@
 	}
 	else {
 		$userteam = new UserTeam;
-		$userteam->getUserTeam($idUserFacebook,$idTeam); //Como estará dentro do grupo, dever-se-á estar disponível o ID do team...
+		$userteam->getUserTeam($idUserFacebook,$_POST['idTeam']); //Como estará dentro do grupo, dever-se-á estar disponível o ID do team...
 		
-		if($userteam->getLocked() == TRUE)
+		$team = new Team;
+		$team->getTeam($_POST['idTeam']);
+		
+		if($userteam->getLocked() == TRUE && $team->getIDOwner != $idUserFacebook)
 		{
 			echo "Infelizmente voce nao pode criar novos jogos pois esta marcado como bloqueado";
 			return;
@@ -44,8 +47,8 @@
 	<label for='description'>Descricao:</label>
 		<textarea cols=20 rows=5 id='description' name='description' /></textarea>
 	<br />
-		<input type="hidden" id='idCreator' name='idCreator' value='$idUserFacebook' />
-		<input type="hidden" id='idTeam' name='idTeam' value='$idUserFacebook' />
+		<input type="hidden" id='idCreator' name='idCreator' value=' <? echo $idUserFacebook; ?>' />
+		<input type="hidden" id='idTeam' name='idTeam' value=' <? echo $_POST['idTeam']; ?>' />
 	<input type='submit' value='Salvar' />
 </form>
 	<? 
