@@ -47,7 +47,6 @@
 	<div id="site">
 		<div id="header">
 			<? include('app/views/static/header.php'); ?>
-			<? echo "Parem com essa mania" ?>
 		</div>
 		
 		<div id="menu">
