@@ -1,7 +1,7 @@
 CREATE TABLE cities (
 	id			SMALLINT NOT NULL,
-	region_id		SMALLINT NOT NULL,
-	name			VARCHAR(50) NOT NULL
+	region_id	SMALLINT NOT NULL,
+	name		VARCHAR(50) NOT NULL
 );
 
 
