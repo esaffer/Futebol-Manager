@@ -58,4 +58,5 @@
 	define('DB_TABLE_USERTEAM', DB_PREFIX . 'usersteams');
 	define('DB_TABLE_GAME', DB_PREFIX . 'games');
 	define('DB_TABLE_INVITE', DB_PREFIX . 'invites');
+	define('DB_TABLE_USERGAME', DB_PREFIX . 'usersgames');
 ?>
