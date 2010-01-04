@@ -31,6 +31,8 @@ class Invite extends Model {
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
 
+
+
 	/************************************************************************
 	 * getInvite
 	 * Pega todos os usuários de uma determinada equipe.
@@ -51,7 +53,9 @@ class Invite extends Model {
 		else
 			return False;
 	}
-	
+
+
+
 	/************************************************************************
 	 * getListInvited
 	 * Retorna a lista de invites você têm..
@@ -61,6 +65,8 @@ class Invite extends Model {
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idInvited = " . $idInvited );
 		return $this->db->get_results();
 	}
+
+
 
 	/************************************************************************
 	 * getListInviter
@@ -73,6 +79,7 @@ class Invite extends Model {
 	}
 
 
+
 	/************************************************************************
 	 * getListTeam
 	 * Retorna a lista de invites que certo Team tenha..
@@ -82,6 +89,8 @@ class Invite extends Model {
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
+
+
 
 	/************************************************************************
 	 * setAll
@@ -95,6 +104,8 @@ class Invite extends Model {
 			'idInvited'		=> $this->idInvited,
 		);
 	}
+
+
 
 	/**************************************************************************
 	 * Add
@@ -113,6 +124,7 @@ class Invite extends Model {
 	}
 
 
+
 	/*************************************************************************
 	 * SQL
 	 * Código SQL referente a tabela da Classe.
@@ -120,9 +132,9 @@ class Invite extends Model {
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 					id			int(11) NOT NULL AUTO_INCREMENT,
-					idInviter		bigint(11) NOT NULL,
-					idInvited		bigint(11) NOT NULL,
-					idTeam			int(11),
+					idInviter	bigint(11) NOT NULL,
+					idInvited	bigint(11) NOT NULL,
+					idTeam		int(11),
 					PRIMARY KEY(id));";		
 		return $sql;
 	}
@@ -133,19 +145,19 @@ class Invite extends Model {
 	 * setters
 	 * Seta o valor de uma variável.
 	 ***************************************************************/
-	public function setIDTeam		($value) { $this->idTeam 		= $value; }
-	public function setIDInviter		($value) { $this->idInviter		= $value; }
-	public function setIDInvited 		($value) { $this->idInvited 		= $value; }
-	
-	
+	public function setIDTeam		($value) { $this->idTeam	= $value; }
+	public function setIDInviter	($value) { $this->idInviter	= $value; }
+	public function setIDInvited	($value) { $this->idInvited	= $value; }
+
+
+
 	/*************************************************************************
 	 * Getters
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
-	 public function getID				() { return $this->id; }
-	 public function getIDTeam			() { return $this->idTeam; }
-	 public function getIDInviter			() { return $this->idInviter; }
-	 public function getIDInvited			() { return $this->idInvited; }
-	
+	 public function getID			() { return $this->id; }
+	 public function getIDTeam		() { return $this->idTeam; }
+	 public function getIDInviter	() { return $this->idInviter; }
+	 public function getIDInvited	() { return $this->idInvited; }
 }
 ?>
