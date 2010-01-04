@@ -163,7 +163,7 @@ class User extends Model {
 	 *************************************************************************/	
 	public function getImage ($id)
 	{
-		if($this->image != NULL)
+		if($this->image != "")
 			return "<img src=".$this->image. " />";
 		else
 			return "<fb:profile-pic uid=" . $id . " linked='true' />";
