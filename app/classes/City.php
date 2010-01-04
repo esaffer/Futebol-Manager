@@ -1,9 +1,12 @@
 <?
 class Country {
 	private $id;
+	private $iso;
+	private $iso3;
 	private $name;
 	
 	public $db;
+	private $base;
 	
 	public function __construct ()
 	{
@@ -21,17 +24,6 @@ class Country {
 	{
 		$sql = "SELECT id, name FROM " . $this->table_name . " WHERE id = $id";
 		$this->db->query($sql);
-	}
-
-
-
-	/*************************************************************************
-	 * SQL
-	 * Tabela SQL.
-	 *************************************************************************/
-	public function SQL ()
-	{
-		
 	}
 }
 
