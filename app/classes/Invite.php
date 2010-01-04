@@ -123,8 +123,7 @@ class Invite extends Model {
 					idInviter		bigint(11) NOT NULL,
 					idInvited		bigint(11) NOT NULL,
 					idTeam			int(11),
-					PRIMARY KEY(id));";
-		
+					PRIMARY KEY(id));";		
 		return $sql;
 	}
 

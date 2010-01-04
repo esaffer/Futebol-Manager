@@ -34,6 +34,7 @@
 
 	<li><a href="?act=past-games">Jogos Passados</a></li>
 	<li><a href="?act=create-game">Criar Jogo</a></li>
+	<li><a href="?act=invite-friends-app">Convide seus amigos!</a></li>
 	<li><a href="?act=ranking">Ranking</a></li>
 	<li><a href="?act=help">Ajuda</a></li>
 </ul>
