@@ -82,8 +82,7 @@ class Team extends Model {
 		$this->db->query($sql);
 		return $this->db->get_results();
 	}
-
-
+	
 
 
 	/************************************************************************

@@ -17,10 +17,12 @@ if($rs)
 $sNextUrl = urlencode("&refuid=".$idUserFacebook);
 
 $invfbml = <<<FBML
-<fb:name uid="$idUserFacebook" firstnameonly = "true" shownetwork="false"/> quer convidar voce para o Futebol Manager
+<fb:name uid="$idUserFacebook" firstnameonly = "true" shownetwork="false"/> quer convidar voce para conhecer Futebol Manager
+<fb:req-choice url="{$facebook->get_add_url()}" label="Adicione o Futebol Manager ao ser perfil!"/>  
 FBML;
 ?>
 
-<fb:request-form type="FutebolManager" action="besta.php" content="<?=htmlentities($invfbml)?>" invite="true">
-<fb:multi-friend-selector max="15" actiontext="Aqui estao seus amigos" showborder="true" rows="2" exclude_ids="<?=$arFriends?>">
+<fb:request-form type="FutebolManager" action="?act=invite-friend" content="<?=htmlentities($invfbml)?>" invite="true" method="POST" >
+	<fb:multi-friend-selector max="20" actiontext="Aqui estao seus amigos" showborder="true" rows="5" exclude_ids="<?=$arFriends?>">
 </fb:request-form>
+

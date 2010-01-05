@@ -25,6 +25,7 @@
 		
 		//INVITE
 		'invite-friends-app'	=> 'invite/add_app.php',
+		'invite-friend'		=> 'invite/control_invite_app.php',
 	
 	);
 	
