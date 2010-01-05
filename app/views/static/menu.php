@@ -3,7 +3,7 @@
 ?>
 
 <ul>
-	<li><ul><a href="?act=home">Home</a></ul></li>
+	<li><a href="?act=home">Home</a></li>
 	<li>Usuário
 		<ul>
 		<?
