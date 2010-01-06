@@ -67,8 +67,7 @@ class Invite extends Model {
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idInvited = " . $idInvited );
 		return $this->db->get_results();
 	}
-
-
+	
 
 	/************************************************************************
 	 * getListInviter
@@ -92,7 +91,15 @@ class Invite extends Model {
 		return $this->db->get_results();
 	}
 
-
+	/************************************************************************
+	 * getListStatus
+	 * Retorna a lista de invites de um time conforme o status de aprovação (TRUE = Aprovado, FALSE = caso contrário)
+	 ************************************************************************/
+	public function getListStatus($idTeam, $status)
+	{
+		$this->db->query("SELECT * from $this->table_name WHERE idTeam= $idTeam AND status= $status");
+		return $this->db->get_results();	
+	}
 
 	/************************************************************************
 	 * setAll
