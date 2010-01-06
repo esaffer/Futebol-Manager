@@ -17,6 +17,7 @@ class Invite extends Model {
 	private $idInviter;
 	private $idInvited;
 	private $idTeam;
+	private $status;
 
 	public	$db;
 	private $base;
@@ -48,6 +49,7 @@ class Invite extends Model {
 			$this->idInviter	= $sql->idInviter;
 			$this->idInvited	= $sql->idInvited;
 			$this->idTeam	 	= $sql->idTeam;
+			$this->status		= $sql->status
 			return True;	
 		}
 		else
@@ -102,6 +104,7 @@ class Invite extends Model {
 			'idTeam'		=> $this->idTeam,
 			'idInviter'		=> $this->idInviter,
 			'idInvited'		=> $this->idInvited,
+			'status'		=> $this->status,
 		);
 	}
 
@@ -135,6 +138,7 @@ class Invite extends Model {
 					idInviter	bigint(11) NOT NULL,
 					idInvited	bigint(11) NOT NULL,
 					idTeam		int(11),
+					status		int(2) NOT NULL,
 					PRIMARY KEY(id));";		
 		return $sql;
 	}
@@ -148,6 +152,7 @@ class Invite extends Model {
 	public function setIDTeam		($value) { $this->idTeam	= $value; }
 	public function setIDInviter	($value) { $this->idInviter	= $value; }
 	public function setIDInvited	($value) { $this->idInvited	= $value; }
+	public function setStatus	($value) { $this->status	= $value; }
 
 
 
@@ -159,5 +164,6 @@ class Invite extends Model {
 	 public function getIDTeam		() { return $this->idTeam; }
 	 public function getIDInviter	() { return $this->idInviter; }
 	 public function getIDInvited	() { return $this->idInvited; }
+	 public function getStatus	() { return $this->status; }
 }
 ?>

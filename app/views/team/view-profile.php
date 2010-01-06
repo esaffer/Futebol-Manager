@@ -29,7 +29,7 @@
 	$userTeam = new UserTeam;
 	$userTeam->getUserTeam($idUserFacebook,$idTeam);
 	
-	if( $team->getIDOwner() == $idUserFacebook)
+	if( ($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE ) || $team->getIDOwner() == $idUserFacebook)
 	{
 	?>
 		
@@ -37,20 +37,14 @@
 			<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
 			<input type='submit' value="Criar novo jogo" />
 		</form>
+			
+			<form action='?act=invite-friends-team&id=<?= $team->getID()?>' method='POST'>
+			<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
+			<input type='submit' value="Convidar um amigo para este grupo!" />
+		</form>
 	<?
 	}
 	else
-	{
-		if($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE) 
-		{
-		?>
-		Entrou aqui caraio!
-		<form action='?act=create-game' method='POST'>
-			<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
-			<input type='submit' value="Criar novo jogo" />
-		</form>
-		<?
-		}
-	}
+	
 	
 ?>
