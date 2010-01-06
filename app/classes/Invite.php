@@ -134,7 +134,6 @@ class Invite extends Model {
 	}
 
 
-
 	/*************************************************************************
 	 * SQL
 	 * Código SQL referente a tabela da Classe.
@@ -149,7 +148,6 @@ class Invite extends Model {
 					PRIMARY KEY(id));";		
 		return $sql;
 	}
-
 
 
 	/***************************************************************
