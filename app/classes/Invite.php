@@ -49,7 +49,7 @@ class Invite extends Model {
 			$this->idInviter	= $sql->idInviter;
 			$this->idInvited	= $sql->idInvited;
 			$this->idTeam	 	= $sql->idTeam;
-			$this->status		= $sql->status
+			$this->status		= $sql->status;
 			return True;	
 		}
 		else

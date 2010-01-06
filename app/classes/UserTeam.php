@@ -31,8 +31,7 @@ class UserTeam extends Model {
 	public function getUserTeam($idUser, $idTeam)
 	{				
 		$sql = "SELECT * from ". $this->table_name ." WHERE idUser = ".$idUser." AND idTeam = ". $idTeam;
-		$sql = $this->db->get_row($sql);	
-			
+		$sql = $this->db->get_row($sql);				
 		
 		if ($sql->idUser != NULL && $sql->idTeam != NULL ) {
 		
@@ -56,12 +55,9 @@ class UserTeam extends Model {
 	public function getListTeam ($idTeam)
 	{
 		$sql = "SELECT * from " . $this->table_name . " WHERE idTeam = " . $idTeam;
-		$sql = $this->db->get_row($sql);		
+		$sql = $this->db->get_results($sql);	
 		
-		if ($sql->idTeam != NULL)
-			return $sql;
-		else
-			return False;
+		return $sql;
 	}
 	
 	
@@ -197,7 +193,7 @@ class UserTeam extends Model {
 					locked				bool,
 					points				mediumint(9),
 					date_joined			timestamp,
-					PRIMARY KEY ( `idTeam` ));";
+					);";
 		
 		return $sql;
 	}
