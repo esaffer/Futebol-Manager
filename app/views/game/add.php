@@ -1,6 +1,9 @@
 <h1>Adicionar Jogo</h1>
 
 <?
+
+	echo "<br><br>";
+	print_r($_POST);
 	if ($_GET['do'] == 'add') {
 		$game = new Game;
 		$game->setIDCreator($_POST['idCreator']);		
@@ -31,7 +34,10 @@
 	<label for='date'>Data:</label>
 		<input type="text" id='date' name='date' />
 	<br />
-	<label for='place'>Local:</label>
+		<label>Hora:</label>
+		<? imprimeHora() ?>:<? imprimeMin() ?>
+	<br />
+		<label for='place'>Local:</label>
 		<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
 	<br />
 		<label for='numminplayers'>Número mínimo de jogadores:</label>
@@ -43,7 +49,7 @@
 		<label for='cost'>Custo da partida:</label>
 		<input type="text" id='cost' name='cost' />
 	<br />
-	<label for='description'>Descricao:</label>
+		<label for='description'>Descricao:</label>
 		<textarea cols=20 rows=5 id='description' name='description' /></textarea>
 	<br />
 		<input type="hidden" id='idCreator' name='idCreator' value=' <? echo $idUserFacebook; ?>' />
@@ -53,3 +59,28 @@
 	<? 
 		}
 	} ?>
+	
+	
+<?php
+
+function imprimeMin()
+{
+	echo "<select id='idMin'>";
+	for($i = 0; $i < 60; $i++)
+	{
+		echo "<option value='$i'>$i</option>";	
+	}
+	echo "</select>";
+}
+
+
+function imprimeHora()
+{
+	echo "<select id='idHora'>";
+	for($i = 0; $i < 24; $i++)
+	{
+		echo "<option value='$i'>$i</option>";	
+	}
+	echo "</select>";
+}
+?>
