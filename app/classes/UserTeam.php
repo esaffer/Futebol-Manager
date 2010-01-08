@@ -63,7 +63,7 @@ class UserTeam extends Model {
 	
 	/*************************************************************************
 	 * getListUser
-	 * Retorna a lista de todas os grupos que tal user participa (não sendo owner!)
+	 * Retorna a lista de todos os grupos que tal user participa (não sendo owner!)
 	 *************************************************************************/	 
 	public function getListUser ($idUser)
 	{

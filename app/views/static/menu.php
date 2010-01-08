@@ -24,7 +24,8 @@
 		<?
 			if($user->getUser($idUserFacebook)) {
 				echo "<li><a href='?act=team-add'>Criar novo grupo</a></li>";
-				echo "<li><a href='?act=team-edit'>Editar um grupo</a></li>";			
+				echo "<li><a href='?act=team-edit'>Editar um grupo</a></li>";	
+				echo "<li><a href='?act=team-user'>Seus Grupos</a></li>";				
 				echo "<li><a href='?act=team-view-profile'>Ver perfil do grupo</a></li>";
 			}
 		?>			

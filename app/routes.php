@@ -19,6 +19,7 @@
 		'team-all'		=> 'team/all.php',
 		'team-view-profile'	=> 'team/view-profile.php',
 		'team-edit'		=> 'team/edit.php',
+		'team-user'		=> 'team/list-user.php',
 		
 		//GAME
 		'create-game'		=> 'game/add.php',
