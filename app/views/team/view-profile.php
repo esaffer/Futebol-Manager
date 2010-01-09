@@ -2,11 +2,8 @@
 
 <?php
 
-	$idTeam = $_GET['id'];
-	
-	if($idTeam == "")    //Provisório
-		$idTeam = 8; //Provisório	
-	
+	$idTeam = $_GET['view'];
+		
 	$team = new Team;
 	$team->getTeam($idTeam);
 	

@@ -4,7 +4,17 @@
 	if ($_GET['do'] == 'add') {
 		$user = new User;
 		$user->setID($idUserFacebook);
-		$user->setNick($_POST['nick']);		
+		
+		if($_POST['nick'] == "")
+		{
+			$nick = ?> <fb:name uid="<?= $idUserFacebook =>" />
+			<?
+			$user->setNick($nick);
+		}
+		else
+		{
+			$user->setNick($_POST['nick']);	
+		}	
 		$user->setPoints(0);
 		$user->setDescription($_POST['description']);
 		$user->setImage($_POST['image']);

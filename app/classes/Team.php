@@ -127,7 +127,7 @@ class Team extends Model {
 	 ************************************************************************/
 	public function getListTeamOwner($idOwner)
 	{
-		$this->db->query("SELECT * from " .  $this->table_name . " WHERE id_owner = " . $idOwner );
+		$this->db->query("SELECT * from $this->table_name WHERE id_owner = $idOwner ORDER BY name ");
 		return $this->db->get_results();
 	}
 
@@ -167,6 +167,13 @@ class Team extends Model {
 			$this->messageOk("A equipe <b>" . $this->name . "</b> foi adicionada com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao adicionar a equipe.");
+	}
+	
+	
+	public function getListPublic() 
+	{
+		$this->db->query("SELECT * from " .  $this->table_name . " WHERE privative = 0 ORDER BY name");
+		return $this->db->get_results();	
 	}
 
 

@@ -10,13 +10,15 @@
 		'create-tables'	=> 'create_tables.php',
 
 		// USER ----------------------------------------
-		'user-profile'	=> 'user/profile.php',
+		'user-profile'		=> 'user/profile.php',
 		'user-add'		=> 'user/add.php',
 		'user-edit'		=> 'user/edit.php',
+		'user-view-profile'	=> 'user/view-profile.php',
+		'user-list'		=> 'user/list-user.php',
 
 		// TEAM -----------------------------------------
 		'team-add'		=> 'team/add.php',
-		'team-all'		=> 'team/all.php',
+		'team-all'		=> 'team/list-team.php',
 		'team-view-profile'	=> 'team/view-profile.php',
 		'team-edit'		=> 'team/edit.php',
 		'team-user'		=> 'team/list-user.php',
