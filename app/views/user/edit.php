@@ -4,7 +4,15 @@
 	if ($_GET['do'] == 'edit') {
 		$user = new User;
 		$user->setID($idUserFacebook);
-		$user->setNick($_POST['nick']);		
+		if($_POST['nick'] == "")
+		{	
+			$nick = $facebook->api_client->users_getInfo($idUserFacebook, 'name');
+			$user->setNick($nick[0]['name']);	
+		} 
+		else
+		{
+			$user->setNick($_POST['nick']);	
+		}	
 		$user->setPoints($_POST['points']);
 		$user->setDescription($_POST['description']);
 		$user->setDateCreated($_POST['date_created']);
