@@ -14,16 +14,23 @@
 		 	Você é amigo desse usuário
 		  	<fb:else>Você ainda não é amigo deste usuário</fb:else>
 		</fb:if-is-friends-with-viewer>
-	<?} ?>
+	<?} 
+	?>
 
-<br />
-Apelido: <?= $profile->getNick() ?>
+Apelido: <?= $profile->getNick() ?> </br>
 <br/>
 Data de Cadastro: <?= $profile->getDateCreated() ?>
 <br />
 Descrição: <?= $profile->getDescription() ?>
 <br />
-<?= $profile->getImage($idUserFacebook); ?>
+<?= $profile->getImage($profile->getID()); ?>
+<?
+	if($profile->hasImage() == True)
+	{
+		echo "<br />";
+		echo "Perfil do Facebook: <fb:name uid='$userID' linked='true' />";
+	}
+?>
 
 
 

@@ -178,6 +178,14 @@ class User extends Model {
 	{
 		return $this->image;
 	}
+	
+	public function hasImage()
+	{
+		if($this->image != "")
+			return true;
+		else
+			return false;
+	}
 
 
 
@@ -209,9 +217,9 @@ class User extends Model {
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
 	 public function getID				() { return $this->id; }
-	 public function getNick			() { return $this->nick; }
 	 public function getPoints			() { return $this->points; }
 	 public function getDescription		() { return $this->description; }
 	 public function getDateCreated		() { return $this->date_created; }
+	 public function getNick			() { return $this->nick; }
 }
 ?>
