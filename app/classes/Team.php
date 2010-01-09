@@ -76,8 +76,7 @@ class Team extends Model {
 	 * getAll
 	 * Retorna a lista com todas as equipes.
 	 ************************************************************************/
-	public function getAll ()
-	{
+	public function getAll () {
 		$sql = "SELECT * from " . $this->table_name . " ORDER BY name";
 		$this->db->query($sql);
 		return $this->db->get_results();

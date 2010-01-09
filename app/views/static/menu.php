@@ -15,7 +15,7 @@
 				echo "<li><a href='?act=user-add'>Criar Perfil</a></li>";
 			}
 		?>
-			
+			<li><a href='?act=user-all'>Listar usuários</a></li>
 		</ul>
 	</li>
 

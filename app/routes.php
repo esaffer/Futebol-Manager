@@ -14,7 +14,7 @@
 		'user-add'		=> 'user/add.php',
 		'user-edit'		=> 'user/edit.php',
 		'user-view-profile'	=> 'user/view-profile.php',
-		'user-list'		=> 'user/list-user.php',
+		'user-all'		=> 'user/list-all.php',
 
 		// TEAM -----------------------------------------
 		'team-add'		=> 'team/add.php',

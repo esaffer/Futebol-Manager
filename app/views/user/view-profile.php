@@ -16,13 +16,14 @@
 		</fb:if-is-friends-with-viewer>
 	<?} ?>
 
-<?= $profile->getImage($idUserFacebook); ?>
 <br />
 Apelido: <?= $profile->getNick() ?>
 <br/>
 Data de Cadastro: <?= $profile->getDateCreated() ?>
 <br />
 Descrição: <?= $profile->getDescription() ?>
+<br />
+<?= $profile->getImage($idUserFacebook); ?>
 
 
 

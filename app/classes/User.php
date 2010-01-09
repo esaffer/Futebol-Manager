@@ -111,6 +111,11 @@ class User extends Model {
 		else
 			$this->messageFail("Ocorreu um erro ao editar o usuário.");
 	}
+	
+	public function getAllUsers() {
+		$this->db->query("SELECT * from $this->table_name ORDER BY nick ");
+		return $this->db->get_results();
+	}
 
 
 
