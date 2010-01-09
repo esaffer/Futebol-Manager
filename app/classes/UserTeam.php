@@ -68,12 +68,9 @@ class UserTeam extends Model {
 	public function getListUser ($idUser)
 	{
 		$sql = "SELECT * from " . $this->table_name . " WHERE idUser = " . $idUser;
-		$sql = $this->db->get_row($sql);		
+		$sql = $this->db->get_results($sql);		
 		
-		if ($sql->idUser != NULL)
-			return $sql;
-		else
-			return False;
+		return $sql;
 	}
 
 
