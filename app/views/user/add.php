@@ -7,9 +7,8 @@
 		
 		if($_POST['nick'] == "")
 		{
-			$nick = ?> <fb:name uid="<?= $idUserFacebook =>" />
-			<?
-			$user->setNick($nick);
+			$nick = $facebook->api_client->users_getInfo($idUserFacebook, 'name');
+			$user->setNick($nick[0]['name']);
 		}
 		else
 		{
