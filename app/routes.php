@@ -25,6 +25,7 @@
 		
 		//GAME
 		'create-game'		=> 'game/add.php',
+		'game-edit'		=> 'game/edit.php',
 		
 		//INVITE
 		'invite-friends-app'		=> 'invite/add_app.php',

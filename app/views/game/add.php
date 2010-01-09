@@ -1,9 +1,6 @@
 <h1>Adicionar Jogo</h1>
 
-<?
-
-	echo "<br><br>";
-	print_r($_POST);
+<?php
 	if ($_GET['do'] == 'add') {
 		$game = new Game;
 		$game->setIDCreator($_POST['idCreator']);		
@@ -17,7 +14,7 @@
 	}
 	else {
 		$userteam = new UserTeam;
-		$userteam->getUserTeam($idUserFacebook,$_POST['idTeam']); //Como estará dentro do grupo, dever-se-á estar disponível o ID do team...
+		$userteam->getUserTeam($idUserFacebook,$_POST['idTeam']);
 		$team = new Team;
 		$team->getTeam($_POST['idTeam']);
 		
@@ -31,11 +28,8 @@
 ?>
 
 <form action="?act=create-game&do=add" method="POST">
-	<label for='date'>Data:</label>
+		<label for='date'>Data:</label>
 		<input type="text" id='date' name='date' />
-	<br />
-		<label>Hora:</label>
-		<? imprimeHora() ?>:<? imprimeMin() ?>
 	<br />
 		<label for='place'>Local:</label>
 		<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />

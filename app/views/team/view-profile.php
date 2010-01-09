@@ -3,6 +3,12 @@
 <?php
 
 	$idTeam = $_GET['view'];
+	
+	if($idTeam == "")
+	{
+		echo "Nenhum grupo selecionado!";
+		return;
+	}
 		
 	$team = new Team;
 	$team->getTeam($idTeam);

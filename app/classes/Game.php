@@ -40,8 +40,8 @@ class Game extends Model {
 
 
 	/************************************************************************
-	 * getTeam
-	 * Pega todos os usuários de uma determinada equipe.
+	 * getGame
+	 * Pega todos os dados de um determinado jogo.
 	 ************************************************************************/
 	public function getGame ($id)
 	{
@@ -153,10 +153,8 @@ class Game extends Model {
 		{
 			$this->messageFail('É necessário informar um ID.');
 			return False;
-		}
-		
+		}		
 		$this->setAll();
-		print_r($this->base);
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
