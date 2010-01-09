@@ -26,7 +26,6 @@
 				echo "<li><a href='?act=team-add'>Criar novo grupo</a></li>";
 				echo "<li><a href='?act=team-edit'>Editar um grupo</a></li>";	
 				echo "<li><a href='?act=team-user'>Seus Grupos</a></li>";				
-				echo "<li><a href='?act=team-view-profile'>Ver perfil do grupo</a></li>";
 			}
 		?>			
 			<li><a href='?act=team-all'>Listar grupos</a></li>
@@ -34,7 +33,6 @@
 	</li>
 
 	<li><a href="?act=past-games">Jogos Passados</a></li>
-	<li><a href="?act=create-game">Criar Jogo</a></li>
 	<li><a href="?act=invite-friends-app">Convide seus amigos!</a></li>
 	<li><a href="?act=ranking">Ranking</a></li>
 	<li><a href="?act=help">Ajuda</a></li>

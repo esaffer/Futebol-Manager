@@ -48,12 +48,12 @@
 		?>
 		
 			<form action='?act=create-game' method='POST'>
-				<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?= $team->getID() ?>" />
 				<input type='submit' value="Criar novo jogo" />
 			</form>
 			
 				<form action='?act=invite-friends-team&id=<?= $team->getID()?>' method='POST'>
-				<input type='hidden' id='idTeam' name='idTeam' value=" <? echo $team->getID() ?>" />
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?= $team->getID() ?>" />
 				<input type='submit' value="Convidar um amigo para este grupo!" />
 			</form>
 		<?
