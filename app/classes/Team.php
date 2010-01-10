@@ -142,8 +142,8 @@ class Team extends Model {
 			'name'			=> $this->name,
 			'place'			=> $this->place,
 			'privative'		=> $this->privative,
-			'description'	=> $this->description,
-			'date_created'	=> $this->date_created,
+			'description'		=> $this->description,
+			'date_created'		=> $this->date_created,
 			'rules'			=> $this->rules,
 			'id_owner'		=> $this->id_owner,
 			'image'			=> $this->image,
@@ -231,7 +231,7 @@ class Team extends Model {
 					name			varchar(100),
 					description		text,
 					rules			text,
-					date_created	timestamp,
+					date_created		datetime,
 					place			mediumint(9),
 					privative		bool,
 					image			varchar(255),
@@ -257,9 +257,9 @@ class Team extends Model {
 	public function setDateCreated	($value = NULL)
 	{
 		if ($value == NULL)
-			$this->date_created = time();
+			$this->date_created = date('Y-m-d H:i:s');
 		else
-			$this->date_created = $value;
+			$this->date_created = date('Y-m-d H:i:s',$value);
 	}
 	
 	
@@ -271,7 +271,7 @@ class Team extends Model {
 	 public function getName			() { return $this->name; }
 	 public function getRules			() { return $this->rules; }
 	 public function getDescription			() { return $this->description; }
-	 public function getDateCreated			() { return $this->date_created; }
+	 public function getDateCreated			() { return strtotime($this->date_created); }
 	 public function getPlace			() { return $this->place; }
 	 public function getPrivative			() { return $this->privative; }
 	 public function getIDOwner			() { return $this->id_owner; }

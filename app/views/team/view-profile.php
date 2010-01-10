@@ -28,7 +28,7 @@
 		<br />
 		Nome: <?= $team->getName() ?>
 		<br/>
-		Data de cadastro: <?= $team->getDateCreated() ?>
+		Data de cadastro: <?= date('Y-m-d H:i:s',$team->getDateCreated()) ?>
 		<br />
 		Nome do criador do grupo: <?= $team->getTeamOwnerName() ?>
 		<br />
