@@ -9,7 +9,7 @@
 <br />
 Apelido: <?= $profile->getNick() ?>
 <br/>
-Data de Cadastro: <?= $profile->getDateCreated() ?>
+Data de Cadastro: <?= date('Y-m-d H:i:s',$profile->getDateCreated()) ?>
 <br />
 Descrição: <?= $profile->getDescription() ?>
 

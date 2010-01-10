@@ -207,13 +207,9 @@ class UserTeam extends Model {
 	public function setDateJoined		($value = NULL)
 	{ 
 		if ($value == NULL)
-		{
-			$this->date_joined = time();
-		}
-		else 
-		{
-			$this->date_joined = $value;
-		}
+			$this->date_joined = date('Y-m-d H:i:s');
+		else
+			$this->date_joined = date('Y-m-d H:i:s',$value);
 	}
 
 
@@ -226,6 +222,6 @@ class UserTeam extends Model {
 	 public function getIDTeam			() { return $this->idTeam; }
 	 public function getPoints			() { return $this->points; }
 	 public function getLocked			() { return $this->locked; }
-	 public function getDateJoined			() { return $this->date_joined; }
+	 public function getDateJoined			() { return strtotime($this->date_joined); }
 }
 ?>
