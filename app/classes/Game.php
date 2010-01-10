@@ -175,7 +175,7 @@ class Game extends Model {
 					idTeam			int(11) NOT NULL,
 					idCreator		bigint(11) NOT NULL,
 					description		text,
-					date			timestamp NOT NULL,					
+					date			datetime NOT NULL,					
 					numminplayers		int(11),
 					nummaxplayers		int(11),
 					cost			float,
@@ -198,9 +198,11 @@ class Game extends Model {
 	public function setDate	($value = NULL)
 	{
 		if ($value == NULL)
-			$this->date = time();
-		else
-			$this->date = $value;
+			$this->date = date('Y-m-d H:i:s');
+		else 
+		{
+			$this->date = date('Y-m-d H:i:s',$value);
+		}
 	}
 	public function setCost 		($value) 
 	{

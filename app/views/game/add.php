@@ -6,7 +6,7 @@
 		$game->setIDCreator($_POST['idCreator']);		
 		$game->setIDTeam($_POST['idTeam']);
 		$game->setDescription($_POST['description']);
-		$game->setDate($_POST['date']);
+		$game->setDate(strtotime($_POST['date'])); // Deve ser do formato Y-m-d H:i:s
 		$game->setNumMinPlayers($_POST['numminplayers']);
 		$game->setNumMaxPlayers($_POST['nummaxplayers']);
 		$game->setCost($_POST['cost']);
