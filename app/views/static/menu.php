@@ -13,6 +13,7 @@
 				else {
 					echo "<li><a href='?act=user-add'>Criar Perfil</a></li>";
 				}
+				echo "<li><a href='?act=user-all'>Listar Usuários</a></li>";
 			?>
 		</ul>
 	</li>

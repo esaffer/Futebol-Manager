@@ -203,7 +203,7 @@ class User extends Model {
 		if ($value == NULL)
 			$this->date_created = date('Y-m-d H:i:s');
 		else
-			$this->date_created = date('Y-m-d H:i:s',$value);
+			$this->date_created = $value;
 	}
 
 

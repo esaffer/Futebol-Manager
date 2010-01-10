@@ -53,6 +53,7 @@ class Game extends Model {
 			$this->id 			= $sql->id;
 			$this->idCreator		= $sql->idCreator;
 			$this->idTeam			= $sql->idTeam;
+			$this->date			= $sql->date;
 			$this->description 		= $sql->description;
 			$this->numMinPlayers		= $sql->numminplayers;
 			$this->numMaxPlayers 		= $sql->nummaxplayers;
@@ -176,9 +177,9 @@ class Game extends Model {
 					idCreator		bigint(11) NOT NULL,
 					description		text,
 					date			datetime NOT NULL,					
-					numminplayers		int(11),
-					nummaxplayers		int(11),
-					cost			float,
+					numminplayers		int(11) NOT NULL DEFAULT '0',
+					nummaxplayers		int(11) NOT NULL DEFAULT '0',
+					cost			float NOT NULL DEFAULT '0',
 					
 					PRIMARY KEY (id));";
 		
@@ -201,7 +202,7 @@ class Game extends Model {
 			$this->date = date('Y-m-d H:i:s');
 		else 
 		{
-			$this->date = date('Y-m-d H:i:s',$value);
+			$this->date = $value;
 		}
 	}
 	public function setCost 		($value) 
@@ -221,8 +222,8 @@ class Game extends Model {
 	
 	public function setNumMaxPlayers 	($value)
 	{ 
-		if($value < 0 || $value < $this->numMinPlayer )
-			$this->numMaxPlayers = $this->numMinPlayer;
+		if($value < 0 || $value < $this->numMinPlayers )
+			$this->numMaxPlayers = $this->numMinPlayers;
 		else
 			$this->numMaxPlayers = $value;
 	}
@@ -236,7 +237,7 @@ class Game extends Model {
 	 public function getIDCreator			() { return $this->idCreator; }
 	 public function getIDTeam			() { return $this->idTeam; }
 	 public function getDescription			() { return $this->description; }
-	 public function getDate			() { return $this->date; }
+	 public function getDate			() { return strtotime($this->date); }
 	 public function getNumMinPlayers		() { return $this->numMinPlayers; }
 	 public function getNumMaxPlayers		() { return $this->numMaxPlayers; }
 	 public function getCost			() { return $this->cost; }

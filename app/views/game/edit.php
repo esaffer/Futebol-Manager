@@ -3,8 +3,6 @@
 <?php
 	$idgame = $_GET['id'];
 	
-	$idgame = 13; //Provisorio!!!!
-
 	if($idgame == "")
 	{
 		echo "Nenhum jogo selecionado";
@@ -50,9 +48,9 @@
 		{ 
 ?>
 
-<form action="?act=game-edit&do=edit" method="POST">
+<form action='?act=game-edit&do=edit&id=<?= $game->getID()?>' method="POST">
 		<label for='date'>Data:</label>
-		<input type="text" id='date' name='date' value='<?= $game->getDate() ?>' />
+		<input type="text" id='date' name='date' value='<?= date('Y-m-d H:i:s',$game->getDate()) ?>' />
 	<br />
 		<label for='place'>Local:</label>
 		<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
