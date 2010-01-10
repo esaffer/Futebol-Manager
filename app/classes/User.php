@@ -215,7 +215,7 @@ class User extends Model {
 	 public function getID				() { return $this->id; }
 	 public function getPoints			() { return $this->points; }
 	 public function getDescription			() { return $this->description; }
-	 public function getDateCreated			() {  return strtotime($this->date_created) }
+	 public function getDateCreated			() {  return strtotime($this->date_created); }
 	 public function getNick			() { return $this->nick; }
 }
 ?>
