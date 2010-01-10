@@ -41,32 +41,31 @@
 		<? include('media/css/design.css'); ?>
 	</style>
 
-
 	<script type="text/javascript">
 		<? include('media/js/jquery.js'); ?>
 	</script>
 </head>
 
 	<div id="site">
-	<div id="header">
-		<? include('app/views/static/header.php'); ?>
-	</div>
+		<div id="header">
+			<? include('app/views/static/header.php'); ?>
+		</div>
 		
-	<div id="container">
-		<? include('app/views/static/menu.php'); ?>
-	</div>
+		<div id="container">
+			<? include('app/views/static/menu.php'); ?>
+		</div>
 		
-	<div id="content">
-		<? include('app/routes.php'); ?>
-	</div>
+		<div id="content">
+			<? include('app/routes.php'); ?>
+		</div>
 		
-	<div id="ads">
-		<? include('app/views/static/ads.php'); ?>
-	</div>
+		<div id="ads">
+			<? include('app/views/static/ads.php'); ?>
+		</div>
 		
-	<div id="footer">
-		<? include('app/views/static/footer.php'); ?>
-	</div>
+		<div id="footer">
+			<? include('app/views/static/footer.php'); ?>
+		</div>
 	</div>
 	
 </html>
