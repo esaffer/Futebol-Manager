@@ -79,21 +79,24 @@ class Game extends Model {
 	/************************************************************************
 	 * getListTeam
 	 * Retorna a lista de jogos de determinado team
-	 ************************************************************************/
-
-	public function getListTeam2($idTeam)
-	{
-		$sql = "SELECT * from " . $this->table_name . " WHERE idTeam = " . $idTeam;
-		$sql = $this->db->get_results($sql);	
-		
-		return $sql;
-	}
-	
+	 ************************************************************************/	
 	public function getListTeam($idTeam)
 	{
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
+
+	/************************************************************************
+	 * getListTeamOrderDate
+	 * Retorna a lista de jogos de determinado team, ordenada conforme a data.
+	 * O jogo marcado mais para o futuro fica no topo do retorno.
+	 ************************************************************************/	
+	public function getListTeamOrderDateDesc($idTeam)
+	{
+		$this->db->query("SELECT * from $this->table_name WHERE idTeam = $idTeam ORDER BY date DESC" );
+		return $this->db->get_results();
+	}
+	
 	/************************************************************************
 	 * getNumUser
 	 * Retorna o número de jogos que determinado usuário criou para este grupo.
@@ -213,6 +216,17 @@ class Game extends Model {
 			$this->date = $value;
 		}
 	}
+	
+	public function setDateNotTimestamp	($value = NULL)
+	{
+		if ($value == NULL)
+			$this->date = date('Y-m-d H:i:s');
+		else 
+		{
+			$this->date = date($value);
+		}
+	}
+	
 	public function setCost 		($value) 
 	{
 		if($value < 0)

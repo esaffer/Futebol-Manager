@@ -40,9 +40,9 @@
 		<br />
 		<? 
 			$jogos = new Game;
-			$matriz = $jogos->getListTeam2($idTeam);
+			$matriz = $jogos->getListTeamOrderDateDesc($idTeam);
 			if($matriz == False) {
-				echo "Nao ha jogos </ br>";
+				echo "Este grupo ainda não marcou nenhum jogo</ br>";
 			}
 			else{
 				echo "Jogos marcados:</br>";
