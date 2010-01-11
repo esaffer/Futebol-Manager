@@ -80,12 +80,20 @@ class Game extends Model {
 	 * getListTeam
 	 * Retorna a lista de jogos de determinado team
 	 ************************************************************************/
+
+	public function getListTeam2($idTeam)
+	{
+		$sql = "SELECT * from " . $this->table_name . " WHERE idTeam = " . $idTeam;
+		$sql = $this->db->get_results($sql);	
+		
+		return $sql;
+	}
+	
 	public function getListTeam($idTeam)
 	{
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
-	
 	/************************************************************************
 	 * getNumUser
 	 * Retorna o número de jogos que determinado usuário criou para este grupo.

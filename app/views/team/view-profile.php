@@ -38,7 +38,19 @@
 		<br />
 		Regras: <?= $team->getRules() ?>
 		<br />
-		Jogos Marcados: (Fazer!)
+		<? 
+			$jogos = new Game;
+			$matriz = $jogos->getListTeam2($idTeam);
+			if($matriz == False) {
+				echo "Nao ha jogos </ br>";
+			}
+			else{
+				echo "Jogos marcados:</br>";
+				foreach($matriz as $id_game){
+					echo "<a href='?act=game-view-profile&view=$id_game->id'>$id_game->date </a> </br>";
+				}
+			}
+		?>
 		<br />	
 		<?php
 

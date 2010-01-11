@@ -1,7 +1,7 @@
 <h1>Perfil do Jogo</h1>
 
 <?php
-	$idgame = $_GET['id'];
+	$idgame = $_GET['view'];
 	
 	if($idgame == "")
 	{
