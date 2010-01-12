@@ -23,7 +23,7 @@
 	
 
 	
-	echo "Parabéns campeão!";
+	echo "Paarabéns campeão!";
 	
 	
 ?>
