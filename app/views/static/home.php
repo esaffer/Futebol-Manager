@@ -2,18 +2,28 @@
 
 <?php
 	$user = new User;
+	$invite = New Invite;
+	$convites = $invite->getListInvited($idUserFacebook);
+		foreach($convites as $id_invite){
+			$team = new Team;
+			$team->getTeam($id_invite->getIDTeam());
+			echo "Convites do time <a href='?act=team-view-profile&view=".$team->getID()."'>".$team->getName()." </a> </br>";
+			?> <?/*
+			<form action='?act=accept-reject' method='POST'>
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?$aux->getIDTeam()?>" />
+				<input type='hidden' id='status' name='status' value='true' />
+				<input type='submit' value='Aceitar' />
+			</form>
+			<form action='?act=accept-reject' method='POST'>
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?$aux->getIDTeam()?>" />
+				<input type='hidden' id='status' name='status' value= 'false' />
+				<input type='submit' value='Rejeitar' />
+			</form> */?>
+		<? } 
 	
-	if($user->getUser($idUserFacebook) == False)
-	{
-		echo "</br> Você ainda não possuí um perfil </br>";
-		echo "</br><a href='?act=user-add'>Crie um agora mesmo!</a>";
-		
-	}
-	else
-	{
-		
-		echo "Parabéns campeão!";
+
+	
+	echo "Parabéns campeão!";
 	
 	
-	}
 ?>

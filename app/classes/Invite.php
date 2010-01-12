@@ -18,7 +18,8 @@ class Invite extends Model {
 	private $idInvited;
 	private $idTeam;
 	private $status;
-
+	private $userStatus
+	
 	public	$db;
 	private $base;
 	private $table_name;
@@ -158,7 +159,7 @@ class Invite extends Model {
 	public function setIDInviter	($value) { $this->idInviter	= $value; }
 	public function setIDInvited	($value) { $this->idInvited	= $value; }
 	public function setStatus	($value) { $this->status	= $value; }
-
+	public function setUserStatus	($value) { $this->userStatus	= $value; }
 
 
 	/*************************************************************************
@@ -170,5 +171,6 @@ class Invite extends Model {
 	 public function getIDInviter	() { return $this->idInviter; }
 	 public function getIDInvited	() { return $this->idInvited; }
 	 public function getStatus	() { return $this->status; }
+	 public function getUserStatus	() { return $this->userStatus; }
 }
 ?>

@@ -31,9 +31,12 @@
 		//INVITE
 		'invite-friends-app'		=> 'invite/add_app.php',
 		'invite-friend'			=> 'invite/control_invite_app.php',
+		
+		
 		//INVITE DE AMIGOS QUE JÁ USAM O APP
 		'invite-friends-team'		=> 'invite/add_team.php',
 		'invite-friends-team-user'	=> 'invite/control_invite_friend_team_user.php',
+		'accept-reject'			=> 'invite/user_accept_reject.php',
 		
 		//NAO POSSUEM O APP
 		'invite-friends-team-not-user'	=> 'invite/control_invite_friend_team_not_user.php',

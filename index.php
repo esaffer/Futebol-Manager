@@ -45,7 +45,11 @@
 		<? include('media/js/jquery.js'); ?>
 	</script>
 </head>
-
+	<? $user = new User;
+		if(!($user->getUser($idUserFacebook))) {
+		 include('app/views/user/add.php'); 
+	}?>
+	
 	<div id="site">
 		<div id="header">
 			<? include('app/views/static/header.php'); ?>

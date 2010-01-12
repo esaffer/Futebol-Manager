@@ -6,13 +6,8 @@
 	<li><a href="#" title="Usuário">Usuário</a>
 		<ul class="navigation-2">
 			<?
-				if($user->getUser($idUserFacebook)) {
-					echo "<li><a href='?act=user-profile'>Ver Perfil</a></li>";
-					echo "<li><a href='?act=user-edit'>Editar Perfil</a></li>";			
-				}
-				else {
-					echo "<li><a href='?act=user-add'>Criar Perfil</a></li>";
-				}
+				echo "<li><a href='?act=user-profile'>Ver Perfil</a></li>";
+				echo "<li><a href='?act=user-edit'>Editar Perfil</a></li>";			
 				echo "<li><a href='?act=user-all'>Listar Usuários</a></li>";
 			?>
 		</ul>
