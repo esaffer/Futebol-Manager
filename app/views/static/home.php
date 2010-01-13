@@ -6,7 +6,7 @@
 	$convites = $invite->getListInvited($idUserFacebook);
 		foreach($convites as $id_invite){
 			$team = new Team;
-			$team->getTeam($id_invite->getIDTeam());
+			$team->getTeam($id_invite->idTeam);
 			echo "Convites do time <a href='?act=team-view-profile&view=".$team->getID()."'>".$team->getName()." </a> </br>";
 			?> <?/*
 			<form action='?act=accept-reject' method='POST'>
@@ -23,7 +23,7 @@
 	
 
 	
-	echo "Paarabéns campeão!";
+	echo "Seja bem vindo!";
 	
 	
 ?>

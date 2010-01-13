@@ -18,7 +18,7 @@ class Invite extends Model {
 	private $idInvited;
 	private $idTeam;
 	private $status;
-	private $userStatus
+	private $userStatus;
 	
 	public	$db;
 	private $base;
