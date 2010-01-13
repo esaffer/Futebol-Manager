@@ -46,11 +46,12 @@ class Invite extends Model {
 		
 		if ($sql->id != NULL)
 		{
-			$this->id 		= $sql->id;
+			$this->id 			= $sql->id;
 			$this->idInviter	= $sql->idInviter;
 			$this->idInvited	= $sql->idInvited;
 			$this->idTeam	 	= $sql->idTeam;
 			$this->status		= $sql->status;
+			$this->userStatus	= $sql->userStatus;
 			return True;	
 		}
 		else
@@ -133,7 +134,24 @@ class Invite extends Model {
 		else
 			$this->messageFail("Ocorreu um erro ao convidar o user.");
 	}
-
+	
+	public function Edit ($id = Null)
+	{
+		if (is_null($id))
+		{
+			$this->messageFail('É necessário informar um ID.');
+			return False;
+		}
+		
+		$this->setAll();
+		print_r($this->base);
+		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
+		
+		if ($this->db->query($sql))
+			$this->messageOk("O convite foi aceitado com sucesso!");
+		else
+			$this->messageFail("Ocorreu um erro ao editar o convite");
+	}
 
 	/*************************************************************************
 	 * SQL
@@ -146,6 +164,7 @@ class Invite extends Model {
 					idInvited	bigint(11) NOT NULL,
 					idTeam		int(11),
 					status		int(2) NOT NULL,
+					userStatus	int(2) NOT NULL,
 					PRIMARY KEY(id));";		
 		return $sql;
 	}

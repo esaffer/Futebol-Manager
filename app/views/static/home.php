@@ -8,17 +8,19 @@
 			$team = new Team;
 			$team->getTeam($id_invite->idTeam);
 			echo "Convites do time <a href='?act=team-view-profile&view=".$team->getID()."'>".$team->getName()." </a> </br>";
-			?> <?/*
+			?> 
 			<form action='?act=accept-reject' method='POST'>
-				<input type='hidden' id='idTeam' name='idTeam' value=" <?$aux->getIDTeam()?>" />
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?$id_invite->idTeam ?>" />
+				<input type='hidden' id='id' name='id' value=" <?$id_invite->id ?>" />
 				<input type='hidden' id='status' name='status' value='true' />
 				<input type='submit' value='Aceitar' />
 			</form>
 			<form action='?act=accept-reject' method='POST'>
-				<input type='hidden' id='idTeam' name='idTeam' value=" <?$aux->getIDTeam()?>" />
-				<input type='hidden' id='status' name='status' value= 'false' />
+				<input type='hidden' id='idTeam' name='idTeam' value=" <?$id_invite->idTeam ?>" />
+				<input type='hidden' id='id' name='id' value=" <?$id_invite->id ?>" />
+				<input type='hidden' id='status' name='status' value='false' />
 				<input type='submit' value='Rejeitar' />
-			</form> */?>
+			</form>
 		<? } 
 	
 
