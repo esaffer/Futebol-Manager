@@ -57,6 +57,30 @@ class Invite extends Model {
 		else
 			return False;
 	}
+	
+	/************************************************************************
+	 * getInviteInvited
+	 * Pega um usuário já invitado
+	 ************************************************************************/
+	public function getInviteInvited ($idInvited)
+	{
+		$sql = "SELECT * from $this->table_name WHERE idInvited = $idInvited";
+		echo "SQL = ".$sql;
+		$sql = $this->db->get_row($sql);		
+
+		if ($sql->id != NULL)
+		{
+			$this->id 		= $sql->id;
+			$this->idInviter	= $sql->idInviter;
+			$this->idInvited	= $sql->idInvited;
+			$this->idTeam	 	= $sql->idTeam;
+			$this->status		= $sql->status;
+			$this->userStatus	= $sql->userStatus;
+			return True;	
+		}
+		else
+			return False;
+	}
 
 
 
@@ -160,7 +184,7 @@ class Invite extends Model {
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 					id			int(11) NOT NULL AUTO_INCREMENT,
-					idInviter	bigint(20) NOT NULL,
+					idInviter	bigint(20),
 					idInvited	bigint(20) NOT NULL,
 					idTeam		int(11),
 					status		int(2) NOT NULL,
