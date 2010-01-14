@@ -128,7 +128,7 @@ class User extends Model {
 	 *************************************************************************/
 	public function delete($id) 
 	{
-		if ($this->checkId($this->table_name, $id)) 
+		if ($this->checkId($this->table_name, $id) == False) 
 		{
 			$this->messageFail("Não existe nenhum usuário com esse ID.");
 			return False;

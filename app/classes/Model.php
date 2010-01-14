@@ -46,12 +46,11 @@ class Model {
 	 * @result			boolean
 	 **/	 
 	public function checkId ($table, $id) {
-		$check = $this->db->get_row("SELECT id FROM " . $table . " WHERE id = " . $id);
-		
-		if (is_null($check->id))
-			return FALSE;
+		$check = $this->db->get_row("SELECT id FROM $table WHERE id = $id");
+		if ($check->id == "" || is_null($check->id))
+			return False;
 		else
-			return TRUE;
+			return True;
 	}
 	
 	

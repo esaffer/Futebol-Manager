@@ -1,7 +1,7 @@
 <?php
 	$invite = new Invite;
-	$invite->getInvite($_POST['id']);
-	if( $_POST['status'] == 'true'){
+	$invite->getInvite($_POST['idInvite']);
+	if($_POST['status'] == 'true'){
 		if($invite->getStatus() == true){
 			echo "adicionando user ao grupo..";
 			/*$team = new UserTeam;
@@ -11,13 +11,16 @@
 			$team->Add();*/
 		}
 		else{
-			echo "convite aceito!";
-			$invite->setUserStatus('1');
-			$invite->Edit($_POST['id']);
+			echo "Você aceitou o convite! </ br>";
+			echo "Aguarde a aprovação do Owner do grupo </ br>";
+			$invite->setUserStatus(1);
+			$invite->Edit($_POST['idInvite']);
+			echo "<a href='?act=home'> Voltar para tela inicial </a> </br>";
 		}
 	}
 	else{
-		echo "Deleta o convite.. nao implementado";//$invite->Delete($_POST['id']);
+		$invite->delete($_POST['idInvite']);
+		echo "<a href='?act=home'> Voltar para tela inicial </a> </br>";
 	}		
 
 ?>

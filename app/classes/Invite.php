@@ -82,7 +82,6 @@ class Invite extends Model {
 	}
 
 
-
 	/************************************************************************
 	 * getListTeam
 	 * Retorna a lista de invites que certo Team tenha..
@@ -114,6 +113,7 @@ class Invite extends Model {
 			'idInviter'		=> $this->idInviter,
 			'idInvited'		=> $this->idInvited,
 			'status'		=> $this->status,
+			'userStatus'		=> $this->userStatus,
 		);
 	}
 
@@ -160,13 +160,28 @@ class Invite extends Model {
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 					id			int(11) NOT NULL AUTO_INCREMENT,
-					idInviter	bigint(11) NOT NULL,
-					idInvited	bigint(11) NOT NULL,
+					idInviter	bigint(20) NOT NULL,
+					idInvited	bigint(20) NOT NULL,
 					idTeam		int(11),
 					status		int(2) NOT NULL,
 					userStatus	int(2) NOT NULL,
 					PRIMARY KEY(id));";		
 		return $sql;
+	}
+	
+	public function delete($id) 
+	{
+		if ($this->checkId($this->table_name, $id) == False) 
+		{
+			$this->messageFail("Não foi possivel deletar o convite.");
+			return False;
+		}
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE id = $id");
+			$this->messageOk("O convite foi excluído com sucesso!");
+			return True;
+		}
 	}
 
 
