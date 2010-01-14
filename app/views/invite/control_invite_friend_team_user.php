@@ -16,6 +16,7 @@
 				$invite->setIDInvited($id);
 				$invite->setIDTeam($_GET['id']);
 				$invite->setStatus($status);
+				$invite->setUserStatus(False);
 				$invite->Add();				
 				
 				$user = new User;
