@@ -30,4 +30,4 @@
 		echo "Nao convidou ninguem =( ";
 	}
 ?>
-?>
+

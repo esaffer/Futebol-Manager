@@ -22,13 +22,8 @@
 		return;
 	}
 	
-	$invite_test = new Invite;
-	$gah = $invite_test->getInviteInvited($idUserFacebook);
-	echo "teste";
-	print_r($gah);
-
 	//Usuário pediu um invite..
-	if($_GET['do'] == 'invite' && $linha == False && $invite_test == False)
+	if($_GET['do'] == 'invite' && $linha == False)
 	{		
 		$invite = new Invite;
 		$invite->setIDInviter(0);
@@ -74,8 +69,7 @@
 	//Executa ações restrita a membros. Implementar tudo logo após	
 	if( ($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE ) || $team->getIDOwner() == $idUserFacebook)
 	{
-	?>
-	
+	?>	
 		<form action='?act=create-game' method='POST'>
 			<input type='hidden' id='idTeam' name='idTeam' value=" <?= $team->getID() ?>" />
 			<input type='submit' value="Criar novo jogo" />
@@ -88,8 +82,10 @@
 	<?
 	}	
 	else
-	{
-		if($invite_test == False && $team->getIDOwner() != $idUserFacebook)//Não é owner e nem é do grupo
+	{	
+		$invite_test = new Invite;
+		$invite_test->getInviteInvited($idUserFacebook,$idTeam);
+		if($invite_test->getID() == "" )//Não é owner e nem é do grupo e nem tem convite
 		{
 		?>
 			<form action='?act=team-view-profile&view=<?= $team->getID()?>&do=invite' method='POST'>
@@ -98,4 +94,5 @@
 		<?
 		}
 	}
+
 ?>

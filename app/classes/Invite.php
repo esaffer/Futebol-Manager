@@ -60,12 +60,11 @@ class Invite extends Model {
 	
 	/************************************************************************
 	 * getInviteInvited
-	 * Pega um usuário já invitado
+	 * Pega um usuário já invitado para tal grupo
 	 ************************************************************************/
-	public function getInviteInvited ($idInvited)
+	public function getInviteInvited ($idInvited,$idTeam)
 	{
-		$sql = "SELECT * from $this->table_name WHERE idInvited = $idInvited";
-		echo "SQL = ".$sql;
+		$sql = "SELECT * from $this->table_name WHERE idInvited = $idInvited AND idTeam = $idTeam";
 		$sql = $this->db->get_row($sql);		
 
 		if ($sql->id != NULL)
