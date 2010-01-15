@@ -65,7 +65,49 @@
 	?>
 	<br />	
 	<?
-
+	
+	/*modo owner: ainda em testes.. favor nao deletar
+	if($team->getIDOwner() == $idUserFacebook){
+		//requisicoes
+		$invite2 = new Invite();
+		$requisicoes = $invite2->getListTeam($idTeam);
+		
+		if($requisicoes != False){
+			foreach($requisicoes as $id_req){
+				if($id_req->userStatus == true && $id_req->status != true){
+					$invited = new User;
+					$invited->getUser($id_req->idInvited);
+					$nick = $invited->getNick();
+					$foto = $invited->getImage($invited->getID());
+					
+					echo "<a href='?act=user-view-profile&view=$id_req->idInvited'> $foto $nick </a> 
+					quer entrar no time";
+					if($id_req->idInviter != 0){
+						$inviter = new User;
+						$inviter->getUser($id_req->idInviter);
+						$nick2 = $inviter->getNick();
+						echo "(o convite foi feito por 
+						<a href='?act=user-view-profile&view=$id_req->idInviter'>$nick2 </a>";
+					}
+					?>
+					
+					<form action='?act=team-accept-reject' method='POST'>
+					<input type='hidden' id='idTeam' name='idTeam' value='<?= $id_invite->idTeam ?>' />
+					<input type='hidden' id='idInvite' name='idInvite' value='<?= $id_invite->id ?>' />
+					<input type='hidden' id='status' name='status' value='true' />
+					<input type='submit' value='Aceitar' />
+					
+				<?
+				}
+			}
+		}
+		else{
+			echo "Não há requisições de ingresso pendentes";
+		}
+	}
+	*/
+	
+	
 	//Executa ações restrita a membros. Implementar tudo logo após	
 	if( ($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE ) || $team->getIDOwner() == $idUserFacebook)
 	{

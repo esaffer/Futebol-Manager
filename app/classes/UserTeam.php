@@ -200,8 +200,8 @@ class UserTeam extends Model {
 	 * Setters
 	 * Seta o conteúdo de uma variável.
 	 *************************************************************************/
-	public function setIDUser		($value) { $this->idTeam		= $value; }
-	public function setIDTeam		($value) { $this->idUser		= $value; }
+	public function setIDUser		($value) { $this->idUser		= $value; }
+	public function setIDTeam		($value) { $this->idTeam		= $value; }
 	public function setPoints		($value) { $this->points		= $value; }
 	public function setLocked		($value) { $this->locked		= $value; }
 	public function setDateJoined		($value = NULL)

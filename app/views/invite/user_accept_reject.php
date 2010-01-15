@@ -3,12 +3,15 @@
 	$invite->getInvite($_POST['idInvite']);
 	if($_POST['status'] == 'true'){
 		if($invite->getStatus() == true){
-			echo "adicionando user ao grupo..";
-			/*$team = new UserTeam;
-			$team->setIDUser($_POST['id']);
-			$team->setIDTeam($_POST['idTeam']);
-			$team->setLocked(false);
-			$team->Add();*/
+			$userteam = new UserTeam;
+			$userteam->setIDUser($idUserFacebook);
+			$userteam->setIDTeam($_POST['idTeam']);
+			$userteam->setLocked(False);
+			$userteam->setDateJoined(NULL);
+			$userteam->setPoints(0);
+			$userteam->Add();
+			echo "Você foi adicionado com sucesso já que o convite foi efetuado pelo owner!";
+			$invite->delete($_POST['idInvite']);
 		}
 		else{
 			echo "Você aceitou o convite! </ br>";

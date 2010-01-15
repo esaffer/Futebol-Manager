@@ -22,6 +22,8 @@
 		'team-view-profile'	=> 'team/view-profile.php',
 		'team-edit'		=> 'team/edit.php',
 		'team-user'		=> 'team/list-user.php',
+
+
 		
 		//GAME
 		'create-game'		=> 'game/add.php',
@@ -37,6 +39,7 @@
 		'invite-friends-team'		=> 'invite/add_team.php',
 		'invite-friends-team-user'	=> 'invite/control_invite_friend_team_user.php',
 		'invite-accept-reject'		=> 'invite/user_accept_reject.php',
+		'invite-owner-accept-reject'	=> 'invite/owner-accept-reject.php',
 		
 		//NAO POSSUEM O APP
 		'invite-friends-team-not-user'	=> 'invite/control_invite_friend_team_not_user.php',
