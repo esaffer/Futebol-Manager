@@ -5,9 +5,9 @@
 	$invite = New Invite;
 	$convites = $invite->getListInvited($idUserFacebook);
 	
-	echo "</ br>Seja bem vindo!<br><br>";
-	
 	echo "<br> <br> O aplicativo ainda se encontra em desenvolvimento! <br> Desculpe os transtornos - by Trojahn";
+	echo "<br><br><br>Seja bem vindo!<br><br>";	
+	
 	if($convites != False)
 	{
 		foreach($convites as $id_invite)

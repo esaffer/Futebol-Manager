@@ -136,5 +136,14 @@
 		<?
 		}
 	}
+	if($team->getIDOwner() == $idUserFacebook) //Apenas Owner vê isso aqui...
+	{
+	?>	
+		<form action='?act=team-edit' method='POST'>
+			<input type='hidden' id='idTeam' name='idTeam' value=" <?= $team->getID() ?>" />
+			<input type='submit' value="Editar grupo" />
+		</form>
+	<?
+	}
 
 ?>
