@@ -117,7 +117,7 @@ class Model {
 			
 		// finaliza a função e entrega a query
 		$s .= "WHERE id = $id LIMIT 1";
-
+		echo "</br > SQL de retorno = ".$s."<br>";
 		return $s;
 	}
 }

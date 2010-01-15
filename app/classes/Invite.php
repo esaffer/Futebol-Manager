@@ -132,10 +132,10 @@ class Invite extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
+			'status'		=> $this->status,
 			'idTeam'		=> $this->idTeam,
 			'idInviter'		=> $this->idInviter,
-			'idInvited'		=> $this->idInvited,
-			'status'		=> $this->status,
+			'idInvited'		=> $this->idInvited,			
 			'userStatus'		=> $this->userStatus,
 		);
 	}
@@ -162,14 +162,14 @@ class Invite extends Model {
 	{
 		if (is_null($id))
 		{
-			$this->messageFail('É necessário informar um ID.');
+			$this->messageFail('É necessário informar um ID');
 			return False;
 		}
 		
 		$this->setAll();
 		print_r($this->base);
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
-		
+		echo "SQL = ".$sql;
 		if ($this->db->query($sql))
 			$this->messageOk("O convite foi aceitado com sucesso!");
 		else
