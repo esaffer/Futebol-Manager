@@ -149,9 +149,9 @@ class Game extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("A equipe <b>" . $this->name . "</b> foi adicionada com sucesso!");
+			$this->messageFail("Ocorreu um erro ao criar o jogo");			$
 		else
-			$this->messageFail("Ocorreu um erro ao adicionar a equipe.");
+			this->messageOk("O jogo foi criado com com sucesso!");
 	}
 
 

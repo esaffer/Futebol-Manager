@@ -167,9 +167,7 @@ class Invite extends Model {
 		}
 		
 		$this->setAll();
-		print_r($this->base);
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
-		echo "SQL = ".$sql;
 		if ($this->db->query($sql))
 			$this->messageOk("O convite foi aceitado com sucesso!");
 		else

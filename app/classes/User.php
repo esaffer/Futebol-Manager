@@ -84,9 +84,9 @@ class User extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O usuário <b>" . $this->nick . "</b> foi adicionado com sucesso!");
+			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");			
 		else
-			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");
+			$this->messageOk("Você teve sua conta criada com sucesso!");
 	}
 
 
@@ -151,7 +151,7 @@ class User extends Model {
 		$sql	= "CREATE TABLE " . $this->table_name . " (
 					id				bigint(20) NOT NULL,
 					image			varchar(50),
-					nick			varchar(25),
+					nick			varchar(50),
 					points			mediumint(9),
 					description		text,
 					date_created	datetime NOT NULL,

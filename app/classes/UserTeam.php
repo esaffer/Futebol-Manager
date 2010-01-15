@@ -124,10 +124,10 @@ class UserTeam extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O usuário foi adicionado com sucesso!");
+			$this->messageFail("Ocorreu um erro ao adicionar o usuário");			
 		else
-			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");
-	}
+			$this->messageOk("O usuário foi adicionado com sucesso!");
+	}	
 
 
 
