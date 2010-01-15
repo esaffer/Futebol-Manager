@@ -36,7 +36,7 @@
 		}
 		else
 		{
-			$invite->setStatus(True);
+			$invite->setStatus(1);
 			$invite->Edit($_POST['idInvite']);
 			echo "</ br> O usuário entrará no grupo assim que ele aceitar o convite!";
 			return;
