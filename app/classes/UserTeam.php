@@ -189,7 +189,7 @@ class UserTeam extends Model {
 					idTeam				bigint(20) NOT NULL,
 					locked				bool,
 					points				mediumint(9),
-					date_joined			timestamp,
+					date_joined			datetime
 					);";
 		
 		return $sql;

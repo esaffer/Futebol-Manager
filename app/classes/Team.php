@@ -209,13 +209,12 @@ class Team extends Model {
 		}
 		
 		$this->setAll();
-		print_r($this->base);
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("A equipe <b>" . $this->name . "</b> foi editada com sucesso!");
+			$this->messageFail("Ocorreu um erro ao editar a equipe...");			
 		else
-			$this->messageFail("Ocorreu um erro ao editar a equipe...");
+			$this->messageOk("A equipe <b>" . $this->name . "</b> foi editada com sucesso!");
 	}
 
 
@@ -226,12 +225,12 @@ class Team extends Model {
 	 *************************************************************************/
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
-					id				int(11),
-					id_owner		bigint(11),
-					name			varchar(100),
+					id				int(11) NOT NULL AUTO_INCREMENT,
+					id_owner		bigint(11) NOT NULL,
+					name			varchar(100) NOT NULL ,
 					description		text,
 					rules			text,
-					date_created		datetime,
+					date_created		datetime NOT NULL,
 					place			mediumint(9),
 					privative		bool,
 					image			varchar(255),

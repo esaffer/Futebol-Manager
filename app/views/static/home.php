@@ -4,6 +4,7 @@
 	$user = new User;
 	$invite = New Invite;
 	$convites = $invite->getListInvited($idUserFacebook);
+
 	
 	echo "<br> <br> O aplicativo ainda se encontra em desenvolvimento! <br> Desculpe os transtornos - by Trojahn";
 	echo "<br><br><br>Seja bem vindo!<br><br>";	
@@ -36,9 +37,12 @@
 			}
 		} 
 	}
+
 	$list_owner_team = new Team;
 	$matriz = $list_owner_team->getListTeamOwner($idUserFacebook);
-	if($matriz == False) {
+
+	if($matriz == False)
+	{
 		echo "</ br></ br>Você nao é dono de nenhum grupo, portanto não possui requisições pendentes de ingresso em grupos";
 	}
 	else
@@ -46,11 +50,11 @@
 		foreach($matriz as $id_team)
 		{	
 			//requisicoes
-			$invite2 = new Invite();
+			$invite2 = new Invite;
 			$requisicoes = $invite2->getListTeam($id_team->id);
-			
 			if($requisicoes != False)
 			{
+				
 				foreach($requisicoes as $id_req)
 				{
 					if($id_req->status != true)
@@ -59,7 +63,7 @@
 						$invited->getUser($id_req->idInvited);
 						$nick = $invited->getNick();
 						$foto = $invited->getImage($invited->getID());
-						
+						echo "<br><br><br> aqui mesmo...";
 						echo "Requisições pendentes do grupo 
 							<a href='?act=team-view-profile&view=$id_team->id'> $id_team->name </a> </br>";
 						echo "<a href='?act=user-view-profile&view=$id_req->idInvited'> $foto $nick </a> 
