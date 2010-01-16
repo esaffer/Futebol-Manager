@@ -119,5 +119,35 @@ class Model {
 		$s .= "WHERE id = $id LIMIT 1";
 		return $s;
 	}
+	
+	public function createUpdateQueryGambiarra($table, $list, $id) {
+		$list	= array_filter($list, notEmpty);
+		$i 		= count($list);
+		$j		= 0;
+		
+		$s = "UPDATE `$table` SET ";
+		
+		// adiciona na lista os elementos do tipo STRING
+		$x = array_filter($list, onlyString);
+		reset($x);
+		while (list($key, $val) = each($x)) {
+			$s .= "$key = \"$val\"";
+			$j++;
+			$s .= ($j < $i) ? ", " : " "; 
+		}
+			
+		// adiciona na lista os elementos do tipo NUMERIC
+		$x = array_filter($list, is_numeric);
+		reset($x);
+		while (list($key, $val) = each($x)) {
+			$s .= "$key = $val";
+			$j++;
+			$s .= ($j < $i) ? ", " : " "; 
+		}
+		
+		// finaliza a função e entrega a query
+		$s .= "WHERE ".$id." LIMIT 1";
+		return $s;
+	}
 }
 ?>

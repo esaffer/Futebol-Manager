@@ -144,7 +144,7 @@ class UserTeam extends Model {
 		}
 		
 		$this->setAll();
-		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
+		$sql = $this->createUpdateQueryGambiarra($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql) == False)
 			$this->messageOk("O Registro foi editado com sucesso!");

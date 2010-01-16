@@ -44,7 +44,7 @@ class UserGame extends Model {
 		$sql = "SELECT * from " . $this->table_name . " WHERE idGame = $idGame AND idUser = $idUser AND idTeam = $idTeam";
 		$sql = $this->db->get_row($sql);
 				
-		if ($sql->id != NULL) {
+		if ($sql->idGame != NULL) {
 		
 			$this->idGame			= $sql->idGame;
 			$this->idTeam			= $sql->idTeam;
@@ -109,9 +109,9 @@ class UserGame extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageFail("Ocorreu um erro ao adicionar a equipe.");			
+			$this->messageFail("Ocorreu um erro ao modificar dados do jogo");			
 		else
-			$this->messageOk("A equipe <b>" . $this->name . "</b> foi adicionada com sucesso!");
+			$this->messageOk("Dados do jogo atualizados!");		
 	}
 
 
@@ -125,16 +125,15 @@ class UserGame extends Model {
 		{
 			$this->messageFail('É necessário informar um ID.');
 			return False;
-		}
-		
+		}		
 		$this->setAll();
-		print_r($this->base);
-		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
+
+		$sql = $this->createUpdateQueryGambiarra($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("A equipe <b>" . $this->name . "</b> foi editada com sucesso!");
+			$this->messageFail("Ocorreu um erro ao modificar dados do jogo");
 		else
-			$this->messageFail("Ocorreu um erro ao editar a equipe...");
+			$this->messageOk("Dados do jogo atualizados!");
 	}
 
 
@@ -163,7 +162,7 @@ class UserGame extends Model {
 	public function setIDTeam		($value) { $this->idTeam	= $value; }
 	public function setIDUser		($value) { $this->idUser	= $value; }
 	public function setIDGame 		($value) { $this->idGame 	= $value; }
-	public function setStatus 		($value) { $this->idTeam 	= $value; }
+	public function setStatus 		($value) { $this->status 	= $value; }
 
 	
 	

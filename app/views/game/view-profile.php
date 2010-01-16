@@ -3,17 +3,58 @@
 <?php
 	$idgame = $_GET['view'];
 	
-	if($idgame == "")
-	{
-		echo "Nenhum jogo selecionado";
-		return;
-	}	
-	
 	$game = new Game;
 	$game->getGame($idgame);
 	
+	
+	
+	if($idgame == "" || $game->getID() == NULL)
+	{
+		echo "O jogo selecionado não existe!";
+		return;
+	}	
+	
 	$team = new Team;
 	$team->getTeam($game->getIDTeam());
+	
+	if($_GET['do'] == 'accept')
+	{
+		$userGame = new UserGame;
+		$var = $userGame->getUserGame($idgame, $idUserFacebook,$team->getID());
+		if($var == False) //Jogador não tinha marcado nada ainda.
+		{
+			$userGame->setIDTeam($team->getID());
+			$userGame->setIDUser($idUserFacebook);
+			$userGame->setIDGame($idgame);
+			$userGame->setStatus(1); // Vai ir...
+			$userGame->Add();
+		}
+		else {
+			$userGame->setStatus(1); // Vai ir...
+			$userGame->Edit("idUser = $idUserFacebook AND idTeam = ". $team->getID() ." AND idGame = $idgame");				
+		}	
+	}
+	
+	if($_GET['do'] == 'reject')
+	{
+		$userGame = new UserGame;
+		$var = $userGame->getUserGame($idgame, $idUserFacebook,$team->getID());
+		if($var == False) //Jogador não tinha marcado nada ainda.
+		{
+			$userGame->setIDTeam($team->getID());
+			$userGame->setIDUser($idUserFacebook);
+			$userGame->setIDGame($idgame);
+			$userGame->setStatus(-1); // Não vai ir
+			$userGame->Add();
+		}
+		else {
+			$userGame->setStatus(-1); // Não vai ir
+			$userGame->Edit("idUser = $idUserFacebook AND idTeam = ". $team->getID() ." AND idGame = $idgame");			
+		}		
+	}
+	
+	
+
 	
 	$user = new User;
 	$user->getUser($game->getIDCreator());
@@ -48,11 +89,11 @@
 	}
 	else
 	{
-		$user = new User;
+		$naovai = new User;
 		foreach($matriz as $lista)
 		{
-			$user->getUser($lista->idUser);
-			echo "</br> <a href='?act=user-view-profile&view=$lista->idUser'> $user->getNick() </a>";
+			$naovai->getUser($lista->idUser);
+			echo "</ br> <a href='?act=user-view-profile&view='".$naovai->getID()."'>".$naovai->getNick()."</a>";
 		}		
 	}
 	
@@ -64,15 +105,13 @@
 	}
 	else
 	{
-		$user = new User;
+		$vai = new User;
 		foreach($matriz as $lista)
 		{
-			$user->getUser($lista->idUser);
-			echo "</br> <a href='?act=user-view-profile&view=$lista->idUser'> $user->getNick() </a>";
+			$vai->getUser($lista->idUser);
+			echo "</ br> <a href='?act=user-view-profile&view='".$vai->getID()."'>".$vai->getNick()."</a>";
 		}		
-	}
-	
-	
+	}	
 	
 	//Executa ações restrita ao Owner do time ou ao Creator. 
 	if($game->getIDCreator() == $idUserFacebook || $team->getIDOwner() == $idUserFacebook )
@@ -83,5 +122,46 @@
 			</form>
 		<?
 	}	
-
+	
+	//Confirmar presença ou não...
+	$userTeam = new UserTeam;
+	$pertence = $userTeam->getUserTeam($idUserFacebook,$team->getID());
+	
+	if($pertence != False || $team->getIDOwner() == $idUserFacebook) //Faz parte do time
+	{
+		$userGame = new UserGame;
+		$marcou = $userGame->getUserGame($idgame,$idUserFacebook,$team->getID());
+		if($marcou != False) // Jah disse se vai ou nao...
+		{
+			if($userGame->getStatus() == 1) //Disse que vai
+			{
+			?>
+			<form action='?act=game-view-profile&view=<?= $game->getID()?>&do=reject' method='POST'>
+				<input type='submit' value="Não irei ao jogo" />
+			</form>  
+			<?
+			}
+			else //Disse que não vai...
+			{
+			?>
+			<form action='?act=game-view-profile&view=<?= $game->getID() ?>&do=accept' method='POST'>
+				<input type='submit' value="Irei ao jogo" />
+			</form>  
+			<?
+			}
+		
+		}	
+		else //Não disse nada, mostra as duas opções
+		{
+		?>
+		<form action='?act=game-view-profile&view=<?= $game->getID()?>&do=reject' method='POST'>
+			<input type='submit' value="Não irei ao jogo" />
+		</form>  
+		
+		<form action='?act=game-view-profile&view=<?= $game->getID() ?>&do=accept' method='POST'>
+			<input type='submit' value="Irei ao jogo" />
+		</form>  		
+		<?
+		}
+	}
 ?>
