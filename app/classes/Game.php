@@ -85,6 +85,18 @@ class Game extends Model {
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
+	
+	public function getListTeamDateOld($idTeam,$data)
+	{
+		$this->db->query("SELECT * from $this->table_name WHERE idTeam =$idTeam AND date < '". $data . "' ORDER BY date");
+		return $this->db->get_results();
+	}
+	
+	public function getListTeamDateNew($idTeam,$data)
+	{
+		$this->db->query("SELECT * from $this->table_name WHERE idTeam =$idTeam AND date > '". $data . "' ORDER BY date");
+		return $this->db->get_results();
+	}
 
 	/************************************************************************
 	 * getListTeamOrderDate

@@ -52,7 +52,7 @@
 	<br />
 	<? 
 		$jogos = new Game;
-		$matriz = $jogos->getListTeamOrderDateDesc($idTeam);
+		$matriz = $jogos->getListTeamDateNew($idTeam,date('Y-m-d H:i:s',time()));
 		if($matriz == False) {
 			echo "Este grupo ainda não marcou nenhum jogo</ br>";
 		}
@@ -113,7 +113,7 @@
 	{
 	?>	
 		<form action='?act=create-game' method='POST'>
-			<input type='hidden' id='idTeam' name='idTeam' value=" <?= $team->getID() ?>" />
+			<input type='hidden' id='idTeam' name='idTeam' value='<?= $team->getID() ?>' />
 			<input type='submit' value="Criar novo jogo" />
 		</form>
 		
@@ -147,3 +147,7 @@
 	}
 
 ?>
+	<form action='?act=game-list-old' method='POST'>
+			<input type='hidden' id='idTeam' name='idTeam' value='<?= $team->getID() ?>' />
+			<input type='submit' value="Ver jogos passados" />
+	</form>
