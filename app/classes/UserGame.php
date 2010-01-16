@@ -58,16 +58,29 @@ class UserGame extends Model {
 	}
 
 	/************************************************************************
-	 * getListUserConfirmed
+	 * getListUser
 	 * Retorna a lista de jogos que determinado usuário já confirmou.
 	 * status = 1 para confirmado, 0 para não informado, -1 para rejeitado
 	 ************************************************************************/
 	public function getListUser ($idUser, $status)
 	{
-		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND status = $status";
+		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND _status = $status";
 		$this->db->query($sql);		
 		return $this->db->get_results();
-	}		
+	}	
+	
+	
+	/************************************************************************
+	 * getListUserTeam
+	 * status = 1 para confirmado, 0 para não informado, -1 para rejeitado
+	 ************************************************************************/
+	public function getListUserTeam ($idGame, $status)
+	{
+		$sql = "SELECT * from $this->table_name WHERE idGame = $idGame AND _status = $status";
+		$this->db->query($sql);		
+		return $this->db->get_results();
+	}
+		
 	
 	/************************************************************************
 	 * setAll

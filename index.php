@@ -16,6 +16,7 @@
 	include('app/classes/UserTeam.php');
 	include('app/classes/Game.php');
 	include('app/classes/Invite.php');
+	include('app/classes/UserGame.php');
  
  // Inicializa o Facebook -----------------------------------------------------
 	$facebook = new Facebook(FACEBOOK_KEY, FACEBOOK_SECRET);
