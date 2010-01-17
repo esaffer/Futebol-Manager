@@ -4,7 +4,30 @@
 	$user = new User;
 	$invite = New Invite;
 	$convites = $invite->getListInvited($idUserFacebook);
-
+	
+	/////////////////PARTE QUE TRATA OS AVISOS!!!!!!!!!!!!!
+	$avisos = new Warning;
+	$matriz = $avisos->getListUser($idUserFacebook);
+	
+	if($matriz == False)
+	{
+		echo "</ br> Nenhum aviso encontrado!";
+	}
+	else
+	{
+		echo "</ br> Avisos: </ br>";
+		foreach($matriz as $lista)
+		{
+			echo "</ br>--> ".$lista->text;
+			//Colocar sistema de deleção e tudo o mais
+		
+		}
+		echo "</ br> Fim dos avisos!";
+	}
+	
+	
+	
+	/////////////////////////////////FIM DA PARTE QUE TRATA DOS AVISOS!
 	
 	echo "<br> <br> O aplicativo ainda se encontra em desenvolvimento! <br> Desculpe os transtornos - by Trojahn";
 	echo "<br><br><br>Seja bem vindo!<br><br>";	
