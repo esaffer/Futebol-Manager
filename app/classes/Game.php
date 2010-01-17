@@ -182,9 +182,9 @@ class Game extends Model {
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("A equipe <b>" . $this->name . "</b> foi editada com sucesso!");
+			$this->messageFail("O jogo não pode ser editado...");			
 		else
-			$this->messageFail("Ocorreu um erro ao editar a equipe...");
+			$this->messageOk("O jogo foi editado com sucesso!");
 	}
 
 

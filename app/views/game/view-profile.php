@@ -60,10 +60,10 @@
 	$user->getUser($game->getIDCreator());
 	
 	echo "<br>Nome do Grupo: ";
-	echo "<a href='?act=team-view-profile&view='".$team->getID()." '>".$team->getName()."</a>";	
+	echo "<a href='?act=team-view-profile&view=".$team->getID()."'>".$team->getName()."</a>";	
 	
 	echo "<br>Nome do Criador do jogo: ";
-	echo "<a href='?act=user-view-profile&view='".$user->getID()."'>".$user->getNick()."</a>";
+	echo "<a href='?act=user-view-profile&view=".$user->getID()."'>".$user->getNick()."</a>";
 	
 	echo "<br>Número mínimo de jogadores: ";
 	echo $game->getNumMinPlayers();
@@ -89,11 +89,12 @@
 	}
 	else
 	{
-		$naovai = new User;
+		$vai = new User;
+		$num_membros_vao = count($matriz);
 		foreach($matriz as $lista)
 		{
-			$naovai->getUser($lista->idUser);
-			echo "</ br> <a href='?act=user-view-profile&view='".$naovai->getID()."'>".$naovai->getNick()."</a>";
+			$vai->getUser($lista->idUser);
+			echo "</ br> <a href='?act=user-view-profile&view=".$vai->getID()."'>".$vai->getNick()."</a>";
 		}		
 	}
 	
@@ -105,11 +106,11 @@
 	}
 	else
 	{
-		$vai = new User;
+		$naovai = new User;
 		foreach($matriz as $lista)
 		{
-			$vai->getUser($lista->idUser);
-			echo "</ br> <a href='?act=user-view-profile&view='".$vai->getID()."'>".$vai->getNick()."</a>";
+			$naovai->getUser($lista->idUser);
+			echo "</ br> <a href='?act=user-view-profile&view=".$naovai->getID()."'>".$naovai->getNick()."</a>";
 		}		
 	}	
 	
@@ -123,11 +124,12 @@
 		<?
 	}	
 	
+	
 	//Confirmar presença ou não...
 	$userTeam = new UserTeam;
 	$pertence = $userTeam->getUserTeam($idUserFacebook,$team->getID());
 	
-	if($pertence != False || $team->getIDOwner() == $idUserFacebook) //Faz parte do time
+	if(($pertence != False || $team->getIDOwner() == $idUserFacebook) && ($num_membros_vao+1 <= $game->getNumMaxPlayers() || $game->getNumMaxPlayers() == 0)) //Faz parte do time ou é o owner e ainda tem lugar para entrar (ou é lugares infinitos).
 	{
 		$userGame = new UserGame;
 		$marcou = $userGame->getUserGame($idgame,$idUserFacebook,$team->getID());
@@ -135,6 +137,7 @@
 		{
 			if($userGame->getStatus() == 1) //Disse que vai
 			{
+				echo "</ br> Você está marcado como participante deste jogo!";
 			?>
 			<form action='?act=game-view-profile&view=<?= $game->getID()?>&do=reject' method='POST'>
 				<input type='submit' value="Não irei ao jogo" />
@@ -143,6 +146,7 @@
 			}
 			else //Disse que não vai...
 			{
+				echo "</ br> Você está marcado como AUSENTE  deste jogo!";
 			?>
 			<form action='?act=game-view-profile&view=<?= $game->getID() ?>&do=accept' method='POST'>
 				<input type='submit' value="Irei ao jogo" />
@@ -153,6 +157,7 @@
 		}	
 		else //Não disse nada, mostra as duas opções
 		{
+			echo "</ br> Você ainda não disse se irá ou não ao jogo!";
 		?>
 		<form action='?act=game-view-profile&view=<?= $game->getID()?>&do=reject' method='POST'>
 			<input type='submit' value="Não irei ao jogo" />
@@ -161,6 +166,18 @@
 		<form action='?act=game-view-profile&view=<?= $game->getID() ?>&do=accept' method='POST'>
 			<input type='submit' value="Irei ao jogo" />
 		</form>  		
+		<?
+		}
+	}
+	else
+	{
+		if($num_membros_vao+1 > $game->getNumMaxPlayers() && $game->getNumMaxPlayers() != 0) //Acabou os lugares =/
+		{
+		echo "</ br> Número máximo de jogadores atingido!";
+		?>
+		<form action='?act=game-view-profile&view=<?= $game->getID()?>&do=reject' method='POST'>
+			<input type='submit' value="Não irei ao jogo" />
+		</form>  
 		<?
 		}
 	}
