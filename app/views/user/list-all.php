@@ -1,15 +1,35 @@
 <h1>Lista de Usuários</h1>
 
-<?php
+<?
 	$user = new User;
-	$sql = $user->getAllUsers();
-	if($sql == False) {
-		echo "Não há nenhum usuário cadastrado!";
+	$users = $user->getAllUsers();
+	
+	if ($users == False) {
+		echo $user->messageFail('Não há nenhum usuário cadastrado!');
 	}
-	else{
-		echo "Usuários: </br>";
-		foreach($sql as $id){
-				echo "<a href='?act=user-view-profile&view=$id->id'> $id->nick </a> </br>";
+	else {
+	?>
+		<table>
+			<thead>
+			<tr>
+				<td>Foto</td>
+				<td>Nome</td>
+				<td>Pontos</td>
+			</tr>
+			</thead>
+			
+			<tbody>
+	<?
+		foreach ($users as $u) {
+				echo "<tr>";
+				echo "	<td>" . $u->getImage() . "</td>"
+				echo "	<td><a href='?act=user-view-profile&view=" . $u->id . ">". $u->nick . "</a></td>";
+				echo "	<td>" . $u->points ."</td>";
+				echo "</tr>"
 		}
+	?>
+			</tbody>
+		</table>
+	<?
 	}
-?>
+	?>
