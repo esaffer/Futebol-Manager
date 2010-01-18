@@ -85,6 +85,8 @@ function geraWarning($idTeam)
 			$alerta->setDate();
 			$alerta->setText($mensagem);
 			$alerta->Add();
+			
+			//$notification = $facebook->api_client->notifications_send($lista->idUser, $mensagem, 'app_to_user');
 		}	
 	}
 	

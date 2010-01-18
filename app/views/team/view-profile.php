@@ -42,13 +42,19 @@
 	<br/>
 	Data de cadastro: <?= date('Y-m-d H:i:s',$team->getDateCreated()) ?>
 	<br />
-	Nome do criador do grupo: <?= $team->getTeamOwnerName() ?>
+	Nome do criador do grupo: 
+	<?  
+		$ownername = $team->getTeamOwnerName();
+		$ownerid = $team->getIDOwner();
+		echo "<a href='?act=user-view-profile&view=$ownerid'>$ownername</a>";
+	?>
 	<br />
 	Tipo de grupo: <?= ($team->getPrivative() == True) ? 'Privado' : 'Publico' ?>
 	<br />
 	Descrição: <?= $team->getDescription() ?>
 	<br />
 	Regras: <?= $team->getRules() ?>
+	<br />
 	<br />
 	<? 
 		$jogos = new Game;
@@ -63,7 +69,27 @@
 			}
 		}
 	?>
-	<br />	
+	<br>
+	<?//Lista os Usuarios do grupo
+		$userteam2 = new UserTeam;
+		$membros = $userteam2->getListTeam($idTeam);
+		if ($membros == false){
+			echo "Este grupo ainda não possue membros<br>";
+		}
+		else{	
+			echo "Membros do grupo:<br>";
+			foreach($membros as $id_membro){
+				$user = new User;
+				$user->getUser($id_membro->idUser);
+				$nick = $user->getNick();
+				$foto = $user->getImage($user->getID());
+				echo "<a href='?act=user-view-profile&view=$id_membro->idUser'> $foto $nick </a>";
+			}
+		}
+	?>
+	
+	<br>
+	
 	<?
 	
 	/*modo owner: ainda em testes.. favor nao deletar

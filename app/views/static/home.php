@@ -7,18 +7,18 @@
 	
 	if($matriz == False)
 	{
-		echo "</ br> Nenhum aviso encontrado!";
+		echo "<br> Nenhum aviso encontrado!<br>:";
 	}
 	else
 	{
-		echo "</ br> Avisos: </ br>";
+		echo "<br> Avisos: <br>";
 		foreach($matriz as $lista)
 		{
-			echo "</ br>--> ".$lista->text;
+			echo "--> ".$lista->text;
+			echo "<br>";
 			//Colocar sistema de deleção e tudo o mais
-		
 		}
-		echo "</ br> Fim dos avisos!";
+		echo "Fim dos avisos!<br>";
 	}
 	
 	
