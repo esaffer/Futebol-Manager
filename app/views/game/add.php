@@ -1,6 +1,13 @@
 <h1>Adicionar Jogo</h1>
 
 <?php
+
+	if($_POST['idTeam'] == "")
+	{
+		echo "<br> Impossível criar novo jogo";
+		return;
+	}
+
 	if ($_GET['do'] == 'add') {
 		$game = new Game;
 		$game->setIDCreator($_POST['idCreator']);		
@@ -11,6 +18,7 @@
 		$game->setNumMaxPlayers($_POST['nummaxplayers']);
 		$game->setCost($_POST['cost']);
 		$game->Add();
+		geraWarning($_POST['idTeam']);
 	}
 	else {
 		$userteam = new UserTeam;
@@ -56,6 +64,36 @@
 	
 	
 <?php
+
+function geraWarning($idTeam)
+{
+	$team = new Team;
+	$team->getTeam($idTeam);
+	
+	$alerta = new Warning;
+	
+	$userTeam = new UserTeam;
+	$lista_users = $userTeam->getListTeam($idTeam);
+	
+	$mensagem = "O usuário XXXX do grupo '" . $team->getName() . "' criou um novo jogo!</ br>";
+	
+	if($lista_users != False)
+	{
+		foreach($lista_users as $lista)
+		{
+			$alerta->setIDDestino($lista->idUser);
+			$alerta->setDate();
+			$alerta->setText($mensagem);
+			$alerta->Add();
+		}	
+	}
+	
+	$alerta->setIDDestino($team->getIDOwner());
+	$alerta->setDate();
+	$alerta->setText($mensagem);
+	$alerta->Add();
+}
+
 
 function imprimeMin()
 {

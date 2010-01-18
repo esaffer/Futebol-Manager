@@ -4,7 +4,17 @@
 	$invite = new Invite;
 	$invite->getInvite($_POST['idInvite']);
 	
-	if($_POST['idTeam'] != $isUserFacebook)
+	
+	if($_POST['idTeam'] == "" || $_POST['idUser'] == "")
+	{
+		echo "</ br> Nenhum time selecionado";
+		return;
+	}
+	
+	$team = new Team;
+	$team->getTeam($_POST['idTeam']);	
+	
+	if($team->getIDOwner() != $idUserFacebook)
 	{
 		echo "</ br> Você não tem permissão para executar essa ação";
 		return;
@@ -22,8 +32,8 @@
 	{
 		if($invite->getUserStatus() == True )
 		{
-			$userteam = new UserTeam;
-			$userteam->setIDUser($_POST['idUser']);
+			$userteam = new UserTeam;			
+			$userteam->setIDUser($invite->getIDInvited());
 			$userteam->setIDTeam($_POST['idTeam']);
 			$userteam->setLocked(False);
 			$userteam->setDateJoined();

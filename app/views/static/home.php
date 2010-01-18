@@ -1,10 +1,6 @@
 <h1>Página Inicial<br><br><br><br><br><br><br><br><br><br></h1>
 
-<?php
-	$user = new User;
-	$invite = New Invite;
-	$convites = $invite->getListInvited($idUserFacebook);
-	
+<?php	
 	/////////////////PARTE QUE TRATA OS AVISOS!!!!!!!!!!!!!
 	$avisos = new Warning;
 	$matriz = $avisos->getListUser($idUserFacebook);
@@ -26,8 +22,11 @@
 	}
 	
 	
-	
 	/////////////////////////////////FIM DA PARTE QUE TRATA DOS AVISOS!
+	
+	$user = new User;
+	$invite = new Invite;
+	$convites = $invite->getListInvited($idUserFacebook);
 	
 	echo "<br> <br> O aplicativo ainda se encontra em desenvolvimento! <br> Desculpe os transtornos - by Trojahn";
 	echo "<br><br><br>Seja bem vindo!<br><br>";	
@@ -39,7 +38,8 @@
 			$team = new Team;
 			$team->getTeam($id_invite->idTeam);
 			echo "Você possuí um convite do time <a href='?act=team-view-profile&view=".$team->getID()."'>".$team->getName()." </a>";
-			if($id_invite->userStatus == true && $id_invite->status != true){
+			if($id_invite->userStatus == true && $id_invite->status != true)
+			{
 				echo "aguardando a aceitação do owner do grupo </ br>";
 			}
 			else{
@@ -70,7 +70,7 @@
 	}
 	else
 	{
-		foreach($matriz as $id_team)
+		foreach($matriz as $id_team) //Verifica todos os grupos em que o usuário é dono...
 		{	
 			//requisicoes
 			$invite2 = new Invite;
@@ -86,8 +86,7 @@
 						$invited->getUser($id_req->idInvited);
 						$nick = $invited->getNick();
 						$foto = $invited->getImage($invited->getID());
-						echo "<br><br><br> aqui mesmo...";
-						echo "Requisições pendentes do grupo 
+						echo "<br><br><br> Requisições pendentes do grupo 
 							<a href='?act=team-view-profile&view=$id_team->id'> $id_team->name </a> </br>";
 						echo "<a href='?act=user-view-profile&view=$id_req->idInvited'> $foto $nick </a> 
 						quer entrar no time";
@@ -101,7 +100,7 @@
 						}
 						?>
 						<form action='?act=invite-owner-accept-reject' method='POST'>
-							<input type='hidden' id='idTeam' name='idTeam' value='<?= $id_invite->idTeam ?>' />
+							<input type='hidden' id='idTeam' name='idTeam' value='<?= $id_req->idTeam ?>' />
 							<input type='hidden' id='idInvite' name='idInvite' value='<?= $id_req->id ?>' />
 							<input type='hidden' id='idUser' name='idUser' value='<?= $id_req->idInvited ?>' />
 							<input type='hidden' id='status' name='status' value='true' />

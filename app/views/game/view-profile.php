@@ -4,9 +4,7 @@
 	$idgame = $_GET['view'];
 	
 	$game = new Game;
-	$game->getGame($idgame);
-	
-	
+	$game->getGame($idgame);	
 	
 	if($idgame == "" || $game->getID() == NULL)
 	{
@@ -171,7 +169,7 @@
 	}
 	else
 	{
-		if($num_membros_vao+1 > $game->getNumMaxPlayers() && $game->getNumMaxPlayers() != 0) //Acabou os lugares =/
+		if($num_membros_vao+1 > $game->getNumMaxPlayers() && $game->getNumMaxPlayers() != 0 && ($pertence != False || $team->getIDOwner() == $idUserFacebook) //Acabou os lugares =/
 		{
 		echo "</ br> Número máximo de jogadores atingido!";
 		?>

@@ -76,7 +76,7 @@ class Warning extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'idDestino'		=> $this->idTeam,
+			'idDestino'		=> $this->idDestino,
 			'text'		=> $this->text,
 			'date'		=> $this->date,
 		);
@@ -95,9 +95,7 @@ class Warning extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageFail("Erro ao criar os alertas");			
-		else
-			$this->messageOk("Alertas criados com sucesso!");		
+			$this->messageFail("Erro ao criar os alertas");				
 	}
 
 
@@ -131,7 +129,7 @@ class Warning extends Model {
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 					id			int(11) NOT NULL AUTO_INCREMENT,
-					idDestino		int(11) NOT NULL,	
+					idDestino		bigint(20) NOT NULL,	
 					text			text,
 					date			datetime NOT NULL,				
 					
