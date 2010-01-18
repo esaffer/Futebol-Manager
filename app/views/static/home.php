@@ -7,7 +7,7 @@
 	
 	if($matriz == False)
 	{
-		echo "<br> Nenhum aviso encontrado!<br>:";
+		echo "<br> Nenhum aviso encontrado!<br>";
 	}
 	else
 	{

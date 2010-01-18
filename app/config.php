@@ -26,10 +26,16 @@
 /****************************************************************************
  * Banco de Dados
  ****************************************************************************/
-	define('DB_USER', 'troid16');
+//	define('DB_USER', 'troid16');
+//	define('DB_PASS', '');
+//	define('DB_HOST', 'mysql.webcindario.com');
+//	define('DB_NAME', 'troid16');
+//	define('DB_PREFIX', 'futebol_');
+
+	define('DB_USER', 'tiago');
 	define('DB_PASS', '');
-	define('DB_HOST', 'mysql.webcindario.com');
-	define('DB_NAME', 'troid16');
+	define('DB_HOST', 'localhost');
+	define('DB_NAME', 'tiago');
 	define('DB_PREFIX', 'futebol_');
 
 

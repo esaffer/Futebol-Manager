@@ -169,7 +169,7 @@
 	}
 	else
 	{
-		if($num_membros_vao+1 > $game->getNumMaxPlayers() && $game->getNumMaxPlayers() != 0 && ($pertence != False || $team->getIDOwner() == $idUserFacebook) //Acabou os lugares =/
+		if($num_membros_vao+1 > $game->getNumMaxPlayers() && $game->getNumMaxPlayers() != 0 && ($pertence != False || $team->getIDOwner() == $idUserFacebook)) //Acabou os lugares =/
 		{
 		echo "</ br> Número máximo de jogadores atingido!";
 		?>

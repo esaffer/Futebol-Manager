@@ -73,8 +73,13 @@
 	<?//Lista os Usuarios do grupo
 		$userteam2 = new UserTeam;
 		$membros = $userteam2->getListTeam($idTeam);
+		
+		$owner = new User;
+		$owner->getUser($team->getIDOwner());		
+		
 		if ($membros == false){
-			echo "Este grupo ainda não possue membros<br>";
+			echo "Membros do grupo:<br>";
+			echo "<a href='?act=user-view-profile&view=".$owner->getID() ."'> ". $owner->getImage($owner->getID()) . $owner->getNick() ."</a>";
 		}
 		else{	
 			echo "Membros do grupo:<br>";
@@ -85,6 +90,7 @@
 				$foto = $user->getImage($user->getID());
 				echo "<a href='?act=user-view-profile&view=$id_membro->idUser'> $foto $nick </a>";
 			}
+			echo "<a href='?act=user-view-profile&view=".$owner->getID()."'> ". $owner->getImage($owner->getID()). $owner->getNick() ."</a>";
 		}
 	?>
 	
