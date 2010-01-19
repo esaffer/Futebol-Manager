@@ -3,6 +3,4 @@
  * ads.php
  * Este arquivo contém os códigos referentes as propagandas contidas no site.
  *****************************************************************************/
- 
-
 ?>

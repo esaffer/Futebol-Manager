@@ -73,5 +73,7 @@
 			<? include('app/views/static/footer.php'); ?>
 		</div>
 	</div>
-	
+
+<? include('app/views/static/analytics.php'); ?>
+
 </html>
