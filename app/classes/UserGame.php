@@ -49,7 +49,7 @@ class UserGame extends Model {
 			$this->idGame			= $sql->idGame;
 			$this->idTeam			= $sql->idTeam;
 			$this->idUser			= $sql->idUser;
-			$this->status 			= $sql->_status;		
+			$this->status 			= $sql->status;		
 			return True;
 		}
 		else {
@@ -64,7 +64,7 @@ class UserGame extends Model {
 	 ************************************************************************/
 	public function getListUser ($idUser, $status)
 	{
-		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND _status = $status";
+		$sql = "SELECT * from $this->table_name WHERE idUser = $idUser AND status = $status";
 		$this->db->query($sql);		
 		return $this->db->get_results();
 	}	
@@ -76,7 +76,7 @@ class UserGame extends Model {
 	 ************************************************************************/
 	public function getListUserTeam ($idGame, $status)
 	{
-		$sql = "SELECT * from $this->table_name WHERE idGame = $idGame AND _status = $status";
+		$sql = "SELECT * from $this->table_name WHERE idGame = $idGame AND status = $status";
 		$this->db->query($sql);		
 		return $this->db->get_results();
 	}
@@ -92,7 +92,7 @@ class UserGame extends Model {
 			'idGame'		=> $this->idGame,
 			'idTeam'		=> $this->idTeam,
 			'idUser'		=> $this->idUser,
-			'_status'		=> $this->status,
+			'status'		=> $this->status,
 		);
 	}
 
@@ -147,7 +147,7 @@ class UserGame extends Model {
 					idUser			bigint(20) NOT NULL,
 					idTeam			int(11) NOT NULL,
 					idGame			int(11) NOT NULL,
-					_status			int(2) NOT NULL
+					status			int(2) NOT NULL
 					);";
 		
 		return $sql;

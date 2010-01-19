@@ -33,7 +33,7 @@
 //	define('DB_PREFIX', 'futebol_');
 
 	define('DB_USER', 'tiago');
-	define('DB_PASS', '');
+	define('DB_PASS', 'trojahn');
 	define('DB_HOST', 'localhost');
 	define('DB_NAME', 'tiago');
 	define('DB_PREFIX', 'futebol_');
