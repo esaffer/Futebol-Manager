@@ -32,7 +32,8 @@ class Game extends Model {
 	 * __construct
 	 * Construtor da classe.
 	 ************************************************************************/
-	public function __construct () {
+	public function __construct ()
+	{
 		$this->table_name = DB_TABLE_GAME;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
@@ -48,22 +49,26 @@ class Game extends Model {
 		$sql = "SELECT * from " . $this->table_name . " WHERE id = " . $id;
 		$sql = $this->db->get_row($sql);
 				
-		if ($sql->id != NULL) {
-		
-			$this->id 			= $sql->id;
+		if ($sql->id != NULL)
+		{
+			$this->id 				= $sql->id;
 			$this->idCreator		= $sql->idCreator;
 			$this->idTeam			= $sql->idTeam;
-			$this->date			= $sql->date;
+			$this->date				= $sql->date;
 			$this->description 		= $sql->description;
-			$this->numMinPlayers		= $sql->numminplayers;
-			$this->numMaxPlayers 		= $sql->nummaxplayers;
-			$this->cost 			= $sql->cost;			
+			$this->numMinPlayers	= $sql->numminplayers;
+			$this->numMaxPlayers 	= $sql->nummaxplayers;
+			$this->cost 			= $sql->cost;
+			
 			return True;
 		}
-		else {
+		else 
+		{
 			return False;
 		}
 	}
+
+
 
 	/************************************************************************
 	 * getListUser
@@ -72,43 +77,61 @@ class Game extends Model {
 	public function getListUser ($idCreator, $idTeam)
 	{
 		$sql = "SELECT * from $this->table_name WHERE idCreator = $idCreator AND idTeam = $idTeam";
-		$this->db->query($sql);		
+		$this->db->query($sql);
 		return $this->db->get_results();
-	}		
+	}
+
+
 
 	/************************************************************************
 	 * getListTeam
 	 * Retorna a lista de jogos de determinado team
-	 ************************************************************************/	
-	public function getListTeam($idTeam)
+	 ************************************************************************/
+	public function getListTeam ($idTeam)
 	{
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idTeam = " . $idTeam );
 		return $this->db->get_results();
 	}
-	
-	public function getListTeamDateOld($idTeam,$data)
+
+
+
+	/*************************************************************************
+	 * getListTeamDateOld
+	 * Retorna a lista de jogos anteriores a data indicada.
+	 *************************************************************************/
+	public function getListTeamDateOld ($idTeam, $data)
 	{
-		$this->db->query("SELECT * from $this->table_name WHERE idTeam =$idTeam AND date < '". $data . "' ORDER BY date");
+		$this->db->query("SELECT * from $this->table_name WHERE idTeam = $idTeam AND date < '". $data . "' ORDER BY date");
 		return $this->db->get_results();
 	}
-	
-	public function getListTeamDateNew($idTeam,$data)
+
+
+
+	/*************************************************************************
+	 * getListTeamDateNew
+	 * Retorna a lista de jogos a diante da data indicada.
+	 *************************************************************************/
+	public function getListTeamDateNew ($idTeam, $data)
 	{
 		$this->db->query("SELECT * from $this->table_name WHERE idTeam =$idTeam AND date > '". $data . "' ORDER BY date");
 		return $this->db->get_results();
 	}
+
+
 
 	/************************************************************************
 	 * getListTeamOrderDate
 	 * Retorna a lista de jogos de determinado team, ordenada conforme a data.
 	 * O jogo marcado mais para o futuro fica no topo do retorno.
 	 ************************************************************************/	
-	public function getListTeamOrderDateDesc($idTeam)
+	public function getListTeamOrderDateDesc ($idTeam)
 	{
 		$this->db->query("SELECT * from $this->table_name WHERE idTeam = $idTeam ORDER BY date DESC" );
 		return $this->db->get_results();
 	}
-	
+
+
+
 	/************************************************************************
 	 * getNumUser
 	 * Retorna o número de jogos que determinado usuário criou para este grupo.
@@ -118,7 +141,9 @@ class Game extends Model {
 		$sql = "SELECT COUNT(idCreator) from $this->table_name WHERE idCreator = $idCreator AND idTeam = $idTeam";	
 		return $this->db->get_var($sql);;
 	}
-	
+
+
+
 	/************************************************************************
 	 * getNumTeam
 	 * Retorna o número de jogos que determinado usuário criou para este grupo.
@@ -130,6 +155,7 @@ class Game extends Model {
 	}
 
 
+
 	/************************************************************************
 	 * setAll
 	 * Seta as variáveis em um array antes de salvá-las.
@@ -137,14 +163,14 @@ class Game extends Model {
 	private function setAll ()
 	{
 		$this->base = array (
-			'id'			=> $this->id,
-			'idCreator'		=> $this->idCreator,
-			'idTeam'		=> $this->idTeam,
+			'id'				=> $this->id,
+			'idCreator'			=> $this->idCreator,
+			'idTeam'			=> $this->idTeam,
 			'description'		=> $this->description,
-			'date'			=> $this->date,
+			'date'				=> $this->date,
 			'numminplayers'		=> $this->numMinPlayers,
 			'nummaxplayers'		=> $this->numMaxPlayers,
-			'cost'			=> $this->cost,
+			'cost'				=> $this->cost,
 		);
 	}
 
@@ -152,7 +178,7 @@ class Game extends Model {
 
 	/**************************************************************************
 	 * Add
-	 * Adiciona um grupo no banco de dados.
+	 * Adiciona um jogo no banco de dados.
 	 **************************************************************************/
 	public function Add ()
 	{
@@ -167,6 +193,7 @@ class Game extends Model {
 	}
 
 
+
 	/**************************************************************************
 	 * Edit
 	 * Edita os dados de um jogo.
@@ -177,12 +204,13 @@ class Game extends Model {
 		{
 			$this->messageFail('É necessário informar um ID.');
 			return False;
-		}		
+		}
+		
 		$this->setAll();
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql))
-			$this->messageFail("O jogo não pode ser editado...");			
+			$this->messageFail("O jogo não pode ser editado...");
 		else
 			$this->messageOk("O jogo foi editado com sucesso!");
 	}
@@ -195,13 +223,13 @@ class Game extends Model {
 	 *************************************************************************/
 	public function SQL () {
 		$sql = "CREATE TABLE " . $this->table_name . " (
-					id			int(11) NOT NULL AUTO_INCREMENT,
+					id				int(11) NOT NULL AUTO_INCREMENT,
 					idTeam			int(11) NOT NULL,
 					idCreator		bigint(11) NOT NULL,
 					description		text,
-					date			datetime NOT NULL,					
-					numminplayers		int(11) NOT NULL DEFAULT '0',
-					nummaxplayers		int(11) NOT NULL DEFAULT '0',
+					date			datetime NOT NULL,
+					numminplayers	int(11) NOT NULL DEFAULT '0',
+					nummaxplayers	int(11) NOT NULL DEFAULT '0',
 					cost			float NOT NULL DEFAULT '0',
 					
 					PRIMARY KEY (id));";
@@ -216,10 +244,16 @@ class Game extends Model {
 	 * Seta o valor de uma variável.
 	 ***************************************************************/
 	public function setID			($value) { $this->id 		= $value; }
-	public function setIDCreator		($value) { $this->idCreator	= $value; }
-	public function setDescription 		($value) { $this->description 	= $value; }
+	public function setIDCreator	($value) { $this->idCreator	= $value; }
+	public function setDescription 	($value) { $this->description 	= $value; }
 	public function setIDTeam 		($value) { $this->idTeam 	= $value; }
-	public function setDate	($value = NULL)
+
+
+
+	/*************************************************************************
+	 * setDate
+	 *************************************************************************/
+	public function setDate			($value = NULL)
 	{
 		if ($value == NULL)
 			$this->date = date('Y-m-d H:i:s');
@@ -228,52 +262,72 @@ class Game extends Model {
 			$this->date = $value;
 		}
 	}
-	
-	public function setDateNotTimestamp	($value = NULL)
+
+
+
+	/*************************************************************************
+	 * setDate
+	 *************************************************************************/
+	public function setDateNotTimestamp ($value = NULL)
 	{
 		if ($value == NULL)
 			$this->date = date('Y-m-d H:i:s');
 		else 
-		{
 			$this->date = date($value);
-		}
 	}
-	
-	public function setCost 		($value) 
+
+
+
+	/*************************************************************************
+	 * setCost
+	 *************************************************************************/
+	public function setCost ($value) 
 	{
 		if($value < 0)
 			$this->cost = 0;
 		else
 			$this->cost = $value;
 	}
-	public function setNumMinPlayers 	($value)
+
+
+
+	/*************************************************************************
+	 * setNumMinPlayers
+	 *************************************************************************/
+	public function setNumMinPlayers ($value)
 	{
-		if($value < 0)
+		if ($value < 0)
 			$this->numMinPlayers = 0;
 		else
 			$this->numMinPlayers = $value;
 	}
-	
-	public function setNumMaxPlayers 	($value)
+
+
+
+	/*************************************************************************
+	 * setNumMaxPlayers
+	 *************************************************************************/
+	public function setNumMaxPlayers ($value)
 	{ 
-		if($value < 0 || $value < $this->numMinPlayers )
+		if ($value < 0 || $value < $this->numMinPlayers)
 			$this->numMaxPlayers = $this->numMinPlayers;
 		else
 			$this->numMaxPlayers = $value;
 	}
-	
-	
+
+
+
 	/*************************************************************************
 	 * Getters
 	 * Retorna o conteúdo de uma variável.
 	 *************************************************************************/
 	 public function getID				() { return $this->id; }
-	 public function getIDCreator			() { return $this->idCreator; }
+	 public function getIDCreator		() { return $this->idCreator; }
 	 public function getIDTeam			() { return $this->idTeam; }
-	 public function getDescription			() { return $this->description; }
+	 public function getDescription		() { return $this->description; }
 	 public function getDate			() { return strtotime($this->date); }
-	 public function getNumMinPlayers		() { return $this->numMinPlayers; }
-	 public function getNumMaxPlayers		() { return $this->numMaxPlayers; }
+	 public function getNumMinPlayers	() { return $this->numMinPlayers; }
+	 public function getNumMaxPlayers	() { return $this->numMaxPlayers; }
 	 public function getCost			() { return $this->cost; }
 }
 ?>

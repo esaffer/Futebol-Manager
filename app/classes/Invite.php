@@ -1,4 +1,4 @@
-<?php
+<?
 /*****************************************************************************
  *                            Futebol Manager                                *
  *****************************************************************************
@@ -24,11 +24,14 @@ class Invite extends Model {
 	private $base;
 	private $table_name;
 
+
+
 	/************************************************************************
 	 * __construct
 	 * Construtor da classe.
 	 ************************************************************************/
-	public function __construct () {
+	public function __construct ()
+	{
 		$this->table_name = DB_TABLE_INVITE;
 		$this->db = new Database(DB_USER, DB_PASS, DB_NAME, DB_HOST);
 	}
@@ -57,7 +60,9 @@ class Invite extends Model {
 		else
 			return False;
 	}
-	
+
+
+
 	/************************************************************************
 	 * getInviteInvited
 	 * Pega um usuário já invitado para tal grupo
@@ -65,7 +70,7 @@ class Invite extends Model {
 	public function getInviteInvited ($idInvited,$idTeam)
 	{
 		$sql = "SELECT * from $this->table_name WHERE idInvited = $idInvited AND idTeam = $idTeam";
-		$sql = $this->db->get_row($sql);		
+		$sql = $this->db->get_row($sql);
 
 		if ($sql->id != NULL)
 		{
@@ -92,7 +97,8 @@ class Invite extends Model {
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE idInvited = " . $idInvited );
 		return $this->db->get_results();
 	}
-	
+
+
 
 	/************************************************************************
 	 * getListInviter
@@ -105,6 +111,7 @@ class Invite extends Model {
 	}
 
 
+
 	/************************************************************************
 	 * getListTeam
 	 * Retorna a lista de invites que certo Team tenha..
@@ -115,6 +122,8 @@ class Invite extends Model {
 		return $this->db->get_results();
 	}
 
+
+
 	/************************************************************************
 	 * getListStatus
 	 * Retorna a lista de invites de um time conforme o status de aprovação (TRUE = Aprovado, FALSE = caso contrário)
@@ -124,6 +133,8 @@ class Invite extends Model {
 		$this->db->query("SELECT * from $this->table_name WHERE idTeam= $idTeam AND status= $status");
 		return $this->db->get_results();	
 	}
+
+
 
 	/************************************************************************
 	 * setAll
@@ -157,7 +168,13 @@ class Invite extends Model {
 		else
 			$this->messageFail("Ocorreu um erro ao convidar o user.");
 	}
-	
+
+
+
+	/**************************************************************************
+	 * Edit
+	 * Edita um invite.
+	 **************************************************************************/
 	public function Edit ($id = Null)
 	{
 		if (is_null($id))
@@ -174,6 +191,8 @@ class Invite extends Model {
 			$this->messageFail("Ocorreu um erro ao editar o convite");
 	}
 
+
+
 	/*************************************************************************
 	 * SQL
 	 * Código SQL referente a tabela da Classe.
@@ -189,8 +208,13 @@ class Invite extends Model {
 					PRIMARY KEY(id));";		
 		return $sql;
 	}
-	
-	public function delete($id) 
+
+
+	/**************************************************************************
+	 * delete
+	 * Exclui um convite enviado.
+	 **************************************************************************/
+	public function delete ($id) 
 	{
 		if ($this->checkId($this->table_name, $id) == False) 
 		{
@@ -206,6 +230,7 @@ class Invite extends Model {
 	}
 
 
+
 	/***************************************************************
 	 * setters
 	 * Seta o valor de uma variável.
@@ -215,6 +240,7 @@ class Invite extends Model {
 	public function setIDInvited	($value) { $this->idInvited	= $value; }
 	public function setStatus	($value) { $this->status	= $value; }
 	public function setUserStatus	($value) { $this->userStatus	= $value; }
+
 
 
 	/*************************************************************************
