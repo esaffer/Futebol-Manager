@@ -116,6 +116,14 @@ class User extends Model {
 		$this->db->query("SELECT * from $this->table_name ORDER BY nick ");
 		return $this->db->get_results();
 	}
+	
+	
+	public function getListSearch($nick) 
+	{
+		$nick_temp = "'%".$nick."%'";
+		$this->db->query("SELECT * from ". $this->table_name." WHERE nick LIKE ".$nick_temp." ORDER BY nick");
+		return $this->db->get_results();	
+	}
 
 
 

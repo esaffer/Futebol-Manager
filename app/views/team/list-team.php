@@ -6,7 +6,7 @@
 	echo "</ br>Procurar grupos </ br> </ br>";
 	?>
 	<form action="?act=team-all&do=search" method="POST">
-		<label for='nome'>Digite o nome do grupo:</label>
+		<label for='name'>Digite o nome do grupo:</label>
 		<input type="text" id='name' name='name' />
 		<input type='submit' value='Procurar'>
 	<br />
