@@ -149,8 +149,7 @@ class Team extends Model {
 			'image'			=> $this->image,
 		);
 	}
-
-
+	
 
 	/**************************************************************************
 	 * Add
@@ -167,14 +166,19 @@ class Team extends Model {
 		else
 			$this->messageOk("A equipe <b>" . $this->name . "</b> foi adicionada com sucesso!");
 	}
-	
-	
+		
 	public function getListPublic() 
 	{
 		$this->db->query("SELECT * from " .  $this->table_name . " WHERE privative = 0 ORDER BY name");
 		return $this->db->get_results();	
 	}
 
+	public function getListSearch($name) 
+	{
+		$name_temp = "'%".$name."%'";
+		$this->db->query("SELECT * from ". $this->table_name." WHERE privative = 0 AND name LIKE ".$name_temp." ORDER BY name");
+		return $this->db->get_results();	
+	}
 
 
 	/*************************************************************************
