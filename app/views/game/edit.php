@@ -21,6 +21,17 @@
 		return;	
 	}	
 	
+	if($_GET['do'] == 'delete') {
+		$game->delete($idgame); //Deleta o jogo...
+		
+		$userGame = new UserGame;
+		$userGame->deleteAll($idgame,$team->getID());		
+		
+		echo "<br><br> Jogo deletado com sucesso! <br>";
+		echo "<a href='?act=team-view-profile&view=".$team->getID()."'>Ver perfil do grupo <b>".$team->getName()." </b> </a>";	
+		return;
+	}	
+	
 	if ($_GET['do'] == 'edit') {
 		$game = new Game;
 		$game->setIDCreator($_POST['idCreator']);		
@@ -71,6 +82,17 @@
 		<input type="hidden" id='idTeam' name='idTeam' value=' <?= $team->getID() ?>' />
 	<input type='submit' value='Salvar' />
 </form>
+
 	<? 
 		}
-	} ?>
+	}
+	//É o criador do jogo e não está bloqueado, ou é o owner do time...
+	if(($userteam->getLocked == False && $game->getIDCreator() == $idUserFacebook) || $team->getIDOwner() == $idUserFacebook)
+	{
+		?>
+		<form action='?act=game-edit&do=delete&id=<?= $game->getID() ?>' method="POST">
+			<input type='submit' value="Deletar jogo" />
+		</form>
+	<?}		
+	
+ ?>

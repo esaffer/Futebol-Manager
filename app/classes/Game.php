@@ -214,6 +214,21 @@ class Game extends Model {
 		else
 			$this->messageOk("O jogo foi editado com sucesso!");
 	}
+	
+	
+	public function delete($id) 
+	{	
+		if ($id == "") 
+		{
+			$this->messageFail("Game não encontrado!");
+			return False;
+		}	
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE id = $id");
+			return True;
+		}
+	}
 
 
 

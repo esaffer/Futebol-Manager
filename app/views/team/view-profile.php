@@ -27,7 +27,7 @@
 	{		
 		$userTeam->delete($idUserFacebook,$idTeam);
 		echo "<br><br> Você acabou de sair da equipe <b> ".$team->getName()." </b> <br><br><br>";
-		echo "<a href='?act=user-view-profile&view=?$team->getID()'>Ver perfil do grupo <b>".$team->getName()." </b> </a>";	
+		echo "<a href='?act=team-view-profile&view=$idTeam'>Ver perfil do grupo <b>".$team->getName()." </b> </a>";	
 		return;
 	}
 	

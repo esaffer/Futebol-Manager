@@ -135,6 +135,23 @@ class UserGame extends Model {
 		else
 			$this->messageOk("Dados do jogo atualizados!");
 	}
+	
+	/**************************************************************************
+	 * deleteAll
+	 * Deleta todos as ocorrências de determinado jogo em determinado time....
+	 **************************************************************************/	
+	public function deleteAll($idGame, $idTeam) 
+	{	
+		if($idGame == "" || $idTeam == "")
+		{
+			$this->messageFail("Ocorreu um erro ao deletar dados do jogo");
+		}	
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE idGame = $idGame AND idTeam = $idTeam");
+			return True;
+		}
+	}
 
 
 
