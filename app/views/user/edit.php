@@ -18,6 +18,8 @@
 		$user->setDateCreated($_POST['date_created']);
 		$user->setImage($_POST['image']);
 		$user->Edit($idUserFacebook);
+		
+		echo "<a href='?act=user-view-profile&view=$idUserFacebook'><br>Voltar ao perfil</a>";
 	}
 	else {
 		$profile = new User;

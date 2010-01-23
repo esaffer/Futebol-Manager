@@ -164,9 +164,7 @@ class Invite extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageOk("O User foi convidado com sucesso!");
-		else
-			$this->messageFail("Ocorreu um erro ao convidar o user.");
+			$this->messageFail("Ocorreu um erro ao criar o convite!");;
 	}
 
 

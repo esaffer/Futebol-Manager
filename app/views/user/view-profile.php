@@ -14,14 +14,17 @@
 		 	Você é amigo desse usuário
 		  	<fb:else>Você ainda não é amigo deste usuário</fb:else>
 		</fb:if-is-friends-with-viewer>
-	<?} 
+	<?
+		echo "<br><br>";	
+	} 
 	?>
 
-Apelido: <?= $profile->getNick() ?> </br>
+Apelido: <?= $profile->getNick() ?>
 <br/>
 Data de Cadastro: <?= date('Y-m-d H:i:s',$profile->getDateCreated()) ?>
 <br />
-Descrição: <?= $profile->getDescription() ?>
+Descrição: <?= ($profile->getDescription() == "") ? " <b> Nenhuma descrição! </b>" : $profile->getDescription() ?>
+<br />
 <br />
 <?= $profile->getImage($profile->getID()); ?>
 <?

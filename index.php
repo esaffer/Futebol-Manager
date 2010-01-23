@@ -49,7 +49,7 @@
 </head>
 	<? $user = new User;
 		if(!($user->getUser($idUserFacebook))) {
-		 include('app/views/user/add.php'); 
+		 include('app/views/user/add.php');  // Cria uma conta automaticamente no BD
 	}?>
 	
 	<div id="site">

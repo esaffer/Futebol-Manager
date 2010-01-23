@@ -22,6 +22,15 @@
 		return;
 	}
 	
+	//Usuário comum deixou o grupo
+	if($_GET['do'] == 'leave' && $linha != False)
+	{		
+		$userTeam->delete($idUserFacebook,$idTeam);
+		echo "<br><br> Você acabou de sair da equipe <b> ".$team->getName()." </b> <br><br><br>";
+		echo "<a href='?act=user-view-profile&view=?$team->getID()'>Ver perfil do grupo <b>".$team->getName()." </b> </a>";	
+		return;
+	}
+	
 	//Usuário pediu um invite..
 	if($_GET['do'] == 'invite' && $linha == False)
 	{		
@@ -32,7 +41,6 @@
 		$invite->setStatus(False);
 		$invite->setUserStatus(True);
 		$invite->Add();	
-		echo "</br> Seu pedido foi enviado. Aguarde até que o dono do grupo o avalie </br>";	
 	}	
 ?>
 
@@ -56,7 +64,11 @@
 	Regras: <?= $team->getRules() ?>
 	<br />
 	<br />
+	<br />
 	<? 
+	
+
+	
 		$jogos = new Game;
 		$matriz = $jogos->getListTeamDateNew($idTeam,date('Y-m-d H:i:s',time()));
 		if($matriz == False) {
@@ -94,7 +106,6 @@
 		}
 	?>
 	
-	<br>
 	
 	<?
 	
@@ -139,6 +150,15 @@
 	}
 	*/
 	
+	//Sair do grupo, apenas membros vêem isso... Método para sair do grupo...
+	if($userTeam->getIDTeam() != "" &&  $team->getIDOwner() != $idUserFacebook)
+	{
+	?>
+			<form action='?act=team-view-profile&view=<?= $team->getID()?>&do=leave' method='POST'>
+				<input type='submit' value="Sair do grupo" />
+			</form>
+	<?
+	}
 	
 	//Executa ações restrita a membros. Implementar tudo logo após	
 	if( ($userTeam->getIDTeam() != "" && $userTeam->getLocked() == FALSE ) || $team->getIDOwner() == $idUserFacebook)
@@ -159,13 +179,16 @@
 	{	
 		$invite_test = new Invite;
 		$invite_test->getInviteInvited($idUserFacebook,$idTeam);
-		if($invite_test->getID() == "" )//Não é owner e nem é do grupo e nem tem convite
+		if($invite_test->getID() == "")//Não é owner e nem é do grupo e nem tem convite e nem recém pediu invite
 		{
 		?>
 			<form action='?act=team-view-profile&view=<?= $team->getID()?>&do=invite' method='POST'>
 				<input type='submit' value="Pedir convite" />
 			</form>
 		<?
+		}
+		else {
+			echo "</br><b>Você está convidado para este time. Aguarde até que o dono do grupo o avalie </b> </br>";
 		}
 	}
 	if($team->getIDOwner() == $idUserFacebook) //Apenas Owner vê isso aqui...

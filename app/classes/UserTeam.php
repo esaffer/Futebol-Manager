@@ -164,15 +164,20 @@ class UserTeam extends Model {
 	 *************************************************************************/
 	public function delete($idUser, $idTeam) 
 	{
+	
+		if($idUser == "" || $idTeam == "")
+		{
+			return False;
+		}
+	/*
 		if ($this->checkId($this->table_name, $idUser) && $this->checkId($this->table_name, $idTeam)) 
 		{
 			$this->messageFail("Não existe tal user registrado nesse grupo.");
 			return False;
-		}
+	*/	
 		else
 		{
 			$this->db->query("DELETE FROM " . $this->table_name . " WHERE idUser = $idUser AND idTeam = $idTeam");
-			$this->messageOk("O usuário foi expulso com sucesso!");
 			return True;
 		}
 	}

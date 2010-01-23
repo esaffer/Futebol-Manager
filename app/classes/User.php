@@ -84,9 +84,7 @@ class User extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");			
-		else
-			$this->messageOk("Você teve sua conta criada com sucesso!");
+			$this->messageFail("Ocorreu um erro ao adicionar o usuário.");	
 	}
 
 
@@ -107,7 +105,7 @@ class User extends Model {
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		
 		if ($this->db->query($sql) == False)
-			$this->messageOk("O usuário <b>" . $this->nick . "</b> foi editado com sucesso!");
+			$this->messageOk("Seu perfil foi editado com sucesso!");
 		else
 			$this->messageFail("Ocorreu um erro ao editar o usuário.");
 	}
