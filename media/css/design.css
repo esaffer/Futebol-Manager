@@ -42,7 +42,10 @@ body {
 	clear: both;
 	background: #303030;
 	color: #EEE;
-	font-size: 10pt;
+	font-size: 9pt;
+	font-family: Verdana, Helvetiva;
+	padding: 2px;
+	border-top: 1px solid #FFF;
 }
 
 h1 {

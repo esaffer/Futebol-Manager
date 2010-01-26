@@ -18,6 +18,7 @@
 	define('APP_NAME', 'Futebol Manager');
 	define('APP_VERSION', '0.1');
 	define('APP_BASE', '');
+	define('APP_MEDIA', 'http://knuth.ufpel.edu.br/tiago/');
 
 	define('FACEBOOK_SECRET', 'beedd0119d65a99b69411bee442c89aa');
 	define('FACEBOOK_KEY', '50f3cf7661b8f5611eb7b782d845ae8d');
@@ -42,7 +43,7 @@
 /****************************************************************************
  * Diretórios do Aplicativo
  ****************************************************************************/
-	define('MEDIA_PATH', APP_BASE . 'media/');
+	define('MEDIA_PATH', APP_MEDIA . 'media/');
 	define('MEDIA_CSS', MEDIA_PATH . 'css/');
 	define('MEDIA_JS', MEDIA_PATH . 'js/');
 	define('MEDIA_IMG', MEDIA_PATH . 'img/');
