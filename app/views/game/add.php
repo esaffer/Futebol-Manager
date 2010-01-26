@@ -27,8 +27,14 @@
 		$game->setNumMaxPlayers($_POST['nummaxplayers']);
 		$game->setCost($_POST['cost']);
 		$game->Add();
-		$lista_ids = geraWarning($_POST['idTeam']);
+		$lista_ids = geraWarning($_POST['idTeam'],$idUserFacebook);
 		$notification = $facebook->api_client->notifications_send($lista_ids, 'Este eh um programa de teste', 'app_to_user');
+		
+		$team = new Team;
+		$team->getTeam($_POST['idTeam']);
+		
+		echo "<br><br> O jogo foi criado com sucesso!";		
+		echo "<br><br><br><a href='?act=team-view-profile&view=".$team->getID()."'> Ver perfil do grupo <b>".$team->getName()."</b> </a>";
 	}
 	else {
 		$userteam = new UserTeam;
@@ -45,29 +51,29 @@
 		{ 
 ?>
 
-<form action="?act=create-game&do=add" method="POST">
-		<label for='date'>Data:</label>
-		<input type="text" id='date' name='date' />
-	<br />
-		<label for='place'>Local:</label>
-		<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
-	<br />
-		<label for='numminplayers'>Número mínimo de jogadores:</label>
-		<input type="text" id='numminplayers' name='numminplayers' />
-	<br />
-		<label for='nummaxplayers'>Número máximo de jogadores:</label>
-		<input type="text" id='nummaxplayers' name='nummaxplayers' />
-	<br />
-		<label for='cost'>Custo da partida:</label>
-		<input type="text" id='cost' name='cost' />
-	<br />
-		<label for='description'>Descricao:</label>
-		<textarea cols=20 rows=5 id='description' name='description' /></textarea>
-	<br />
-		<input type="hidden" id='idCreator' name='idCreator' value=' <? echo $idUserFacebook; ?>' />
-		<input type="hidden" id='idTeam' name='idTeam' value=' <? echo $_POST['idTeam']; ?>' />
-	<input type='submit' value='Salvar' />
-</form>
+			<form action="?act=create-game&do=add" method="POST">
+					<label for='date'>Data:</label>
+					<input type="text" id='date' name='date' />
+				<br />
+					<label for='place'>Local:</label>
+					<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
+				<br />
+					<label for='numminplayers'>Número mínimo de jogadores:</label>
+					<input type="text" id='numminplayers' name='numminplayers' />
+				<br />
+					<label for='nummaxplayers'>Número máximo de jogadores:</label>
+					<input type="text" id='nummaxplayers' name='nummaxplayers' />
+				<br />
+					<label for='cost'>Custo da partida:</label>
+					<input type="text" id='cost' name='cost' />
+				<br />
+					<label for='description'>Descricao:</label>
+					<textarea cols=20 rows=5 id='description' name='description' /></textarea>
+				<br />
+					<input type="hidden" id='idCreator' name='idCreator' value=' <? echo $idUserFacebook; ?>' />
+					<input type="hidden" id='idTeam' name='idTeam' value=' <? echo $_POST['idTeam']; ?>' />
+				<input type='submit' value='Salvar' />
+			</form>
 	<? 
 		}
 	} ?>
@@ -75,7 +81,7 @@
 	
 <?php
 
-function geraWarning($idTeam)
+function geraWarning($idTeam,$idUser)
 {
 	$team = new Team;
 	$team->getTeam($idTeam);
@@ -85,7 +91,10 @@ function geraWarning($idTeam)
 	$userTeam = new UserTeam;
 	$lista_users = $userTeam->getListTeam($idTeam);
 	
-	$mensagem = "O usuário XXXX do grupo '" . $team->getName() . "' criou um novo jogo!</ br>";
+	$user = new User;
+	$user->getUser($idUser);
+	
+	$mensagem = "O usuário ".$user->getNick()." do grupo <b>" . $team->getName() . "</b> criou um novo jogo!</ br>";
 	
 	$lista_ids = "";
 	
@@ -106,7 +115,6 @@ function geraWarning($idTeam)
 			{
 				$lista_ids = $lista_ids.",".$lista->idUser;
 			}
-			//$notification = $facebook->api_client->notifications_send("234234,2342,sdsadds,sadsadads", $mensagem, 'app_to_user');
 		}
 	}
 	

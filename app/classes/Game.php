@@ -188,8 +188,6 @@ class Game extends Model {
 		
 		if ($this->db->query($sql))
 			$this->messageFail("Ocorreu um erro ao criar o jogo");	
-		else
-			$this->messageOk("O jogo foi criado com com sucesso!");
 	}
 
 
@@ -211,8 +209,6 @@ class Game extends Model {
 		
 		if ($this->db->query($sql))
 			$this->messageFail("O jogo não pode ser editado...");
-		else
-			$this->messageOk("O jogo foi editado com sucesso!");
 	}
 	
 	
