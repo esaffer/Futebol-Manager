@@ -30,7 +30,27 @@
 		else {
 			$userGame->setStatus(1); // Vai ir...
 			$userGame->Edit("idUser = $idUserFacebook AND idTeam = ". $team->getID() ." AND idGame = $idgame");				
-		}	
+		}
+		
+		//enviando notificações se n de confirmados chegar ao numero minimo
+		$membros_vao = $userGame->getListUserTeam($idgame,1);
+		$num_membros_vao = count($membros_vao);
+		if($game->getNumMinPlayers() > 0 && $game->getNumMinPlayers() == $num_membros_vao){
+			$vai = new User;
+			$lista_ids = "";
+			foreach($membros_vao as $lista){
+				$vai->getUser($lista->idUser);	
+				if($lista_ids == ""){			
+					$lista_ids = $lista->idUser;
+				}
+				else{
+					$lista_ids = $lista_ids.",".$lista->idUser;
+				}
+			}
+			$team_name = $team->getName();
+			$mensagem = "Numero minimo de jogadores atingido no jogo do grupo $team_name";
+			$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
+		}
 	}
 	
 	if($_GET['do'] == 'reject')
