@@ -17,7 +17,7 @@
 			$team->getTeam($_POST['idTeam']);
 			
 			echo "Seja bem vindo(a) ao grupo '$team->getName()'! </ br>";
-			echo "<a href='team-view-profile&view=$team->getID()'> Ir ao perfil do grupo </a> </br>"; 
+			echo "<a href='team-view-profile&view=".$team->getID()".'> Ir ao perfil do grupo </a> </br>"; 
 			$invite->delete($_POST['idInvite']);
 		}
 		else

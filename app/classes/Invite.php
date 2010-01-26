@@ -184,9 +184,7 @@ class Invite extends Model {
 		$this->setAll();
 		$sql = $this->createUpdateQuery($this->table_name, $this->base, $id);
 		if ($this->db->query($sql))
-			$this->messageOk("O convite foi aceitado com sucesso!");
-		else
-			$this->messageFail("Ocorreu um erro ao editar o convite");
+			$this->messageFail("Ocorreu um erro ao editar o convite");			
 	}
 
 
@@ -222,7 +220,6 @@ class Invite extends Model {
 		else
 		{
 			$this->db->query("DELETE FROM " . $this->table_name . " WHERE id = $id");
-			$this->messageOk("O convite foi excluído com sucesso!");
 			return True;
 		}
 	}
