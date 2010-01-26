@@ -39,7 +39,7 @@
 
 	<style type="text/css">
 		<? include('media/css/reset.css'); ?>
-		<? include('media/css/menu_style.css'); ?>
+		<? include('media/css/menu.css'); ?>
 		<? include('media/css/design.css'); ?>
 	</style>
 

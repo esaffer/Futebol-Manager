@@ -22,6 +22,7 @@ class Country {
 	 *************************************************************************/
 	public function getCountry ($id)
 	{
+		
 		$sql = "SELECT * FROM " . $this->table_name . " WHERE id = $id";
 		if ($country = $this->db->get_row($sql))
 		{
@@ -36,7 +37,25 @@ class Country {
 			return False;
 		}
 	}
-	
+
+	/************************************************************************
+	 * getAllCountries
+	 * Retorna uma lista com todos os países
+	 ************************************************************************/
+	public function getAllCountries ()
+	{
+		$sql = "SELECT id FROM " . $this->table_name;
+		$this->db->query($sql)
+		$countries = $this->db->get_results();
+		$lista = array();
+
+		for ($countries as $c)
+		{
+			array_push($lista, $this->getCountry($c->id));
+		}
+		
+	}
+
 	public function getId	() { return $this->id; }
 	public function getName	() { return $this->name; }
 	public function getIso	() { return $this->iso; }

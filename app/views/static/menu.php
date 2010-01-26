@@ -1,17 +1,19 @@
 <?php 
 	$user = new User;
 ?>
-<ul id="navigation-1">
+<ul class='menu'>
 	<li><a href="?act=home">Home</a></li>
+	
 	<li><a href="#" title="Usuário">Usuário</a>
-		<ul class="navigation-2">		
+		<ul>
 			<li><a href='?act=user-profile'>Ver Perfil</a></li>
 			<li><a href='?act=user-edit'>Editar Perfil</a></li>	
 			<li><a href='?act=user-all'>Listar Usuários</a></li>
 		</ul>
 	</li>
+	
 	<li><a href="#" title="Equipe">Equipe</a>
-		<ul class="navigation-2">
+		<ul>
 			<li><a href='?act=team-add'>Criar novo grupo</a></li>
 			<li><a href='?act=team-user'>Seus Grupos</a>
 			<?
@@ -21,7 +23,7 @@
 				$member= $list_team->getListUser($idUserFacebook);
 				if ($owner == True || $member == True){
 			?>
-					<ul class="navigation-3">
+					<ul>
 				<?
 					if ($owner == True){
 						foreach($owner as $id_team){
@@ -40,7 +42,6 @@
 					</ul>
 			</li>
 			<li><a href='?act=team-all'>Listar grupos</a></li>
-		</ul>
 	</li>
 	<li><a href="?act=invite-friends-app">Convide seus amigos!</a></li>
 	<li><a href="?act=help">Ajuda</a></li>

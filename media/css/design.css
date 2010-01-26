@@ -4,14 +4,12 @@
  *****************************************************************************/
 
 body {
-	background: #F6F6F6;
 	text-align: center;
 	margin: 5px;
 }
 
 #site {
 	width: 750px;
-	background: #eceff6 ;
 	margin: 0 auto 0 auto;
 }
 
@@ -19,11 +17,36 @@ body {
 	font-family: Verdana;
 	font-size: 24pt;
 	font-weight: bold;
+	background: #FFFFFF;
+	text-align: left;
 	color: #666666;
+	padding: 4px;
 }
 
 #content {
 	clear: both;
 	text-align: left;
-	padding: 4px;
+	padding: 8px;
+	background: #F4F4F4;
+	font-family: Verdana, Helvetica, "Trebuchet Unicode MS", "Lucida Grande", sans-serif, "Lucida Sans Unicode", "Bitstream Vera Sans", ;
+	float: left;
+}
+
+#ads {
+	float: right;
+	width: 50px;
+}
+
+
+#footer {
+	clear: both;
+	background: #303030;
+	color: #EEE;
+	font-size: 10pt;
+}
+
+h1 {
+	color: #AA0000;
+	font-size: 16pt;
+	font-family: Verdana, Helvetica, "Trebuchet Unicode MS";
 }
