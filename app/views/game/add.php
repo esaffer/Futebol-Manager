@@ -29,7 +29,8 @@
 		$game->Add();
 		$lista_ids = geraWarning($_POST['idTeam'],$idUserFacebook);
 		$team_name = $team_aux->getName();
-		$notification = $facebook->api_client->notifications_send($lista_ids, 'Um novo jogo foi criado no grupo $team_name', 'app_to_user');
+		$mensagem = 'Um novo jogo foi criado no grupo $team_name';
+		$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
 		
 		$team = new Team;
 		$team->getTeam($_POST['idTeam']);

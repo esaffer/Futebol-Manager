@@ -17,7 +17,6 @@
 			$team->setPrivative(TRUE);
 		else
 			$team->setPrivative(FALSE);
-			
 		$team->setDescription($_POST['description']);
 		$team->setDateCreated();
 		$team->setImage($_POST['image']);
@@ -27,21 +26,30 @@
 		$name = $_POST['name'];
 		echo "<br><br> Time criado com sucesso! <br>";
 		
-		$title = "Criou o grupo $name utilizando Sport Manager! ";
-		$attachment = array( 
-			'name' => 'Sport Manager',
-			'href' => 'http://apps.facebook.com/futebolmanager/',
-			'caption' => '', 
-			'description' => "Comece a usar já o Sport Manager e marque jogos com sua turma!", 
-			'properties' => '',
-			'media' => array(array('type' => 'image', 'src' => 'http://knuth.ufpel.edu.br/tiago/media/img/logo-icon.png',
-				'href' => 'http://apps.facebook.com/futebolmanager/'))
-					);
-			
-		$attachment = json_encode($attachment); 
-
-		$facebook->api_client->stream_publish($title, $attachment);
-		
+		//PARTE DE ENVIO DO NEWSFEED
+		if (!($_POST['privative'] == 'true'))
+		{
+			$has_permission = $facebook->api_client->users_hasAppPermission("publish_stream");
+			if(!$has_permission)
+			{
+				echo "<br /><fb:prompt-permission perms=\"publish_stream\"> Publique no seu NewsFeed! </fb:prompt-permission>";
+			}
+			else
+			{
+				$title = "Criou o grupo $name utilizando Sport Manager! ";
+				$attachment = array( 
+					'name' => 'Sport Manager',
+					'href' => 'http://apps.facebook.com/futebolmanager/',
+					'caption' => '', 
+					'description' => "Comece a usar já o Sport Manager e marque jogos com sua turma!", 
+					'properties' => '',
+					'media' => array(array('type' => 'image', 'src' => 'http://knuth.ufpel.edu.br/tiago/media/img/logo-icon.png',
+						'href' => 'http://apps.facebook.com/futebolmanager/'))
+							);
+				$attachment = json_encode($attachment); 
+				$facebook->api_client->stream_publish($title, $attachment);
+			}
+		}
 		return;
 	}
 	
