@@ -39,7 +39,7 @@
 	
 	if ($_GET['do'] == 'edit') {
 		$team->setName($_POST['name']);
-		$team->setPlace($_POST['place']);
+		$team->setPlace("");///
 		$team->setRules($_POST['rules']);
 		if ($_POST['privative'] == "true")
 			$team->setPrivative(True);
@@ -83,10 +83,10 @@
 		<br />
 		<label for='name'>Nome:</label>
 		<input type='text' id='name' name='name' value='<?= $team->getName() ?>' />
-		<br />
+<!--		<br />
 		<label for='local'>Local:</label>
 		<input type='text' id='place' name='place' value='<?= $team->getPlace() ?>' />
-		<br />
+		<br /> -->
 		<label for='image'>Link da imagem:</label>
 		<input type='text' id='image' name='image' value='<?= $team->getImageSrc() ?>' />
 		<br />
