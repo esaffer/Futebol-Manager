@@ -15,7 +15,7 @@
 /****************************************************************************
  * Facebook
  ****************************************************************************/
-	define('APP_NAME', 'Futebol Manager');
+	define('APP_NAME', 'Sport Manager');
 	define('APP_VERSION', '0.1');
 	define('APP_BASE', '');
 	define('APP_MEDIA', 'http://knuth.ufpel.edu.br/tiago/');

@@ -33,7 +33,7 @@
 					$name_team = $team->getName();
 					$title = "agora participa do grupo $name_team!";
 					$attachment = array( 
-						'name' => 'Sport Manager',
+						'name' => APP_NAME,
 						'href' => 'http://apps.facebook.com/futebolmanager/',
 						'caption' => '', 
 						'description' => "Comece a usar já o Sport Manager e marque jogos com sua turma!", 

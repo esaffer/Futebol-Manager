@@ -28,12 +28,12 @@
 		$game->setCost($_POST['cost']);
 		$game->Add();
 		$lista_ids = geraWarning($_POST['idTeam'],$idUserFacebook);
-		$team_name = $team_aux->getName();
-		$mensagem = 'Um novo jogo foi criado no grupo $team_name';
-		$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
 		
 		$team = new Team;
 		$team->getTeam($_POST['idTeam']);
+		
+		$mensagem = "Um novo jogo foi criado no grupo <b>".$team->getName()."</b>";
+		$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
 		
 		echo "<br><br> O jogo foi criado com sucesso!";		
 		echo "<br><br><br><a href='?act=team-view-profile&view=".$team->getID()."'> Ver perfil do grupo <b>".$team->getName()."</b> </a>";
@@ -57,9 +57,9 @@
 					<label for='date'>Data:</label>
 					<input type="text" id='date' name='date' />
 				<br />
-					<label for='place'>Local:</label>
+		<!--			<label for='place'>Local:</label>
 					<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
-				<br />
+				<br /> -->
 					<label for='numminplayers'>Número mínimo de jogadores:</label>
 					<input type="text" id='numminplayers' name='numminplayers' />
 				<br />
@@ -78,8 +78,7 @@
 			</form>
 	<? 
 		}
-	} ?>
-	
+	} ?>	
 	
 <?php
 
