@@ -59,7 +59,7 @@ class UserTeam extends Model {
 		
 		return $sql;
 	}
-	
+		
 	
 	/*************************************************************************
 	 * getListUser
@@ -124,9 +124,7 @@ class UserTeam extends Model {
 		$sql  = $this->createInsertQuery($this->table_name, $this->base);
 		
 		if ($this->db->query($sql))
-			$this->messageFail("Ocorreu um erro ao adicionar o usuário");			
-		else
-			$this->messageOk("O usuário foi adicionado com sucesso!");
+			$this->messageFail("Ocorreu um erro ao adicionar o usuário");	
 	}	
 
 
@@ -146,9 +144,7 @@ class UserTeam extends Model {
 		$this->setAll();
 		$sql = $this->createUpdateQueryGambiarra($this->table_name, $this->base, $id);
 		
-		if ($this->db->query($sql) == False)
-			$this->messageOk("O Registro foi editado com sucesso!");
-		else
+		if ($this->db->query($sql))
 			$this->messageFail("Ocorreu um erro ao editar o registro.");
 	}
 
