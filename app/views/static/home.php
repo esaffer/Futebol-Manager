@@ -24,6 +24,7 @@
 	
 	/////////////////////////////////FIM DA PARTE QUE TRATA DOS AVISOS!
 	
+	
 	$user = new User;
 	$invite = new Invite;
 	$convites = $invite->getListInvited($idUserFacebook);
