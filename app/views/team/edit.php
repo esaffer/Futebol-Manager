@@ -31,6 +31,15 @@
 		//Coloca o novo owner no lugar...
 		$team->setIDOwner($_POST['new-owner']);
 		$team->Edit($_POST['idTeam']);
+					
+		
+		//Cria warning
+		$lista_ids = geraWarning($_POST['idTeam'],$_POST['new-owner']);
+				
+		$mensagem = "Um novo owner foi escolhido para o grupo <b>".$team->getName()."</b>";
+		$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
+		
+		//Fim-cria-warning
 		
 		echo "<br><br> Owner trocado com sucesso!";
 		echo "<br><br><br><a href='?act=team-view-profile&view=".$_POST['idTeam']."'> Ver perfil do grupo <b>".$team->getName()."</b> </a>";
@@ -85,8 +94,8 @@
 		<input type='text' id='name' name='name' value='<?= $team->getName() ?>' />
 <!--		<br />
 		<label for='local'>Local:</label>
-		<input type='text' id='place' name='place' value='<?= $team->getPlace() ?>' />
-		<br /> -->
+		<input type='text' id='place' name='place' value='<?= $team->getPlace() ?>' /> -->
+		<br /> 
 		<label for='image'>Link da imagem:</label>
 		<input type='text' id='image' name='image' value='<?= $team->getImageSrc() ?>' />
 		<br />
@@ -108,3 +117,52 @@
 		<input type='hidden' id='idTeam' name='idTeam' value='<?= $team->getID() ?>' />
 		<input type='submit' value="Deletar grupo" />
 	</form>
+	
+	<?php
+
+function geraWarning($idTeam,$idUser)
+{
+	$team = new Team;
+	$team->getTeam($idTeam);
+	
+	$alerta = new Warning;
+	
+	$userTeam = new UserTeam;
+	$lista_users = $userTeam->getListTeam($idTeam);
+	
+	$user = new User;
+	$user->getUser($idUser);
+	
+	$mensagem = "O usuário <b>".$user->getNick()."</b> foi promovido à owner do grupo <b>" . $team->getName() . "</b>";
+	
+	$lista_ids = "";
+	
+	if($lista_users != False)
+	{
+		foreach($lista_users as $lista)
+		{
+			$alerta->setIDDestino($lista->idUser);
+			$alerta->setDate();
+			$alerta->setText($mensagem);
+			$alerta->Add();
+			
+			if($lista_ids == "")
+			{			
+				$lista_ids = $lista->idUser;
+			}
+			else
+			{
+				$lista_ids = $lista_ids.",".$lista->idUser;
+			}
+		}
+	}
+	
+	$alerta->setIDDestino($team->getIDOwner());	
+	$alerta->setDate();
+	$alerta->setText($mensagem);
+	$alerta->Add();
+	
+	$lista_ids = $lista_ids.",".$team->getIDOwner();
+	return $lista_ids;
+}
+?>
