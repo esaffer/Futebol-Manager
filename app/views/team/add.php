@@ -1,7 +1,13 @@
 <h1>Adicionar Equipe</h1>
 
 <?
-	if ($_GET['do'] == 'add') {
+	if($_GET['do'] == 'add' && $_POST['name'] == "")
+	{
+		echo "<br><br> Não se pode criar um grupo sem um nome!<br>";
+	}
+
+	if ($_GET['do'] == 'add' && $_POST['name'] != "") 
+	{
 		$team = new Team;
 		$team->setName($_POST['name']);		
 		$team->setPlace($_POST['place']);
@@ -11,13 +17,17 @@
 			$team->setPrivative(TRUE);
 		else
 			$team->setPrivative(FALSE);
+			
 		$team->setDescription($_POST['description']);
 		$team->setDateCreated();
 		$team->setImage($_POST['image']);
 		$team->setIDOwner($idUserFacebook);
 		$team->Add();
+		
+		echo "<br><br> Time criado com sucesso! <br>";
+		return;
 	}
-	else {
+	
 ?>
 
 <form action="?act=team-add&do=add" method="POST">
@@ -41,4 +51,4 @@
 	<br />
 	<input type='submit' value='Salvar' />
 </form>
-<? } ?>
+

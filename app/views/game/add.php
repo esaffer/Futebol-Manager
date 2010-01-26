@@ -27,7 +27,8 @@
 		$game->setNumMaxPlayers($_POST['nummaxplayers']);
 		$game->setCost($_POST['cost']);
 		$game->Add();
-		geraWarning($_POST['idTeam']);
+		$lista_ids = geraWarning($_POST['idTeam']);
+		$notification = $facebook->api_client->notifications_send($lista_ids, 'Este eh um programa de teste', 'app_to_user');
 	}
 	else {
 		$userteam = new UserTeam;
@@ -86,6 +87,8 @@ function geraWarning($idTeam)
 	
 	$mensagem = "O usuário XXXX do grupo '" . $team->getName() . "' criou um novo jogo!</ br>";
 	
+	$lista_ids = "";
+	
 	if($lista_users != False)
 	{
 		foreach($lista_users as $lista)
@@ -95,13 +98,24 @@ function geraWarning($idTeam)
 			$alerta->setText($mensagem);
 			$alerta->Add();
 			
-			//$notification = $facebook->api_client->notifications_send($lista->idUser, $mensagem, 'app_to_user');
-		}	
+			if($lista_ids == "")
+			{			
+				$lista_ids = $lista->idUser;
+			}
+			else
+			{
+				$lista_ids = $lista_ids.",".$lista->idUser;
+			}
+			//$notification = $facebook->api_client->notifications_send("234234,2342,sdsadds,sadsadads", $mensagem, 'app_to_user');
+		}
 	}
 	
-	$alerta->setIDDestino($team->getIDOwner());
+	$alerta->setIDDestino($team->getIDOwner());	
 	$alerta->setDate();
 	$alerta->setText($mensagem);
 	$alerta->Add();
+	
+	$lista_ids = $lista_ids.",".$team->getIDOwner();
+	return $lista_ids;
 }
 ?>
