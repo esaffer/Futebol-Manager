@@ -66,9 +66,6 @@
 	<br />
 	<br />
 	<? 
-	
-
-	
 		$jogos = new Game;
 		$matriz = $jogos->getListTeamDateNew($idTeam,date('Y-m-d H:i:s',time()));
 		if($matriz == False) {

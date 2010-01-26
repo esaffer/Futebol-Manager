@@ -10,7 +10,7 @@
 	{
 		$team = new Team;
 		$team->setName($_POST['name']);		
-		$team->setPlace($_POST['place']);
+		$team->setPlace(""); //HUAHUAHUAHAUHA
 		$team->setRules($_POST['rules']);
 		
 		if ($_POST['privative'] == 'true')
@@ -38,7 +38,7 @@
 			{
 				$title = "Criou o grupo $name utilizando Sport Manager! ";
 				$attachment = array( 
-					'name' => 'Sport Manager',
+					'name' => APP_NAME,
 					'href' => 'http://apps.facebook.com/futebolmanager/',
 					'caption' => '', 
 					'description' => "Comece a usar já o Sport Manager e marque jogos com sua turma!", 
@@ -59,9 +59,9 @@
 	<label for='name'>Nome:</label>
 		<input type="text" id='name' name='name' />
 	<br />
-	<label for='place'>Local:</label>
+	<!--<label for='place'>Local:</label>
 		<input type="text" id='place' name='place' />
-	<br />
+	<br /> -->
 		<label for='image'>Link da imagem:</label>
 		<input type="text" id='image' name='image' />
 	<br />
