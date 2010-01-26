@@ -226,6 +226,23 @@ class Invite extends Model {
 			return True;
 		}
 	}
+	 /**************************************************************************
+	 * deleteTeam
+	 * Exclui um convite enviado.
+	 **************************************************************************/
+	public function deleteTeam ($idTeam) 
+	{
+		if ($idTeam == "") 
+		{
+			$this->messageFail("Não foi possivel deletar o convite.");
+			return False;
+		}
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE idTeam = $idTeam");
+			return True;
+		}
+	}
 
 
 

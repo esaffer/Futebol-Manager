@@ -18,17 +18,30 @@
 	
 	if ($_GET['do'] == 'delete') 
 	{
-		echo "Executa a ação de deletar o time e tudo relacionado a ele...";
+		$userTeam = new UserTeam;
+		$userTeam->deleteTeam($_POST['idTeam']);
+		
+		$userGame = new UserGame;
+		$userGame->deleteTeam($_POST['idTeam']);
+		
+		$invite = new Invite;
+		$invite->deleteTeam($_POST['idTeam']);
+		
+		$team = new Team;
+		$team->delete($_POST['idTeam']);	
+		
+		$game = new Game;
+		$game->deleteTeam($_POST['idTeam']);
+		
+		echo "<br><br>O grupo foi deletado com sucesso!";
+		
+		echo "<br><br><a href='?act=home'>Voltar à tela inicial</a>";	
 	}	
 	else {
-		echo "Tem certeza que deseja deletar o grupo '$team->getName()' ? </ br>";
+		echo "Tem certeza que deseja deletar o grupo '".$team->getName()."' ? </ br>";
 		echo "<form action='?act=team-delete&do=delete' method='POST'>";
-		echo "<input type='hidden' id='idTeam' name='idTeam' value=$team->getID() />";
+		echo "<input type='hidden' id='idTeam' name='idTeam' value='".$team->getID()."' />";
 		echo "<input type='submit' value='Sim!' />";
-		echo "</form>";
-		
-		echo "<form action='?act=view-profile&view=$team->getID()' method='POST'>";
-		echo "<input type='hidden' id='idTeam' name='idTeam' value=$team->getID() />";
-		echo "<input type='submit' value='Sim!' />";
-		echo "</form>"; 
+		echo "</form>";		
+		echo "<br><br><a href='?act=team-view-profile&view=".$team->getID()."'>NÃOOOO. Tire-me daqui!!!!</a>";	
 	}

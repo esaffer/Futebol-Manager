@@ -239,6 +239,23 @@ class Team extends Model {
 		
 		return $sql;
 	}
+	
+	/**************************************************************************
+	 * deleteAll
+	 * Deleta todos as ocorrências de determinado jogo em determinado time....
+	 **************************************************************************/	
+	public function delete( $idTeam) 
+	{	
+		if($idTeam == "")
+		{
+			$this->messageFail("Ocorreu um erro ao deletar dados do jogo");
+		}	
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE id = $idTeam");
+			return True;
+		}
+	}
 
 
 

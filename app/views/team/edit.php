@@ -79,7 +79,7 @@
 
 
 ?>
-		<form action='?act=team-edit&do=edit' method='POST'>
+	<form action='?act=team-edit&do=edit' method='POST'>
 		<br />
 		<label for='name'>Nome:</label>
 		<input type='text' id='name' name='name' value='<?= $team->getName() ?>' />
@@ -102,5 +102,9 @@
 	     	<input type='hidden' id='date_created' name='data_created' value='<?=$team->getDateCreated()?>' />
 		<input type='hidden' id='idTeam' name='idTeam' value='<?= $team->getID() ?>' />
 		<input type='submit' value="Salvar Modificações" />
-		</form>
-
+	</form>
+	
+	<form action='?act=team-delete' method='POST'>
+		<input type='hidden' id='idTeam' name='idTeam' value='<?= $team->getID() ?>' />
+		<input type='submit' value="Deletar grupo" />
+	</form>

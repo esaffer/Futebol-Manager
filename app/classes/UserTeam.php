@@ -177,6 +177,35 @@ class UserTeam extends Model {
 			return True;
 		}
 	}
+	
+	
+	/*************************************************************************
+	 * Delete
+	 * Exclui um user do time do banco de dados
+	 * 
+	 * @params	idUser	ID do usuário que deseja excluir
+	 * @params	idTeam	ID do time que deseja
+	 * @return 	boolean
+	 *************************************************************************/
+	public function deleteTeam( $idTeam) 
+	{
+	
+		if($idTeam == "")
+		{
+			return False;
+		}
+	/*
+		if ($this->checkId($this->table_name, $idUser) && $this->checkId($this->table_name, $idTeam)) 
+		{
+			$this->messageFail("Não existe tal user registrado nesse grupo.");
+			return False;
+	*/	
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE idTeam = $idTeam");
+			return True;
+		}
+	}
 
 
 

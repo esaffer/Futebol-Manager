@@ -22,6 +22,7 @@
 		'team-view-profile'	=> 'team/view-profile.php',
 		'team-edit'		=> 'team/edit.php',
 		'team-user'		=> 'team/list-user.php',
+		'team-delete'		=> 'team/delete.php',
 
 
 		

@@ -225,6 +225,20 @@ class Game extends Model {
 			return True;
 		}
 	}
+	
+	public function deleteTeam($idTeam) 
+	{	
+		if ($idTeam == "") 
+		{
+			$this->messageFail("Game não encontrado!");
+			return False;
+		}	
+		else
+		{
+			$this->db->query("DELETE FROM " . $this->table_name . " WHERE idTeam = $idTeam");
+			return True;
+		}
+	}
 
 
 
