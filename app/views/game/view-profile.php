@@ -77,7 +77,7 @@
 	
 	echo "<br>Descrição: ";
 	echo $game->getDescription();
-	
+
 	$userGame = new UserGame;
 	echo "</br></br>Jogadores que confirmaram presença: ";
 	$matriz = $userGame->getListUserTeam($idgame,1);
@@ -112,6 +112,8 @@
 		}		
 	}	
 	
+	
+	
 	//Executa ações restrita ao Owner do time ou ao Creator. 
 	if($game->getIDCreator() == $idUserFacebook || $team->getIDOwner() == $idUserFacebook )
 	{
@@ -122,6 +124,11 @@
 		<?
 	}	
 	
+	if( date("Y-m-d H:i:s",$game->getDate()) <= date('Y-m-d H:i:s',time()))
+	{
+		echo "<br><br> Este jogo já ocorreu, você não pode modificar mais nada dele...";
+		return;
+	}
 	
 	//Confirmar presença ou não...
 	$userTeam = new UserTeam;
