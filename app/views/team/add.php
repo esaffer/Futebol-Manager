@@ -25,6 +25,22 @@
 		$team->Add();
 		
 		echo "<br><br> Time criado com sucesso! <br>";
+		
+		$title = "Criou o grupo $_POST['name'] utilizando Sports Manager! ";
+		$attachment = array( 
+			'name' => '',
+			'href' => 'http://apps.facebook.com/futebolmanager/',
+			'caption' => '', 
+			'description' => "Comece a usar já o Sports Manager e marque jogos com sua turma!", 
+			'properties' => '',
+			'media' => array(array('type' => 'image', 'src' => 'http://knuth.ufpel.edu.br/tiago/media/img/logo-icon.png',
+				'href' => 'http://apps.facebook.com/futebolmanager/'))
+					);
+			
+		$attachment = json_encode($attachment); 
+
+		$facebook->api_client->stream_publish($title, $attachment);
+		
 		return;
 	}
 	
