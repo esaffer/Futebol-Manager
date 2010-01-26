@@ -95,7 +95,7 @@ function geraWarning($idTeam,$idUser)
 	$user = new User;
 	$user->getUser($idUser);
 	
-	$mensagem = "O usuário ".$user->getNick()." do grupo <b>" . $team->getName() . "</b> criou um novo jogo!</ br>";
+	$mensagem = "O usuário  <b>".$user->getNick()."</b> do grupo <b>" . $team->getName() . "</b> criou um novo jogo!</ br>";
 	
 	$lista_ids = "";
 	

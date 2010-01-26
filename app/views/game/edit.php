@@ -25,8 +25,13 @@
 		$game->delete($idgame); //Deleta o jogo...
 		
 		$userGame = new UserGame;
-		$userGame->deleteAll($idgame,$team->getID());		
+		$userGame->deleteAll($idgame,$team->getID());			
 		
+		$lista_ids = geraWarning($team->getID());
+		
+		$mensagem = "Um jogo do grupo <b>".$team->getName()."</b> foi cancelado";
+		$notification = $facebook->api_client->notifications_send($lista_ids, $mensagem, 'app_to_user');
+				
 		echo "<br><br> Jogo deletado com sucesso! <br>";
 		echo "<a href='?act=team-view-profile&view=".$team->getID()."'>Ver perfil do grupo <b>".$team->getName()." </b> </a>";	
 		return;
@@ -63,9 +68,9 @@
 		<label for='date'>Data:</label>
 		<input type="text" id='date' name='date' value='<?= date('Y-m-d H:i:s',$game->getDate()) ?>' />
 	<br />
-		<label for='place'>Local:</label>
+<!--		<label for='place'>Local:</label>
 		<input type="text" id='place' name='place' value="Valor ainda nao setado!!!" />
-	<br />
+	<br /> -->
 		<label for='numminplayers'>Número mínimo de jogadores:</label>
 		<input type="text" id='numminplayers' name='numminplayers' value='<?= $game->getNumMinPlayers() ?>' />
 	<br />
@@ -96,3 +101,49 @@
 	<?}		
 	
  ?>
+ 
+ <?php
+
+function geraWarning($idTeam)
+{
+	$team = new Team;
+	$team->getTeam($idTeam);
+	
+	$alerta = new Warning;
+	
+	$userTeam = new UserTeam;
+	$lista_users = $userTeam->getListTeam($idTeam);
+		
+	$mensagem = "Um jogo do grupo <b>" . $team->getName() . "</b> foi cancelado!</ br>";
+	
+	$lista_ids = "";
+	
+	if($lista_users != False)
+	{
+		foreach($lista_users as $lista)
+		{
+			$alerta->setIDDestino($lista->idUser);
+			$alerta->setDate();
+			$alerta->setText($mensagem);
+			$alerta->Add();
+			
+			if($lista_ids == "")
+			{			
+				$lista_ids = $lista->idUser;
+			}
+			else
+			{
+				$lista_ids = $lista_ids.",".$lista->idUser;
+			}
+		}
+	}
+	
+	$alerta->setIDDestino($team->getIDOwner());	
+	$alerta->setDate();
+	$alerta->setText($mensagem);
+	$alerta->Add();
+	
+	$lista_ids = $lista_ids.",".$team->getIDOwner();
+	return $lista_ids;
+}
+?>
