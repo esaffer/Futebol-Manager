@@ -7,6 +7,15 @@
 		echo "<br> Impossível criar novo jogo";
 		return;
 	}
+	
+	if($_POST['date'] <= date("Y-m-d H:i:s",time()) && $_GET['do'] == 'add')
+	{
+		echo "<br><br> You don't have a time machine, so, you can't do a game in the past!";
+		$team_aux = new Team;
+		$team_aux->getTeam($_POST['idTeam']);
+		echo "<br><br><br><a href='?act=team-view-profile&view=".$team_aux->getID()."'> Ver perfil do <b>".$team_aux->getName()."</b> </a>";	
+		return;
+	}
 
 	if ($_GET['do'] == 'add') {
 		$game = new Game;
@@ -94,27 +103,5 @@ function geraWarning($idTeam)
 	$alerta->setDate();
 	$alerta->setText($mensagem);
 	$alerta->Add();
-}
-
-
-function imprimeMin()
-{
-	echo "<select id='idMin'>";
-	for($i = 0; $i < 60; $i++)
-	{
-		echo "<option value='$i'>$i</option>";	
-	}
-	echo "</select>";
-}
-
-
-function imprimeHora()
-{
-	echo "<select id='idHora'>";
-	for($i = 0; $i < 24; $i++)
-	{
-		echo "<option value='$i'>$i</option>";	
-	}
-	echo "</select>";
 }
 ?>
