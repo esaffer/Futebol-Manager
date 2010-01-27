@@ -84,6 +84,7 @@ hr {
 	padding: 1px;
 	font-weight: bold;
 	width: 300px;
+	padding-left: 10px
 }
 
 .warning-content li {
@@ -93,7 +94,7 @@ hr {
 
 #update {
 	float: left;
-	width: 380px;
+	width: 400px;
 	border: 6px solid #E6E6E6;
 	background-color: #FFF;
 	display: block;
@@ -107,8 +108,9 @@ hr {
 	font-family: Verdana, Helvetica;
 	font-size: 10pt;
 	padding: 1px;
+	padding-left: 10px
 	font-weight: bold;
-	width: 340px;
+	width: 400px;
 }
 
 .update-content li {
