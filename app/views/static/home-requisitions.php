@@ -3,7 +3,7 @@
 
 	if($matriz == False)
 	{
-		echo "</ br></ br>Você nao é dono de nenhum grupo, portanto não possui requisições pendentes de ingresso em grupos.";
+		echo "</ br></ br>Você nao é dono de nenhum grupo, portanto não possui requisições pendentes de ingresso em grupos";
 	}
 	else
 	{

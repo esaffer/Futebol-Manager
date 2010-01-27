@@ -1,12 +1,5 @@
 <script type="text/javascript">
-	/* <![CDATA[ */
-		$(function() {
-				  $('#date').datetime({
-									userLang	: 'pt-BR',
-									americanMode: false,
-								});
-			});
-	/* ]]> */
+	$('#date').datepicker();
 </script>
 
 <h1>Adicionar Jogo</h1>
