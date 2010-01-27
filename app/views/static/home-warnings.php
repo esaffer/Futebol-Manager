@@ -10,6 +10,7 @@
 	if ($avisos == False)
 	{
 		echo "	Nenhum aviso encontrado!";
+		echo "</div></div>";
 	}
 	else
 	{
