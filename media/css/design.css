@@ -83,8 +83,8 @@ hr {
 	font-size: 10pt;
 	padding: 1px;
 	font-weight: bold;
-	width: 300px;
-	padding-left: 10px
+	width: 290px;
+	padding-left: 10px;
 }
 
 .warning-content li {
@@ -110,7 +110,7 @@ hr {
 	padding: 1px;
 	padding-left: 10px
 	font-weight: bold;
-	width: 400px;
+	width: 390px;
 }
 
 .update-content li {
