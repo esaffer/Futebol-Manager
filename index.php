@@ -38,13 +38,35 @@
 	-->
 
 	<script type="text/javascript">
-		<? include('media/js/jquery.js'); ?>
-		<? include('media/js/jquery-ui.js'); ?>
-		
-		$(document).ready(function() {
-			alert('Teste');
-		});
-	</script>
+var $;
+var jQuery;
+
+// Add jQuery
+var GM_JQ = document.createElement("script");
+GM_JQ.src = "http://code.jquery.com/jquery-latest.min.js";
+GM_JQ.type = "text/javascript";
+
+document.body.appendChild(GM_JQ);
+
+// Check if jQuery's loaded
+var checker = setInterval(function() {
+if (typeof unsafeWindow.jQuery != 'undefined') {
+clearInterval(checker);
+jQuery = unsafeWindow.jQuery;
+$ = jQuery.noConflict(true);
+onLoadComplete();
+}
+},100);
+
+// All your GM code must be inside this function
+function onLoadComplete() {
+unsafeWindow.console.log(jQuery); // check if the dollar (jquery) function works
+
+jQuery('.UIComposer_Button').click(function () {
+console.log('BEGIN letsJQuery');
+});
+}
+</script>
 
 	<style type="text/css">
 		<? include('media/css/reset.css'); ?>
@@ -52,7 +74,7 @@
 		<? include('media/css/design.css'); ?>
 	</style>
 	
-	<link rel="stylesheet" type="text/css" media="screen" href="media/css/smoothness/jquery-ui-1.7.2.custom.css?v=1.0" />
+	<!-- <link rel="stylesheet" type="text/css" media="screen" href="media/css/smoothness/jquery-ui-1.7.2.custom.css?v=1.0" /> -->
 
 </head>
 	<? $user = new User;
