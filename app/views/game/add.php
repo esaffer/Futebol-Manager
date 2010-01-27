@@ -1,3 +1,14 @@
+<script type="text/javascript">
+	/* <![CDATA[ */
+		$(function() {
+				  $('#date').datetime({
+									userLang	: 'pt-BR',
+									americanMode: false,
+								});
+			});
+	/* ]]> */
+</script>
+
 <h1>Adicionar Jogo</h1>
 <hr />
 <?php
