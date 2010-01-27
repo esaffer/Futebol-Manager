@@ -1,5 +1,5 @@
 <h1>Adicionar Equipe</h1>
-
+<hr />
 <?
 	if($_GET['do'] == 'add' && $_POST['name'] == "")
 	{

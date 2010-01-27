@@ -6,7 +6,7 @@
 ?>
 
 <h1>Perfil</h1>
-
+<hr />
 	<?
 	if($userID != $idUserFacebook) {
 	?>

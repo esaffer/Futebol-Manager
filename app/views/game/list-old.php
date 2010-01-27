@@ -1,5 +1,5 @@
 <h1>Lista de jogos que já ocorreram</h1>
-
+<hr />
 <?php
 	$idTeam = $_POST['idTeam'];
 	

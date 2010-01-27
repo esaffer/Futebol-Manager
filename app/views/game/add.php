@@ -1,5 +1,5 @@
 <h1>Adicionar Jogo</h1>
-
+<hr />
 <?php
 
 	if($_POST['idTeam'] == "")

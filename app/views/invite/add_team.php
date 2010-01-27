@@ -5,7 +5,7 @@
 ?>
 
 <h1>Convidar um amigo para participar do grupo "<?= $team->getName() ?>"</h1>
-
+<hr />
 
 <? 
 	echo "Escolha um amigo que já utilize o Futebol Manager";

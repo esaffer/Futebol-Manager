@@ -1,5 +1,5 @@
 <h1>Confirmar ou Recusar requisição</h1>
-
+<hr />
 <?php
 	$invite = new Invite;
 	$invite->getInvite($_POST['idInvite']);

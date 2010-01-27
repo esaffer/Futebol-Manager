@@ -1,5 +1,5 @@
 <h1>Editar Equipe</h1>
-
+<hr />
 <?
 	if ($_POST['idTeam'] == "") {
 		echo "<br><br>É necessário informar o ID de uma equipe para editar!";

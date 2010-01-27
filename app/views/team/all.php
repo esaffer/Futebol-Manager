@@ -4,7 +4,7 @@
 ?>
 
 <h1>Equipes</h1>
-
+<hr />
 <? if ($teams) { ?>
 	<table>
 		<thead>

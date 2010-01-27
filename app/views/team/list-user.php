@@ -1,5 +1,5 @@
 <h1>Seus Grupos</h1>
-
+<hr />
 <?php
 	$list_owner_team = new Team;
 	$matriz = $list_owner_team->getListTeamOwner($idUserFacebook);

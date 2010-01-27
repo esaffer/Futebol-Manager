@@ -1,5 +1,5 @@
 <h1>Editar perfil</h1>
-
+<hr />
 <?
 	if ($_GET['do'] == 'edit') {
 		$user = new User;

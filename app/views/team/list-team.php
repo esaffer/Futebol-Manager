@@ -1,5 +1,5 @@
 <h1>Lista de Grupos</h1>
-
+<hr />
 <?php
 	$teams = new Team;	
 	

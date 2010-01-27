@@ -1,5 +1,5 @@
 <h1>Editar Jogo</h1>
-
+<hr />
 <?php
 	$idgame = $_GET['id'];
 	

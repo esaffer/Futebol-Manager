@@ -1,5 +1,5 @@
 <h1>Perfil do Jogo</h1>
-
+<hr />
 <?php
 	$idgame = $_GET['view'];
 	

@@ -61,6 +61,7 @@ h1 {
 }
 
 hr {
+	margin: 0;
 	width: 720px;
 	height: 0;
 	border-top: 3px solid #E2E2E2;

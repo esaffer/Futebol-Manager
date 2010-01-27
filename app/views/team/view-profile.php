@@ -1,5 +1,5 @@
 <h1>Profile da Equipe</h1>
-
+<hr />
 <?php
 
 	$idTeam = $_GET['view'];

@@ -1,5 +1,5 @@
 <h1>Convide um usuário para conhecer o Futebol Manager!</h1>
-
+<hr />
 <?
 $rs = $facebook->api_client->fql_query("SELECT uid FROM user WHERE has_added_app=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = $idUserFacebook)");
 

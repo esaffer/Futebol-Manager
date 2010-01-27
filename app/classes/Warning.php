@@ -62,7 +62,7 @@ class Warning extends Model {
 	 ************************************************************************/
 	public function getListUser ($idDestino)
 	{
-		$sql = "SELECT * from $this->table_name WHERE idDestino = $idDestino ORDER BY date";
+		$sql = "SELECT * from $this->table_name WHERE idDestino = $idDestino ORDER BY date DESC LIMIT 10";
 		$this->db->query($sql);		
 		return $this->db->get_results();
 	}	

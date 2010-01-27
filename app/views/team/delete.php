@@ -1,5 +1,5 @@
 <h1>Deletar Equipe</h1>
-
+<hr />
 <?
 	if($_POST['idTeam'] == "")
 	{
