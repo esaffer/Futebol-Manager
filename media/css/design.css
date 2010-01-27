@@ -76,11 +76,12 @@ hr {
 }
 
 .warning-title {
+	display: block;
 	background-color: #111;
 	color: #F6F6F6;
 	font-family: Verdana, Helvetica;
 	font-size: 14pt;
-	width: 100%;
+	width: 250px;
 }
 
 .warning-content li {
