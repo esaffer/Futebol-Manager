@@ -92,11 +92,12 @@ hr {
 }
 
 #update {
-	float: right;
-	width: 340px;
+	float: left;
+	width: 380px;
 	border: 6px solid #E6E6E6;
 	background-color: #FFF;
 	display: block;
+	margin-left: 10px;
 }
 
 .update-title {
