@@ -39,17 +39,12 @@
 
 	<script type="text/javascript">
 		<? include('media/js/jquery.js'); ?>
-		<? include('media/js/jquery_ui_datepicker.js'); ?>
-		<? include('media/js/i18n/ui.datepicker-pt-BR.js'); ?>
-		<? include('media/js/timepicker_plug/timepicker.js'); ?>
 	</script>
 
 	<style type="text/css">
 		<? include('media/css/reset.css'); ?>
 		<? include('media/css/menu.css'); ?>
 		<? include('media/css/design.css'); ?>
-		<? include('media/js/timepicker_plug/css/style.css'); ?>
-		<? include('media/js/smothness/jquery_ui_datepicker.css'); ?>
 	</style>
 
 </head>
