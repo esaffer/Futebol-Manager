@@ -40,6 +40,10 @@
 	<script type="text/javascript">
 		<? include('media/js/jquery.js'); ?>
 		<? include('media/js/jquery-ui.js'); ?>
+		
+		$(document).ready(function() {
+			alert('Teste');
+		});
 	</script>
 
 	<style type="text/css">
