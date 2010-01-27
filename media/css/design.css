@@ -61,7 +61,7 @@ h1 {
 }
 
 hr {
-	width: 740px;
+	width: 720px;
 	height: 0;
 	border-top: 3px solid #E2E2E2;
 }
@@ -93,7 +93,7 @@ hr {
 
 #update {
 	float: right;
-	width: 440px;
+	width: 340px;
 	border: 6px solid #E6E6E6;
 	background-color: #FFF;
 	display: block;
@@ -107,7 +107,7 @@ hr {
 	font-size: 10pt;
 	padding: 1px;
 	font-weight: bold;
-	width: 440px;
+	width: 340px;
 }
 
 .update-content li {

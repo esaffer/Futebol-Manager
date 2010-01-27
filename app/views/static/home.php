@@ -1,5 +1,5 @@
 <h1>Página Inicial</h1>
-
+<hr />
 <?
 	// --- Avisos -------------------------------------------------------------
 	include("app/views/static/home-warnings.php");
