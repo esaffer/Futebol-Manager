@@ -70,8 +70,9 @@ hr {
 #warning {
 	float: left;
 	width: 300px;
-	border: 3px solid #E6E6E6;
+	border: 6px solid #E6E6E6;
 	background-color: #FFF;
+	display: block;
 }
 
 .warning-title {
@@ -79,6 +80,7 @@ hr {
 	color: #F6F6F6;
 	font-family: Verdana, Helvetica;
 	font-size: 14pt;
+	width: 100%;
 }
 
 .warning-content li {
