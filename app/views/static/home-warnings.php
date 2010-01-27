@@ -4,8 +4,8 @@
 	$avisos = $avisos->getListUser($idUserFacebook);
 
 	echo "<div id='warnings'>";
-	echo "	<div id='warning-title'>Avisos</div>";
-	echo "	<div id='warning-content'>";
+	echo "<div id='warning-title'>Avisos</div>";
+	echo "<div id='warning-content'>";
 
 	if ($avisos == False)
 	{
