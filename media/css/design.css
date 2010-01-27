@@ -62,7 +62,8 @@ h1 {
 
 hr {
 	margin: 0;
-	width: 720px;
+	margin-bottom: 8px;
+	width: 730px;
 	height: 0;
 	border-top: 3px solid #E2E2E2;
 }
@@ -70,7 +71,7 @@ hr {
 /* BOXES --------------------------------------------------------------------*/
 #warning {
 	float: left;
-	width: 300px;
+	width: 310px;
 	border: 6px solid #E6E6E6;
 	background-color: #FFF;
 	display: block;
@@ -84,7 +85,7 @@ hr {
 	font-size: 10pt;
 	padding: 1px;
 	font-weight: bold;
-	width: 290px;
+	width: 300px;
 	padding-left: 10px;
 }
 
