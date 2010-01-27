@@ -62,8 +62,8 @@ h1 {
 
 hr {
 	width: 740px;
-	color: #E6E6E6;
-	height: 3px;
+	height: 0;
+	border-top: 3px solid #E2E2E2;
 }
 
 /* BOXES --------------------------------------------------------------------*/
@@ -74,13 +74,14 @@ hr {
 	background-color: #FFF;
 }
 
-#warning-title {
+.warning-title {
 	background-color: #111;
 	color: #F6F6F6;
 	font-family: Verdana, Helvetica;
 	font-size: 14pt;
 }
 
-#warning-content li {
+.warning-content li {
 	border-bottom: 1px solid #CCC;
+	padding: 2px;
 }

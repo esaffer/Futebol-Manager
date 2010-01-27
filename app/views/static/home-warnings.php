@@ -3,13 +3,13 @@
 	$avisos = new Warning;
 	$avisos = $avisos->getListUser($idUserFacebook);
 
-	echo "<div id='warnings'>";
-	echo "<div id='warning-title'>Avisos</div>";
-	echo "<div id='warning-content'>";
+	echo "<div id='warning'>";
+	echo "<span class='warning-title'>Avisos</span>";
+	echo "<span class='warning-content'>";
 
 	if ($avisos == False)
 	{
-		echo "	Nenhum aviso encontrado!";
+		echo "Nenhum aviso encontrado!";
 	}
 	else
 	{
@@ -20,5 +20,5 @@
 		}
 		echo "</ul>";
 	}
-	echo "</div></div>";
+	echo "</span></div>";
 ?>
