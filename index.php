@@ -46,8 +46,9 @@
 		<? include('media/css/reset.css'); ?>
 		<? include('media/css/menu.css'); ?>
 		<? include('media/css/design.css'); ?>
-		<? include('media/css/smoothness/jquery-ui-1.7.2.custom.css'); ?>
 	</style>
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="media/css/smoothness/jquery-ui-1.7.2.custom.css?v=1.0" />
 
 </head>
 	<? $user = new User;
