@@ -63,8 +63,9 @@ h1 {
 hr {
 	margin: 0;
 	margin-bottom: 8px;
-	width: 730px;
+	width: 733px;
 	height: 0;
+	border: 0;
 	border-top: 3px solid #E2E2E2;
 }
 

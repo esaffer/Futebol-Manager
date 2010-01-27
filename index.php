@@ -37,14 +37,6 @@
 		Facebook não aceita <base> e nem <body>....
 	-->
 
-	<style type="text/css">
-		<? include('media/css/reset.css'); ?>
-		<? include('media/css/menu.css'); ?>
-		<? include('media/css/design.css'); ?>
-		<? include('media/css/timepicker_plug/css/style.css'); ?>
-		<? include('media/css/smothness/jquery_ui_datepicker.css'); ?>
-	</style>
-
 	<script type="text/javascript">
 		<? include('media/js/jquery.js'); ?>
 		<? include('media/js/jquery_ui_datepicker.js'); ?>
@@ -52,6 +44,13 @@
 		<? include('media/js/timepicker_plug/timepicker.js'); ?>
 	</script>
 
+	<style type="text/css">
+		<? include('media/css/reset.css'); ?>
+		<? include('media/css/menu.css'); ?>
+		<? include('media/css/design.css'); ?>
+		<? include('media/css/timepicker_plug/css/style.css'); ?>
+		<? include('media/css/smothness/jquery_ui_datepicker.css'); ?>
+	</style>
 
 </head>
 	<? $user = new User;
