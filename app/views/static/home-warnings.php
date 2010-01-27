@@ -10,7 +10,6 @@
 	if ($avisos == False)
 	{
 		echo "	Nenhum aviso encontrado!";
-		echo "</div></div>";
 	}
 	else
 	{
@@ -19,6 +18,7 @@
 		{
 			echo "<li>" . $aviso->text . "</li>";
 		}
-		echo "</ul></div></div>";
+		echo "</ul>";
 	}
+	echo "</div></div>";
 ?>
