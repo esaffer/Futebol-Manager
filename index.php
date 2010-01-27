@@ -39,12 +39,14 @@
 
 	<script type="text/javascript">
 		<? include('media/js/jquery.js'); ?>
+		<? include('media/js/jquery-ui.js'); ?>
 	</script>
 
 	<style type="text/css">
 		<? include('media/css/reset.css'); ?>
 		<? include('media/css/menu.css'); ?>
 		<? include('media/css/design.css'); ?>
+		<? include('media/css/smoothness/jquery-ui-1.7.2.custom.css'); ?>
 	</style>
 
 </head>
