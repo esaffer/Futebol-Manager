@@ -80,11 +80,37 @@ hr {
 	background-color: #111;
 	color: #F6F6F6;
 	font-family: Verdana, Helvetica;
-	font-size: 14pt;
-	width: 250px;
+	font-size: 10pt;
+	padding: 1px;
+	font-weight: bold;
+	width: 300px;
 }
 
 .warning-content li {
+	border-bottom: 1px solid #CCC;
+	padding: 2px;
+}
+
+#update {
+	float: right;
+	width: 440px;
+	border: 6px solid #E6E6E6;
+	background-color: #FFF;
+	display: block;
+}
+
+.update-title {
+	display: block;
+	background-color: #111;
+	color: #F6F6F6;
+	font-family: Verdana, Helvetica;
+	font-size: 10pt;
+	padding: 1px;
+	font-weight: bold;
+	width: 440px;
+}
+
+.update-content li {
 	border-bottom: 1px solid #CCC;
 	padding: 2px;
 }

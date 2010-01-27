@@ -1,4 +1,4 @@
-<div id='updates'>
+<div id='update'>
 	<span class='update-title'>Notícias</span>
 	<span class='warning-content'>
 		<ul>
