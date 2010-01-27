@@ -192,7 +192,7 @@
 			<input type='submit' value="Irei ao jogo" />
 		</form>  		
 		<?
-		}
+		}		
 	}
 	else
 	{
