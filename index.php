@@ -48,8 +48,8 @@
 		<? include('media/css/reset.css'); ?>
 		<? include('media/css/menu.css'); ?>
 		<? include('media/css/design.css'); ?>
-		<? include('media/css/timepicker_plug/css/style.css'); ?>
-		<? include('media/css/smothness/jquery_ui_datepicker.css'); ?>
+		<? include('media/js/timepicker_plug/css/style.css'); ?>
+		<? include('media/js/smothness/jquery_ui_datepicker.css'); ?>
 	</style>
 
 </head>
