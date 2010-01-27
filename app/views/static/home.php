@@ -5,7 +5,6 @@
 	include("app/views/static/home-warnings.php");
 
 
-
 	// --- Notícias -----------------------------------------------------------
 	include("app/views/static/home-updates.php");
 
