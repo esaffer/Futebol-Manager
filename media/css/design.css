@@ -59,3 +59,28 @@ h1 {
 	font-size: 16pt;
 	font-family: Verdana, Helvetica, "Trebuchet Unicode MS";
 }
+
+hr {
+	width: 740px;
+	color: #E6E6E6;
+	height: 3px;
+}
+
+/* BOXES --------------------------------------------------------------------*/
+#warning {
+	float: left;
+	width: 300px;
+	border: 3px solid #E6E6E6;
+	background-color: #FFF;
+}
+
+#warning-title {
+	background-color: #111;
+	color: #F6F6F6;
+	font-family: Verdana, Helvetica;
+	font-size: 14pt;
+}
+
+#warning-content li {
+	border-bottom: 1px solid #CCC;
+}
