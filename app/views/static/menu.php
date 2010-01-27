@@ -19,7 +19,6 @@
 		</ul>
 	</li>
 
-	<li><a href='?act=team-user'>Seus Grupos</a>
 	<?
 		$list_owner_team = new Team;
 		$owner = $list_owner_team->getListTeamOwner($idUserFacebook);
@@ -27,7 +26,7 @@
 		$member= $list_team->getListUser($idUserFacebook);
 		if ($owner == True || $member == True){
 	?>
-			<ul>
+			<li><a href='?act=team-user'>Seus Grupos</a><ul>
 		<?
 			if ($owner == True){
 				foreach($owner as $id_team){
